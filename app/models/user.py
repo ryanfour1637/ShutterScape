@@ -9,10 +9,17 @@ class User(db.Model, UserMixin):
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
 
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(40), nullable=False, unique=True)
-    email = db.Column(db.String(255), nullable=False, unique=True)
-    hashed_password = db.Column(db.String(255), nullable=False)
+    id = db.Column(db.Integer, primary_key = True)
+    first_name = db.Column(db.String(50), nullable = False)
+    last_name = db.Column(db.String(50), nullable = False)
+    age = db.Column(db.Integer, nullable = False)
+    username = db.Column(db.String(50), nullable = False, unique = True)
+    email = db.Column(db.String(50), nullable = False, unique = True)
+    hashed_password = db.Column(db.String(50), nullable = False)
+    my_fav_id = db.relationship("Favorite", back_populates = "my_fav_user_id", cascade = "all, delete-orphan")
+    my_post_id = db.relationship("Post", back_populates = "my_post_user_id", cascade = "all, delete-orphan")
+    my_comment_id = db.relationship("Comment", back_populates = "my_comment_user_id", cascade = "all, delete-orphan")
+    my_album_id = db.relationship("Album", back_populates = "my_album_user_id", cascade = "all, delete-orphan")
 
     @property
     def password(self):
@@ -27,7 +34,10 @@ class User(db.Model, UserMixin):
 
     def to_dict(self):
         return {
-            'id': self.id,
-            'username': self.username,
-            'email': self.email
+            "id:": self.id,
+            "firstName": self.first_name,
+            "lastName": self.last_name,
+            "age": self.age,
+            "username": self.username,
+            "email": self.email
         }

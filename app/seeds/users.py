@@ -1,19 +1,97 @@
-from app.models import db, User, environment, SCHEMA
+from ..models import db, User, environment, SCHEMA
 from sqlalchemy.sql import text
+from random import randint
+from datetime import date
+from faker import Faker
+
+fake = Faker()
 
 
 # Adds a demo user, you can add other users here if you want
 def seed_users():
-    demo = User(
-        username='Demo', email='demo@aa.io', password='password')
-    marnie = User(
-        username='marnie', email='marnie@aa.io', password='password')
-    bobbie = User(
-        username='bobbie', email='bobbie@aa.io', password='password')
+    new_user1 = User(
+    first_name = fake.first_name(),
+    last_name = fake.last_name(),
+    age = randint(13,100),
+    username = fake.name(),
+    email = fake.email(),
+    hashed_password = fake.password()
+    )
+    new_user2 = User(
+        first_name = fake.first_name(),
+        last_name = fake.last_name(),
+        age = randint(13,100),
+        username = fake.name(),
+        email = fake.email(),
+        hashed_password = fake.password()
+        )
+    new_user3 = User(
+        first_name = fake.first_name(),
+        last_name = fake.last_name(),
+        age = randint(13,100),
+        username = fake.name(),
+        email = fake.email(),
+        hashed_password = fake.password()
+        )
+    new_user4 = User(
+        first_name = fake.first_name(),
+        last_name = fake.last_name(),
+        age = randint(13,100),
+        username = fake.name(),
+        email = fake.email(),
+        hashed_password = fake.password()
+        )
+    new_user5 = User(
+        first_name = fake.first_name(),
+        last_name = fake.last_name(),
+        age = randint(13,100),
+        username = fake.name(),
+        email = fake.email(),
+        hashed_password = fake.password()
+        )
+    new_user6 = User(
+        first_name = fake.first_name(),
+        last_name = fake.last_name(),
+        age = randint(13,100),
+        username = fake.name(),
+        email = fake.email(),
+        hashed_password = fake.password()
+        )
+    new_user7 = User(
+        first_name = fake.first_name(),
+        last_name = fake.last_name(),
+        age = randint(13,100),
+        username = fake.name(),
+        email = fake.email(),
+        hashed_password = fake.password()
+        )
+    new_user8 = User(
+        first_name = fake.first_name(),
+        last_name = fake.last_name(),
+        age = randint(13,100),
+        username = fake.name(),
+        email = fake.email(),
+        hashed_password = fake.password()
+        )
+    new_user9 = User(
+        first_name = fake.first_name(),
+        last_name = fake.last_name(),
+        age = randint(13,100),
+        username = fake.name(),
+        email = fake.email(),
+        hashed_password = fake.password()
+        )
+    new_user10 = User(
+        first_name = fake.first_name(),
+        last_name = fake.last_name(),
+        age = randint(13,100),
+        username = fake.name(),
+        email = fake.email(),
+        hashed_password = fake.password()
+        )
 
-    db.session.add(demo)
-    db.session.add(marnie)
-    db.session.add(bobbie)
+    users_list = [new_user1, new_user2, new_user3, new_user4, new_user5, new_user6, new_user7, new_user8, new_user9, new_user10]
+    [db.session.add(user) for user in users_list]
     db.session.commit()
 
 
