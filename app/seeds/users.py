@@ -1,4 +1,4 @@
-from ..models import db, User, environment, SCHEMA
+from ..models import User, environment, SCHEMA, db
 from sqlalchemy.sql import text
 from random import randint
 from datetime import date
@@ -106,5 +106,5 @@ def undo_users():
         db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
     else:
         db.session.execute(text("DELETE FROM users"))
-        
+
     db.session.commit()
