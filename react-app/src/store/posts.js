@@ -31,9 +31,12 @@ export const getAllPostsThunk = () => async (dispatch) => {
 //getAllOwnerPosts Thunk
 export const getAllOwnerPostsThunk = () => async (dispatch) => {
     const res = await fetch("/api/posts/current");
+    console.log("🚀 ~ file: posts.js:34 ~ getAllOwnerPostsThunk ~ res:", res)
+
 
     if (res.ok) {
         const data = await res.json();
+        console.log("🚀 ~ file: posts.js:39 ~ getAllOwnerPostsThunk ~ data:", data)
         dispatch(actionGetPosts(data));
         return data
 
