@@ -5,7 +5,7 @@ import postReducer from './posts'
 
 const rootReducer = combineReducers({
   session,
-  postReducer
+  posts: postReducer
 });
 
 

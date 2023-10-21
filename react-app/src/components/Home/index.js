@@ -4,11 +4,12 @@ import { getAllPostsThunk } from "../../store/posts";
 
 export default function Home() {
     const dispatch = useDispatch();
-    const allPost = Object.values(useSelector((state) => (state)))
+    const allPost = useSelector((state) => state.posts.allPosts)
 
-    console.log("allPosts%%%%%%%%%", allPost)
+    console.log("🚀 ~ file: index.js:8 ~ Home ~ allPost:", allPost)
+
     useEffect(() => {
-        dispatch(getAllPostsThunk)
+        dispatch(getAllPostsThunk())
     }, [dispatch])
 
     return (

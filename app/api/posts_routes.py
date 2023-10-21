@@ -91,3 +91,10 @@ def delete_posts(id):
         return
     else:
         return {"Error": "Post Delete Error, please try again"}
+
+@posts_routes.route('/<int:id>')
+@login_required
+def get_post_details(id):
+    post = Post.query.get(id)
+
+    return post.to_dict()
