@@ -15,6 +15,9 @@ export default function PostDetailsPage() {
    console.log("this is the user", user.id);
    console.log("this is the post", post);
 
+
+
+
    useEffect(() => {
       dispatch(getEveryPostThunk());
       console.log(id);
@@ -22,6 +25,16 @@ export default function PostDetailsPage() {
 
    const disableSubmit = () => {
       if (comment.length < 10) return true;
+   };
+
+   const fixDate = (dateString) => {
+      const date = new Date(dateString);
+      const formatter = new Intl.DateTimeFormat("en-US", {
+         year: "numeric",
+         month: "long",
+         day: "numeric"
+      });
+      return formatter.format(date);
    };
 
    // TODO - Needs to be completed
@@ -57,7 +70,19 @@ export default function PostDetailsPage() {
          </div>
 
          <div className="comments-container">
-            <form onSubmit={handleSubmit} className="review-form-container">
+            <div className="past-comments">
+               {post && post.comments.length >= 1 ? ((post.comments.map((comment, index) => (
+                  <div className="bottom-comments">
+                     <div key={index} className="bot-comment-bunch">
+                        {/* <h3>{comment.User.firstName}</h3> */}
+                        <p className="datedate"> {fixDate(comment.createdAt)} </p>
+                        <p className="pushin-p"> "{comment.comment}" </p>
+                        {/* {comment.userId === (sessionUser ? sessionUser.id : null) && <OpenModalButton buttonText="Delete" modalComponent={<Deletecomment commentId={comment.id} spotId={thisSpot.id} setReloadPage={setReloadPage} />} />} */}
+                     </div>
+                  </div>
+               )))) : (<div className="be-the-first"> Be the first to post a comment! </div>)}
+            </div>
+            <form onSubmit={handleSubmit} className="comment-form-container">
                <label>
                   <textarea
                      type="text"
