@@ -50,7 +50,9 @@ export default function PostDetailsPage() {
          </div>
 
          <div className="image-details-container">
-            <p id="image-username">Name: Need to Eager Load Users Table</p>
+            <p id="image-username">
+               {post.users.firstName} {post.users.lastName}
+            </p>
             <p className="image-title">{post.title}</p>
             <p className="image-description">{post.description}</p>
          </div>
