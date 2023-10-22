@@ -38,6 +38,7 @@ function SignupFormModal() {
 				setErrors(data);
 			} else {
 				closeModal();
+				push("/posts/current")
 			}
 		} else {
 			setErrors(newErrors);

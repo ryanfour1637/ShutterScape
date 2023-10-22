@@ -99,7 +99,7 @@ def update_post(id):
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
-# TODO - Let's discuss deleting from AWS
+
 @posts_routes.route('/delete/<int:id>', methods=['DELETE'])
 @login_required
 def delete_posts(id):

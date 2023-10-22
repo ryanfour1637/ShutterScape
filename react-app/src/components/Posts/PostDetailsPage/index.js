@@ -24,22 +24,21 @@ export default function PostDetailsPage() {
       if (comment.length < 10) return true;
    };
 
-   // Needs to be completed
+   // TODO - Needs to be completed
    const handleSubmit = (e) => {
       e.preventDefault();
 
       return;
    };
 
-   if (post == undefined) return null;
+   if (post === undefined) return null;
 
-   // TODO: Delete button only visible to Owner of Post - not working
    return (
       <>
          <div className="image-container">
             <img src={post.photoUrl} alt=""></img>
 
-            {user.id == post.ownerId && (
+            {user.id === post.ownerId && (
                <div>
                   <OpenModalButton
                      buttonText="Delete"
