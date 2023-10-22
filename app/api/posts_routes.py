@@ -22,13 +22,13 @@ def index():
 @login_required
 def current():
     """Getting 10 random images from our db to show on a logged IN users homepage. None of the photos can be from the logged In user."""
-    all_none_user_posts = Post.query.filter(Post.owner_id != current_user.id)
-    non_user_post_sample = sample(all_none_user_posts, 10)
-    print(non_user_post_sample)
+    # all_none_user_posts = Post.query.filter(Post.owner_id.is_not(current_user.id))
+    all_none_user_posts = Post.query.all()
 
     #list of 10 random post dictionaries are going to sent, that are not the current users.
     #this is not tested bc it needs to be done on the front end to ensure there are no current user posts included.
-    return [post.to_dict() for post in non_user_post_sample]
+    return [post.to_dict() for post in all_none_user_posts]
+
 
 @posts_routes.route('/new', methods=['GET', 'POST'])
 @login_required
