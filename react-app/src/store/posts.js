@@ -1,7 +1,7 @@
 //types
 
 const GET_ALL_POSTS = "/get_all_posts";
-const GET_POST_DETAILS = "/posts_details"
+const GET_POST_DETAILS = "/post_details"
 const DELETE_POST = "/delete_post"
 
 //action creator
@@ -48,12 +48,14 @@ export const getAllOwnerPostsThunk = () => async (dispatch) => {
 
 //getPostDetails Thunk
 export const getPostDetailsThunk = (id) => async (dispatch) => {
-    const res = await fetch(`api/post/${id}`)
+    const res = await fetch(`/api/posts/${id}`)
+
+    console.log("🚀 ~ file: posts.js:53 ~ getPostDetailsThunk ~ res:", res)
 
     if (res.ok) {
         const data = await res.json();
         dispatch(actionGetPostDetails(data));
-        return data
+        return data;
 
     } else {
         const errors = await res.json();
@@ -132,7 +134,7 @@ export default function postReducer(state = initialState, action) {
             return { ...state, allPosts: action.posts }
 
         case GET_POST_DETAILS:
-            return { ...state, [action.post.id]: action.post };
+            return { ...state, singlePost: action.post };
 
         case DELETE_POST:
             const newState = { ...state };

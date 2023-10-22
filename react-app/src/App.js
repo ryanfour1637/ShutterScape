@@ -4,9 +4,11 @@ import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import GetPosts from "./components/Posts/GetPosts";
+import PostDetailsPage from "./components/Posts/PostDetailsPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import Home from "./components/Home"
+
 
 function App() {
   const dispatch = useDispatch();
@@ -31,6 +33,9 @@ function App() {
           </Route>
           <Route exact path="/posts/current" >
             <GetPosts/>
+          </Route>
+          <Route exact path="/posts/:id" >
+            <PostDetailsPage />
           </Route>
           <Route>Page Not Found</Route>
         </Switch>

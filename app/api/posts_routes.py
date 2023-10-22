@@ -29,6 +29,14 @@ def current():
     #this is not tested bc it needs to be done on the front end to ensure there are no current user posts included.
     return [post.to_dict() for post in all_none_user_posts]
 
+# May we look into Eager Loading Users table?
+@posts_routes.route('/<int:id>/')
+def post_by_id():
+    """Get post by post ID to show on Post Details Page (when user clicks on a photo post)"""
+    post_to_get = Post.query.get(id)
+
+    return post_to_get.to_dict()
+
 
 @posts_routes.route('/new', methods=['GET', 'POST'])
 @login_required
@@ -76,7 +84,7 @@ def update_post(id):
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
-
+# TODO - Let's discuss deleting from AWS
 @posts_routes.route('/delete/<int:id>', methods=['DELETE'])
 @login_required
 def delete_posts(id):
