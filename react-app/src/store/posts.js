@@ -45,6 +45,23 @@ export const getAllOwnerPostsThunk = () => async (dispatch) => {
    }
 };
 
+export const getEveryPostThunk = () => async (dispatch) => {
+   const res = await fetch("/api/posts/all");
+   console.log("🚀 ~ file: posts.js:34 ~ getAllOwnerPostsThunk ~ res:", res);
+
+   if (res.ok) {
+      const data = await res.json();
+      console.log(
+         "🚀 ~ file: posts.js:39 ~ getAllOwnerPostsThunk ~ data:",
+         data
+      );
+      dispatch(actionGetPosts(data));
+      return data;
+   } else {
+      const errors = await res.json();
+      return errors;
+   }
+};
 //getPostDetails Thunk
 export const getPostDetailsThunk = (id) => async (dispatch) => {
    const res = await fetch(`/api/posts/${id}`);

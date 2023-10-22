@@ -18,6 +18,12 @@ def index():
     #list of 10 random post dictionaries are going to be sent to redux.
     return [post.to_dict() for post in post_list]
 
+@posts_routes.route('/all')
+@login_required
+def all():
+    all_posts = Post.query.all()
+    return [post.to_dict() for post in all_posts]
+
 @posts_routes.route('/current')
 @login_required
 def current():
