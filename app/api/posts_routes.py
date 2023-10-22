@@ -23,11 +23,20 @@ def index():
 def current():
     """Getting 10 random images from our db to show on a logged IN users homepage. None of the photos can be from the logged In user."""
     # all_none_user_posts = Post.query.filter(Post.owner_id.is_not(current_user.id))
-    all_none_user_posts = Post.query.all()
+    all_user_posts = Post.query.all()
+    def filter_user_id(post):
+        print(post)
+        return post.owner_id != current_user.id
+    all_non_user_posts = filter(filter_user_id, all_user_posts)
+
+    ten_posts = sample(list(all_non_user_posts), 10)
+
+    return [post.to_dict() for post in ten_posts]
+
+
 
     #list of 10 random post dictionaries are going to sent, that are not the current users.
     #this is not tested bc it needs to be done on the front end to ensure there are no current user posts included.
-    return [post.to_dict() for post in all_none_user_posts]
 
 # May we look into Eager Loading Users table?
 @posts_routes.route('/<int:id>/')
