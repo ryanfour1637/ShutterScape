@@ -13,7 +13,7 @@ const actionDeletePost = (id) => ({ type: DELETE_POST, id });
 //Thunks
 
 //getAllPostsThunk
-export const getAllPostsThunk = () => async (dispatch) => {
+export const getTenRandomPostsThunk = () => async (dispatch) => {
    const res = await fetch("/api/posts");
 
    if (res.ok) {
@@ -27,7 +27,7 @@ export const getAllPostsThunk = () => async (dispatch) => {
 };
 
 //getAllOwnerPosts Thunk
-export const getAllOwnerPostsThunk = () => async (dispatch) => {
+export const getTenRandomNonOwnerPosts = () => async (dispatch) => {
    const res = await fetch("/api/posts/current");
    console.log("🚀 ~ file: posts.js:34 ~ getAllOwnerPostsThunk ~ res:", res);
 

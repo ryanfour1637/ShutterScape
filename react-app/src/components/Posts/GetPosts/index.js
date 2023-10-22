@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { getAllOwnerPostsThunk } from "../../../store/posts";
+import { getTenRandomNonOwnerPosts } from "../../../store/posts";
 
 export default function GetPosts() {
    const { push } = useHistory();
@@ -13,7 +13,7 @@ export default function GetPosts() {
    //  const nonUserPosts = posts.filter((post) => post.id !== user.id);
    console.log("posts", posts);
    useEffect(() => {
-      dispatch(getAllOwnerPostsThunk());
+      dispatch(getTenRandomNonOwnerPosts());
    }, [dispatch]);
 
    const goToPost = (post) => {
