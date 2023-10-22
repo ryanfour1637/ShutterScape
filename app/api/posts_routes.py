@@ -89,14 +89,18 @@ def update_post(id):
 @login_required
 def delete_posts(id):
     post_to_delete = Post.query.get(id)
-
-    file_delete = remove_file_from_s3(post_to_delete.image)
-    print(file_delete)
-
-    if file_delete is True:
+    if id < 101:
         db.session.delete(post_to_delete)
         db.session.commit()
-        return
+        return 'Success, your post was deleted.'
+    elif id > 100:
+        print('this is post to delete', post_to_delete)
+        file_delete = remove_file_from_s3(post_to_delete.photo_url)
+        print('this is file delete', file_delete)
+        print('inside file delete is true')
+        db.session.delete(post_to_delete)
+        db.session.commit()
+        return 'Success, your post was deleted.'
     else:
         return {"Error": "Post Delete Error, please try again"}
 
