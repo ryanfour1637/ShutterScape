@@ -5,4 +5,4 @@ comments_routes = Blueprint('comments', __name__)
 
 @comments_routes.route('/')
 def index():
-    return 'comments routes working'
+    """Getting all comments for a post"""
