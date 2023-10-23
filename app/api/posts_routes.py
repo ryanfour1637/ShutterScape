@@ -63,7 +63,7 @@ def post_by_id():
 def new_post(form):
     form = PostForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-
+    print(form.data)
     if form.validate_on_submit():
         image = form.data["image"]
         image.filename = get_unique_filename(image.filename)
@@ -79,6 +79,7 @@ def new_post(form):
         # this is a post dictionary.
         # this needs to be validated on the front end once its built out.
         return post.to_dict()
+    print(form.errors)
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
