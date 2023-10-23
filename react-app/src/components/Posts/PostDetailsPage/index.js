@@ -74,7 +74,7 @@ export default function PostDetailsPage() {
                {post && post.comments.length >= 1 ? ((post.comments.map((comment, index) => (
                   <div className="bottom-comments">
                      <div key={index} className="bot-comment-bunch">
-                        {/* <h3>{comment.User.firstName}</h3> */}
+                        <h3>{comment.user.firstName} {comment.user.lastName}</h3>
                         <p className="datedate"> {fixDate(comment.createdAt)} </p>
                         <p className="pushin-p"> "{comment.comment}" </p>
                         {/* {comment.userId === (sessionUser ? sessionUser.id : null) && <OpenModalButton buttonText="Delete" modalComponent={<Deletecomment commentId={comment.id} spotId={thisSpot.id} setReloadPage={setReloadPage} />} />} */}
