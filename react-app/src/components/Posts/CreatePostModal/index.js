@@ -2,16 +2,19 @@ import {useState, useEffect} from "react";
 import {useDispatch} from "react-redux";
 import {useHistory} from "react-router-dom";
 import { createPostThunk } from "../../../store/posts";
+import { useModal } from "../../../context/Modal";
 
-export default function CreatePostForm() {
+export default function CreatePostModal() {
   const {push} = useHistory();
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
   const [imageLoading, setImageLoading] = useState(false);
+  const [errors, setErrors] = useState([]);
+  const { closeModal } = useModal();
 
-  console.log("🚀 ~ file: index.js:12 ~ CreatePostForm ~ image:", image)
+
 
 
   const handleSubmit = async (e) => {
@@ -29,6 +32,13 @@ export default function CreatePostForm() {
     setImage("")
     setTitle("")
     setDescription("")
+
+    if (formData) {
+      setErrors(formData);
+    } else {
+        closeModal()
+        push("/posts/current")
+    }
 
     push("/posts/current");
   };

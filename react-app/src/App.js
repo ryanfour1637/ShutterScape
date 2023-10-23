@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
+import CreatePostModal from "./components/Posts/CreatePostModal";
 import GetPosts from "./components/Posts/GetPosts";
 import PostDetailsPage from "./components/Posts/PostDetailsPage";
 import { authenticate } from "./store/session";
@@ -30,6 +31,9 @@ function App() {
           </Route>
           <Route exact path="/" >
             <Home/>
+          </Route>
+          <Route exact path="/posts/new" >
+            <CreatePostModal />
           </Route>
           <Route exact path="/posts/current" >
             <GetPosts/>
