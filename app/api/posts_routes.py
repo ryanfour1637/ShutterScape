@@ -63,7 +63,7 @@ def post_by_id():
 def new_post(form):
     form = PostForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    print(form.data)    print(form.data)
+    print(form.data)
     if form.validate_on_submit():
         image = form.data["image"]
         image.filename = get_unique_filename(image.filename)
