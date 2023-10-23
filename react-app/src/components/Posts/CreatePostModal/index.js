@@ -24,17 +24,19 @@ export default function CreatePostModal() {
 
     setImageLoading(true);
     console.log("🚀 ~ file: index.js:20 ~ handleSubmit ~ formData:", formData)
-    await dispatch(createPostThunk(formData));
+    const postData = await dispatch(createPostThunk(formData));
+    console.log("🚀 ~ file: index.js:28 ~ handleSubmit ~ postData:", postData)
 
     setImage("")
     setTitle("")
     setDescription("")
 
-    if (formData) {
-      setErrors(formData);
+    if (postData.errors === undefined || !postData.errors) {
+      closeModal()
+      return push(`/posts/${postData.id}`)
+
     } else {
-        closeModal()
-        push("/posts/current")
+      setErrors(postData.errors);
     }
 
     push("/posts/current");

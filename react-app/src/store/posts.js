@@ -78,7 +78,7 @@ export const getPostDetailsThunk = (id) => async (dispatch) => {
    }
 };
 
-//createPost Thunk - boilerplate code - revisit if problems arise
+//createPost Thunk
 export const createPostThunk = (form) => async (dispatch) => {
    try {
       const res = await fetch("/api/posts/new", {
@@ -89,6 +89,7 @@ export const createPostThunk = (form) => async (dispatch) => {
       if (res.ok) {
          const { resPost } = await res.json();
          dispatch(actionGetPostDetails(resPost));
+         return resPost;
       } else {
          console.log("There was an error making your post!");
       }

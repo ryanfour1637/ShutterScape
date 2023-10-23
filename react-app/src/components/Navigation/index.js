@@ -10,10 +10,7 @@ function Navigation({isLoaded}) {
   const {push} = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
 
-  // const goToCreatePostModal = () => {
-  //   push("/posts/new");
-  //   return;
-  // };
+
 
   return (
     <div className="nav-container">
