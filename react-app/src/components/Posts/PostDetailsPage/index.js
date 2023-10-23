@@ -88,17 +88,17 @@ export default function PostDetailsPage() {
                               {fixDate(comment.createdAt)}{" "}
                            </p>
                            <p className="pushin-p"> "{comment.comment}" </p>
-                           {comment.userId === (user.id ? user.id : null) && (
-                              <OpenModalButton
-                                 buttonText="Delete"
-                                 modalComponent={
-                                    <DeleteCommentModal
-                                       commentId={comment.id}
-                                       id={id}
-                                    />
-                                 }
-                              />
-                           )}
+                           {/* {comment.userId === (user.id ? user.id : null) && ( */}
+                           <OpenModalButton
+                              buttonText="Delete"
+                              modalComponent={
+                                 <DeleteCommentModal
+                                    commentId={comment.id}
+                                    id={id}
+                                 />
+                              }
+                           />
+                           {/* )} */}
                         </div>
                      </div>
                   ))

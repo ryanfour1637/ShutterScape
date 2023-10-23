@@ -9,9 +9,10 @@ comments_routes = Blueprint('comments', __name__)
 def get_all_comments():
     all_comments = Comment.query.all()
     return [comment.to_dict() for comment in all_comments]
-   
 
-@comments_routes.route('/<int:id>')
+
+@comments_routes.route('/<int:id>', methods=['DELETE'])
+@login_required
 def delete_comment(id):
     comment_to_delete = Comment.query.get(id)
     db.session.delete(comment_to_delete)
