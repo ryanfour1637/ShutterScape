@@ -15,7 +15,7 @@ class User(db.Model, UserMixin):
     age = db.Column(db.Integer, nullable = False)
     username = db.Column(db.String(50), nullable = False, unique = True)
     email = db.Column(db.String(50), nullable = False, unique = True)
-    hashed_password = db.Column(db.String(50), nullable = False)
+    hashed_password = db.Column(db.String, nullable = False)
     my_fav_id = db.relationship("Favorite", back_populates = "my_fav_user_id", cascade = "all, delete-orphan")
     my_post_id = db.relationship("Post", back_populates = "my_post_user_id", cascade = "all, delete-orphan")
     my_comment_id = db.relationship("Comment", back_populates = "my_comment_user_id", cascade = "all, delete-orphan")
