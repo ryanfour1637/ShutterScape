@@ -15,16 +15,13 @@ export default function CreatePostModal() {
   const { closeModal } = useModal();
 
 
-
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("image", image);
     formData.append("title", title);
     formData.append("description", description);
-    // aws uploads can be a bit slow—displaying
-    // some sort of loading message is a good idea
+
     setImageLoading(true);
     console.log("🚀 ~ file: index.js:20 ~ handleSubmit ~ formData:", formData)
     await dispatch(createPostThunk(formData));

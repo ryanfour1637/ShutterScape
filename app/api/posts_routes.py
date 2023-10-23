@@ -60,26 +60,37 @@ def post_by_id():
 
 @posts_routes.route('/new', methods=['GET', 'POST'])
 @login_required
-def new_post(form):
+def new_post():
     form = PostForm()
+
     form['csrf_token'].data = request.cookies['csrf_token']
-    print(form.data)
+    print("FORM DATA::", form.data)
+
     if form.validate_on_submit():
         image = form.data["image"]
         image.filename = get_unique_filename(image.filename)
         upload = upload_file_to_s3(image)
+        url = upload['url']
+        print("IMAGE FILENAME", image.filename)
+        print("UPLOAD", upload)
+
         post = Post(
-            owner_id=current_user.id,
-            title=form.data['title'],
-            photo_url=upload['url'],
-            description=form.data['description'],
+            owner_id = current_user.id,
+            title = form.data['title'],
+            photo_url = url,
+            description = form.data['description'],
+            created_at = date.today()
         )
+
+        print("API POST DATA::", post)
+
         db.session.add(post)
         db.session.commit()
         # this is a post dictionary.
         # this needs to be validated on the front end once its built out.
-        return post.to_dict()
-    print(form.errors)
+        return {"resPost": post.to_dict()}
+
+    print("FORM ERRORS::", form.errors)
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 
@@ -182,5 +193,3 @@ def update_comment():
         return create_comment.to_dict()
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
-
-
