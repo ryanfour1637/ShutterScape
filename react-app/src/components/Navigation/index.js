@@ -2,16 +2,18 @@ import React from "react";
 import {NavLink, useHistory} from "react-router-dom";
 import {useSelector} from "react-redux";
 import ProfileButton from "./ProfileButton";
+import CreatePostModal from "../Posts/CreatePostModal";
+import OpenModalButton from "../OpenModalButton"
 import "./Navigation.css";
 
 function Navigation({isLoaded}) {
   const {push} = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
 
-  const goToCreatePostForm = () => {
-    push("/posts/new");
-    return;
-  };
+  // const goToCreatePostModal = () => {
+  //   push("/posts/new");
+  //   return;
+  // };
 
   return (
     <div className="nav-container">
@@ -27,12 +29,12 @@ function Navigation({isLoaded}) {
               <div className="profile-menu-container">
                 <div>
                   {sessionUser && (
-                    <button
-                      id="create-post-profile"
-                      onClick={() => goToCreatePostForm()}
-                    >
-                      Create a new post
-                    </button>
+                    <div>
+                      <OpenModalButton
+                        buttonText="Create a new post"
+                        modalComponent={<CreatePostModal />}
+                      />
+                    </div>
                   )}
                 </div>
                 <div>

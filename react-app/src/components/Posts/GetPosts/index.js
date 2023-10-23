@@ -35,8 +35,8 @@ export default function GetPosts() {
       <>
          <div>
             {arrPosts.map((post) => (
-               <div onClick={() => goToPost(post)}>
-                  <img src={post.photoUrl} alt="" key={post.id}></img>
+               <div onClick={() => goToPost(post)} key={post.id}>
+                  <img src={post.photoUrl} alt=""></img>
                </div>
             ))}
          </div>
