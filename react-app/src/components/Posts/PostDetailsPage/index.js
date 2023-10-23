@@ -4,6 +4,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { getEveryPostThunk } from "../../../store/posts";
 import OpenModalButton from "../../OpenModalButton";
 import DeletePostModal from "../DeletePostModal";
+import DeleteCommentModal from "../../DeleteCommentModal/index"
 
 export default function PostDetailsPage() {
    const { id } = useParams();
@@ -12,6 +13,7 @@ export default function PostDetailsPage() {
    const [comment, setComment] = useState("");
    const user = useSelector((state) => state.session.user);
    const post = useSelector((state) => state.posts.allPosts[id]);
+   const sessionUser = useSelector((state) => state.session.user);
    console.log("this is the user", user.id);
    console.log("this is the post", post);
 
@@ -74,7 +76,7 @@ export default function PostDetailsPage() {
                         <h3>{comment.user.firstName} {comment.user.lastName}</h3>
                         <p className="datedate"> {fixDate(comment.createdAt)} </p>
                         <p className="pushin-p"> "{comment.comment}" </p>
-                        {/* {comment.userId === (sessionUser ? sessionUser.id : null) && <OpenModalButton buttonText="Delete" modalComponent={<Deletecomment commentId={comment.id} spotId={thisSpot.id} setReloadPage={setReloadPage} />} />} */}
+                        {comment.userId === (sessionUser ? sessionUser.id : null) && <OpenModalButton buttonText="Delete" modalComponent={<DeleteCommentModal commentId={comment.id} postId={post.id} />} />}
                      </div>
                   </div>
                )))) : (<div className="be-the-first"> Be the first to post a comment! </div>)}

@@ -407,9 +407,9 @@ def seed_posts():
     new_post_40 = Post(
         owner_id=4,
         album_id=4,
-        title=fake.sentence(),
+        title="Lunch For Two",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-51.jpg",
-        description=fake.sentence(),
+        description="A beautiful lunch in Downtown.",
         created_at=date.today()
     )
     db.session.add(new_post_40)
@@ -419,9 +419,9 @@ def seed_posts():
     new_post_41 = Post(
         owner_id=5,
         album_id=5,
-        title=fake.sentence(),
+        title="Rush Hour",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-53.jpg",
-        description=fake.sentence(),
+        description="So many stories, captured in one photo.",
         created_at=date.today()
     )
     db.session.add(new_post_41)
@@ -429,9 +429,9 @@ def seed_posts():
     new_post_42 = Post(
         owner_id=5,
         album_id=6,
-        title=fake.sentence(),
+        title="Time Square Rush Hour",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-54.jpg",
-        description=fake.sentence(),
+        description="A gloomy day in New York.",
         created_at=date.today()
     )
     db.session.add(new_post_42)
@@ -439,9 +439,9 @@ def seed_posts():
     new_post_43 = Post(
         owner_id=5,
         album_id=6,
-        title=fake.sentence(),
+        title="Alleyway",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-55.jpg",
-        description=fake.sentence(),
+        description="The view from the alley.",
         created_at=date.today()
     )
     db.session.add(new_post_43)
@@ -449,9 +449,9 @@ def seed_posts():
     new_post_44 = Post(
         owner_id=5,
         album_id=6,
-        title=fake.sentence(),
+        title="View through my lens.",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-56.jpg",
-        description=fake.sentence(),
+        description="Traffic from above.",
         created_at=date.today()
     )
     db.session.add(new_post_44)
@@ -459,9 +459,9 @@ def seed_posts():
     new_post_45 = Post(
         owner_id=5,
         album_id=6,
-        title=fake.sentence(),
+        title="What You Want?",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-57.jpg",
-        description=fake.sentence(),
+        description="Waiting for something.",
         created_at=date.today()
     )
     db.session.add(new_post_45)
@@ -469,9 +469,9 @@ def seed_posts():
     new_post_46 = Post(
         owner_id=5,
         album_id=6,
-        title=fake.sentence(),
+        title="Abstract Street",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-58.jpg",
-        description=fake.sentence(),
+        description="I loved the way this photo turned out.",
         created_at=date.today()
     )
     db.session.add(new_post_46)
@@ -479,9 +479,9 @@ def seed_posts():
     new_post_47 = Post(
         owner_id=5,
         album_id=6,
-        title=fake.sentence(),
+        title="Street Veggies",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-59.jpg",
-        description=fake.sentence(),
+        description="A day on the street.",
         created_at=date.today()
     )
     db.session.add(new_post_47)
@@ -489,9 +489,9 @@ def seed_posts():
     new_post_48 = Post(
         owner_id=5,
         album_id=6,
-        title=fake.sentence(),
+        title="Fashion Add",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-60.jpg",
-        description=fake.sentence(),
+        description="Shot by me.",
         created_at=date.today()
     )
     db.session.add(new_post_48)
@@ -499,9 +499,9 @@ def seed_posts():
     new_post_49 = Post(
         owner_id=5,
         album_id=6,
-        title=fake.sentence(),
+        title="Main Street",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-61.jpg",
-        description=fake.sentence(),
+        description="The city center with love.",
         created_at=date.today()
     )
     db.session.add(new_post_49)
@@ -509,9 +509,9 @@ def seed_posts():
     new_post_50 = Post(
         owner_id=5,
         album_id=6,
-        title=fake.sentence(),
+        title="Ballet",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-62.jpg",
-        description=fake.sentence(),
+        description="Strike a pose, on your toes.",
         created_at=date.today()
     )
     db.session.add(new_post_50)
@@ -521,9 +521,9 @@ def seed_posts():
     new_post_51 = Post(
         owner_id=6,
         album_id=6,
-        title=fake.sentence(),
+        title="On the Ledge",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-63.jpg",
-        description=fake.sentence(),
+        description="Taking a seat on the edge of downtown.",
         created_at=date.today()
     )
     db.session.add(new_post_51)
@@ -531,9 +531,9 @@ def seed_posts():
     new_post_52 = Post(
         owner_id=6,
         album_id=6,
-        title=fake.sentence(),
+        title="Eye For an Eye",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-64.jpg",
-        description=fake.sentence(),
+        description="Inception",
         created_at=date.today()
     )
     db.session.add(new_post_52)
@@ -541,9 +541,9 @@ def seed_posts():
     new_post_53 = Post(
         owner_id=6,
         album_id=6,
-        title=fake.sentence(),
+        title="Family Portrait",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-65.jpg",
-        description=fake.sentence(),
+        description="Merry Christmas",
         created_at=date.today()
     )
     db.session.add(new_post_53)
@@ -551,9 +551,9 @@ def seed_posts():
     new_post_54 = Post(
         owner_id=6,
         album_id=6,
-        title=fake.sentence(),
+        title="Drip",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-66.jpg",
-        description=fake.sentence(),
+        description="Checkout my kicks",
         created_at=date.today()
     )
     db.session.add(new_post_54)
@@ -561,9 +561,9 @@ def seed_posts():
     new_post_55 = Post(
         owner_id=6,
         album_id=6,
-        title=fake.sentence(),
+        title="Having Fun",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-67.jpg",
-        description=fake.sentence(),
+        description="Kids will be kids.",
         created_at=date.today()
     )
     db.session.add(new_post_55)
@@ -571,9 +571,9 @@ def seed_posts():
     new_post_56 = Post(
         owner_id=6,
         album_id=6,
-        title=fake.sentence(),
+        title="Strike a Pose",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-68.jpg",
-        description=fake.sentence(),
+        description="Dress to impress.",
         created_at=date.today()
     )
     db.session.add(new_post_56)
@@ -581,9 +581,9 @@ def seed_posts():
     new_post_57 = Post(
         owner_id=6,
         album_id=6,
-        title=fake.sentence(),
+        title="March On",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-69.jpg",
-        description=fake.sentence(),
+        description="Fight for what you believe in.",
         created_at=date.today()
     )
     db.session.add(new_post_57)
@@ -591,9 +591,9 @@ def seed_posts():
     new_post_58 = Post(
         owner_id=6,
         album_id=6,
-        title=fake.sentence(),
+        title="A Mother's Love",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-70.jpg",
-        description=fake.sentence(),
+        description="Smile for the camera.",
         created_at=date.today()
     )
     db.session.add(new_post_58)
@@ -601,9 +601,9 @@ def seed_posts():
     new_post_59 = Post(
         owner_id=6,
         album_id=6,
-        title=fake.sentence(),
+        title="Friends",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-71.jpg",
-        description=fake.sentence(),
+        description="The band is back together.",
         created_at=date.today()
     )
     db.session.add(new_post_59)
@@ -611,9 +611,9 @@ def seed_posts():
     new_post_60 = Post(
         owner_id=6,
         album_id=6,
-        title=fake.sentence(),
+        title="Let the Good Times Roll",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-72.jpg",
-        description=fake.sentence(),
+        description="Zara her collection.",
         created_at=date.today()
     )
     db.session.add(new_post_60)
@@ -623,9 +623,9 @@ def seed_posts():
     new_post_61 = Post(
         owner_id=7,
         album_id=7,
-        title=fake.sentence(),
+        title="Celebrate Life",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-74.jpg",
-        description=fake.sentence(),
+        description="Color festival!",
         created_at=date.today()
     )
     db.session.add(new_post_61)
@@ -633,9 +633,9 @@ def seed_posts():
     new_post_62 = Post(
         owner_id=7,
         album_id=7,
-        title=fake.sentence(),
+        title="Dragon",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-75.jpg",
-        description=fake.sentence(),
+        description="Year of the Dragon.",
         created_at=date.today()
     )
     db.session.add(new_post_62)
@@ -643,9 +643,9 @@ def seed_posts():
     new_post_63 = Post(
         owner_id=7,
         album_id=7,
-        title=fake.sentence(),
+        title="The Light",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-76.jpg",
-        description=fake.sentence(),
+        description="Follow the light.",
         created_at=date.today()
     )
     db.session.add(new_post_63)
@@ -653,9 +653,9 @@ def seed_posts():
     new_post_64 = Post(
         owner_id=7,
         album_id=7,
-        title=fake.sentence(),
+        title="After the Dance",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-77.jpg",
-        description=fake.sentence(),
+        description="We stayed till after the last song.",
         created_at=date.today()
     )
     db.session.add(new_post_64)
@@ -663,9 +663,9 @@ def seed_posts():
     new_post_65 = Post(
         owner_id=7,
         album_id=7,
-        title=fake.sentence(),
+        title="Epic",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-78.jpg",
-        description=fake.sentence(),
+        description="The festivals of festivals.",
         created_at=date.today()
     )
     db.session.add(new_post_65)
@@ -673,9 +673,9 @@ def seed_posts():
     new_post_66 = Post(
         owner_id=7,
         album_id=7,
-        title=fake.sentence(),
+        title="Rock On",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-79.jpg",
-        description=fake.sentence(),
+        description="Family fun at the festival.",
         created_at=date.today()
     )
     db.session.add(new_post_66)
@@ -683,9 +683,9 @@ def seed_posts():
     new_post_67 = Post(
         owner_id=7,
         album_id=7,
-        title=fake.sentence(),
+        title="Golden Hour Festival",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-80.jpg",
-        description=fake.sentence(),
+        description="In the crowd.",
         created_at=date.today()
     )
     db.session.add(new_post_67)
@@ -693,9 +693,9 @@ def seed_posts():
     new_post_68 = Post(
         owner_id=7,
         album_id=7,
-        title=fake.sentence(),
+        title="EDC",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-81.jpg",
-        description=fake.sentence(),
+        description="All the electric lights.",
         created_at=date.today()
     )
     db.session.add(new_post_68)
@@ -703,9 +703,9 @@ def seed_posts():
     new_post_69 = Post(
         owner_id=7,
         album_id=7,
-        title=fake.sentence(),
+        title="Proud",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-82.jpg",
-        description=fake.sentence(),
+        description="Best new friends.",
         created_at=date.today()
     )
     db.session.add(new_post_69)
@@ -713,9 +713,9 @@ def seed_posts():
     new_post_70 = Post(
         owner_id=7,
         album_id=7,
-        title=fake.sentence(),
+        title="Fireworks",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-84.jpg",
-        description=fake.sentence(),
+        description="The show above the show.",
         created_at=date.today()
     )
     db.session.add(new_post_70)
@@ -725,9 +725,9 @@ def seed_posts():
     new_post_71 = Post(
         owner_id=8,
         album_id=8,
-        title=fake.sentence(),
+        title="The Stare",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-85.jpg",
-        description=fake.sentence(),
+        description="Focus on the focus.",
         created_at=date.today()
     )
     db.session.add(new_post_71)
@@ -735,9 +735,9 @@ def seed_posts():
     new_post_72 = Post(
         owner_id=8,
         album_id=8,
-        title=fake.sentence(),
+        title="Hunting",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-86.jpg",
-        description=fake.sentence(),
+        description="Sneaking up on the camera.",
         created_at=date.today()
     )
     db.session.add(new_post_72)
@@ -745,9 +745,9 @@ def seed_posts():
     new_post_73 = Post(
         owner_id=8,
         album_id=8,
-        title=fake.sentence(),
+        title="Naptime",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-87.jpg",
-        description=fake.sentence(),
+        description="Sleeping on the table.",
         created_at=date.today()
     )
     db.session.add(new_post_73)
@@ -755,9 +755,9 @@ def seed_posts():
     new_post_74 = Post(
         owner_id=8,
         album_id=8,
-        title=fake.sentence(),
+        title="On the Rail",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-88.jpg",
-        description=fake.sentence(),
+        description="Resting on the edge.",
         created_at=date.today()
     )
     db.session.add(new_post_74)
@@ -765,9 +765,9 @@ def seed_posts():
     new_post_75 = Post(
         owner_id=8,
         album_id=8,
-        title=fake.sentence(),
+        title="Peek-a-boo",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-89.jpg",
-        description=fake.sentence(),
+        description="Who's finding who?",
         created_at=date.today()
     )
     db.session.add(new_post_75)
@@ -775,9 +775,9 @@ def seed_posts():
     new_post_76 = Post(
         owner_id=8,
         album_id=8,
-        title=fake.sentence(),
+        title="Snowplay",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-90.jpg",
-        description=fake.sentence(),
+        description="Frolicing near the snow.",
         created_at=date.today()
     )
     db.session.add(new_post_76)
@@ -785,9 +785,9 @@ def seed_posts():
     new_post_77 = Post(
         owner_id=8,
         album_id=8,
-        title=fake.sentence(),
+        title="Staring Contest",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-91.jpg",
-        description=fake.sentence(),
+        description="Who do you think will win?",
         created_at=date.today()
     )
     db.session.add(new_post_77)
@@ -795,9 +795,9 @@ def seed_posts():
     new_post_78 = Post(
         owner_id=8,
         album_id=8,
-        title=fake.sentence(),
+        title="Playtime",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-92.jpg",
-        description=fake.sentence(),
+        description="Running through the grass.",
         created_at=date.today()
     )
     db.session.add(new_post_78)
@@ -805,9 +805,9 @@ def seed_posts():
     new_post_79 = Post(
         owner_id=8,
         album_id=8,
-        title=fake.sentence(),
+        title="Autumn",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-93.jpg",
-        description=fake.sentence(),
+        description="Cat laying on the floor.",
         created_at=date.today()
     )
     db.session.add(new_post_79)
@@ -815,9 +815,9 @@ def seed_posts():
     new_post_80 = Post(
         owner_id=8,
         album_id=8,
-        title=fake.sentence(),
+        title="Up is Down",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-95.jpg",
-        description=fake.sentence(),
+        description="Upside down cat...so cute!!",
         created_at=date.today()
     )
     db.session.add(new_post_80)
@@ -827,9 +827,9 @@ def seed_posts():
     new_post_81 = Post(
         owner_id=9,
         album_id=9,
-        title=fake.sentence(),
+        title="Fall Doggo",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-096.jpg",
-        description=fake.sentence(),
+        description="Laying in the leaves.",
         created_at=date.today()
     )
     db.session.add(new_post_81)
@@ -837,9 +837,9 @@ def seed_posts():
     new_post_82 = Post(
         owner_id=9,
         album_id=9,
-        title=fake.sentence(),
+        title="River Dog",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-097.jpg",
-        description=fake.sentence(),
+        description="A day at the river.",
         created_at=date.today()
     )
     db.session.add(new_post_82)
@@ -847,9 +847,9 @@ def seed_posts():
     new_post_83 = Post(
         owner_id=9,
         album_id=9,
-        title=fake.sentence(),
+        title="Puppy",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-098.jpg",
-        description=fake.sentence(),
+        description="Puppy... that's the description.",
         created_at=date.today()
     )
     db.session.add(new_post_83)
@@ -857,9 +857,9 @@ def seed_posts():
     new_post_84 = Post(
         owner_id=9,
         album_id=9,
-        title=fake.sentence(),
+        title="Hey There",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-099.jpg",
-        description=fake.sentence(),
+        description="A good boy being a good boy.",
         created_at=date.today()
     )
     db.session.add(new_post_84)
@@ -867,9 +867,9 @@ def seed_posts():
     new_post_85 = Post(
         owner_id=9,
         album_id=9,
-        title=fake.sentence(),
+        title="King of the Hill",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-100.jpg",
-        description=fake.sentence(),
+        description="What do you see?",
         created_at=date.today()
     )
     db.session.add(new_post_85)
@@ -877,9 +877,9 @@ def seed_posts():
     new_post_86 = Post(
         owner_id=9,
         album_id=9,
-        title=fake.sentence(),
+        title="Purple Doggo",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-101.jpg",
-        description=fake.sentence(),
+        description="Lavender Dog",
         created_at=date.today()
     )
     db.session.add(new_post_86)
@@ -887,9 +887,9 @@ def seed_posts():
     new_post_87 = Post(
         owner_id=9,
         album_id=9,
-        title=fake.sentence(),
+        title="Fly Away",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-102.jpg",
-        description=fake.sentence(),
+        description="Chasing birds.",
         created_at=date.today()
     )
     db.session.add(new_post_87)
@@ -897,9 +897,9 @@ def seed_posts():
     new_post_88 = Post(
         owner_id=9,
         album_id=9,
-        title=fake.sentence(),
+        title="Bandana",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-103.jpg",
-        description=fake.sentence(),
+        description="Why did we stop?",
         created_at=date.today()
     )
     db.session.add(new_post_88)
@@ -907,9 +907,9 @@ def seed_posts():
     new_post_89 = Post(
         owner_id=9,
         album_id=9,
-        title=fake.sentence(),
+        title="Beach Day",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-104.jpg",
-        description=fake.sentence(),
+        description="Playing in the water.",
         created_at=date.today()
     )
     db.session.add(new_post_89)
@@ -917,9 +917,9 @@ def seed_posts():
     new_post_90 = Post(
         owner_id=9,
         album_id=9,
-        title=fake.sentence(),
+        title="Beach Doggo",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-106.jpg",
-        description=fake.sentence(),
+        description="Can I go play with my friends?",
         created_at=date.today()
     )
     db.session.add(new_post_90)
@@ -929,9 +929,9 @@ def seed_posts():
     new_post_91 = Post(
         owner_id=10,
         album_id=10,
-        title=fake.sentence(),
+        title="The City Lights",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-108.jpg",
-        description=fake.sentence(),
+        description="The night adventures.",
         created_at=date.today()
     )
     db.session.add(new_post_91)
@@ -939,9 +939,9 @@ def seed_posts():
     new_post_92 = Post(
         owner_id=10,
         album_id=10,
-        title=fake.sentence(),
+        title="The Bridge",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-109.jpg",
-        description=fake.sentence(),
+        description="I know you've seen this one in movies.",
         created_at=date.today()
     )
     db.session.add(new_post_92)
@@ -949,9 +949,9 @@ def seed_posts():
     new_post_93 = Post(
         owner_id=10,
         album_id=10,
-        title=fake.sentence(),
+        title="Traffic",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-110.jpg",
-        description=fake.sentence(),
+        description="Speeding by.",
         created_at=date.today()
     )
     db.session.add(new_post_93)
@@ -959,9 +959,9 @@ def seed_posts():
     new_post_94 = Post(
         owner_id=10,
         album_id=10,
-        title=fake.sentence(),
+        title="Zoom Zoom",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-111.jpg",
-        description=fake.sentence(),
+        description="Life is one big path.",
         created_at=date.today()
     )
     db.session.add(new_post_94)
@@ -969,9 +969,9 @@ def seed_posts():
     new_post_95 = Post(
         owner_id=10,
         album_id=10,
-        title=fake.sentence(),
+        title="Skyline",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-112.jpg",
-        description=fake.sentence(),
+        description="Skyscrapers at night.",
         created_at=date.today()
     )
     db.session.add(new_post_95)
@@ -979,9 +979,9 @@ def seed_posts():
     new_post_96 = Post(
         owner_id=10,
         album_id=10,
-        title=fake.sentence(),
+        title="Past or Present",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-113.jpg",
-        description=fake.sentence(),
+        description="Welcome to my world.",
         created_at=date.today()
     )
     db.session.add(new_post_96)
@@ -989,9 +989,9 @@ def seed_posts():
     new_post_97 = Post(
         owner_id=10,
         album_id=10,
-        title=fake.sentence(),
+        title="Where To?",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-114.jpg",
-        description=fake.sentence(),
+        description="So many ways to get to the same place.",
         created_at=date.today()
     )
     db.session.add(new_post_97)
@@ -999,9 +999,9 @@ def seed_posts():
     new_post_98 = Post(
         owner_id=10,
         album_id=10,
-        title=fake.sentence(),
+        title="Drive",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-115.jpg",
-        description=fake.sentence(),
+        description="All I want to do is drive home to you.",
         created_at=date.today()
     )
     db.session.add(new_post_98)
@@ -1009,9 +1009,9 @@ def seed_posts():
     new_post_99 = Post(
         owner_id=10,
         album_id=10,
-        title=fake.sentence(),
+        title="The Port",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-116.jpg",
-        description=fake.sentence(),
+        description="The city from out there.",
         created_at=date.today()
     )
     db.session.add(new_post_99)
@@ -1019,9 +1019,9 @@ def seed_posts():
     new_post_100 = Post(
         owner_id=10,
         album_id=10,
-        title=fake.sentence(),
+        title="Blurred Lines",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-117.jpg",
-        description=fake.sentence(),
+        description="Ready, Set, Go!",
         created_at=date.today()
     )
     db.session.add(new_post_100)
