@@ -24,8 +24,8 @@ class Post(db.Model):
     my_post_album_id = db.relationship(
         "Album", back_populates="my_album_post_id")
 
-    def to_dict(self):
-        return {
+    def to_dict(self, my_post_fav_id = False):
+        return_dict = {
             "id": self.id,
             "ownerId": self.owner_id,
             "albumId": self.album_id,
@@ -34,4 +34,9 @@ class Post(db.Model):
             "description": self.description,
             "createdAt": self.created_at,
             'users': self.my_post_user_id.to_dict(),
+            'albums': self.my_post_album_id.to_dict(),
         }
+        if my_post_fav_id:
+            return_dict[ "favorites"] = self.my_post_fav_id.to_dict()
+
+        return return_dict
