@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 086483b7f675
+Revision ID: e918870d6365
 Revises:
-Create Date: 2023-10-23 11:51:04.855789
+Create Date: 2023-10-23 12:59:59.156448
 
 """
 from alembic import op
@@ -13,7 +13,7 @@ SCHEMA = os.environ.get("SCHEMA")
 
 
 # revision identifiers, used by Alembic.
-revision = '086483b7f675'
+revision = 'e918870d6365'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -54,7 +54,7 @@ def upgrade():
     sa.Column('owner_id', sa.Integer(), nullable=True),
     sa.Column('album_id', sa.Integer(), nullable=True),
     sa.Column('title', sa.String(length=50), nullable=False),
-    sa.Column('photo_url', sa.String(length=50), nullable=False),
+    sa.Column('photo_url', sa.String(), nullable=False),
     sa.Column('description', sa.String(length=1000), nullable=False),
     sa.Column('created_at', sa.Date(), nullable=False),
     sa.ForeignKeyConstraint(['album_id'], ['albums.id'], ),
