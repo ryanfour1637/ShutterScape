@@ -1,8 +1,9 @@
 from flask import Blueprint, request
 from ..models import Album, Comment, Favorite, Post, User, db
 from random import choice, sample
+from datetime import date
 from flask_login import login_required, current_user
-from ..forms import PostForm, UpdatePostForm
+from ..forms import PostForm, UpdatePostForm, CommentForm
 from .aws_helpers import upload_file_to_s3, get_unique_filename, remove_file_from_s3
 from .auth_routes import validation_errors_to_error_messages
 
@@ -125,3 +126,50 @@ def get_post_details(id):
     post = Post.query.get(id)
 
     return post.to_dict()
+
+@posts_routes.route('/<int:id>/comments/', methods=["POST"])
+@login_required
+def create_comment():
+    form = CommentForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        data = form.data
+        create_comment = Comment(
+            user_id = current_user.id,
+            post_id = id,
+            comment = data['comment'],
+            created_at = date.today()
+        )
+
+        db.session.add(create_comment)
+        db.session.commit()
+
+        return create_comment.to_dict()
+
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+
+# Not sure about how to update comment--by comment ID?
+@posts_routes.route('/<int:id>/comments', methods=["PUT"])
+@login_required
+def create_comment():
+    form = CommentForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+
+        data = form.data
+        create_comment = Comment(
+            user_id = current_user.id,
+            post_id = id,
+            comment = data['comment'],
+            created_at = date.today()
+        )
+
+        db.session.add(create_comment)
+        db.session.commit()
+        #this is a post dictionary.
+        #this needs to be validated on the front end once its built out.
+        return create_comment.to_dict()
+
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 400

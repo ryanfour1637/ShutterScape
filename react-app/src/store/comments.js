@@ -14,7 +14,7 @@ const actionDeleteComment = (id) => ({type: DELETE_COMMENT, id});
 
 // Create Comment
 export const createCommentThunk = (postId, comment) => async (dispatch) => {
-  const response = await fetch(`/api/posts/${postId}/comments`, {
+  const response = await fetch(`/api/posts/${postId}/comments/new`, {
     method: "POST",
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify(comment),
