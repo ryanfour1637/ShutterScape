@@ -5,13 +5,13 @@ import { getEveryPostThunk } from "../../../store/posts";
 import { getEveryCommentThunk } from "../../../store/comments";
 import OpenModalButton from "../../OpenModalButton";
 import DeletePostModal from "../DeletePostModal";
-import DeleteCommentModal from "../../DeleteCommentModal/index";
+import CreateCommentForm from "../../Comments/CreateComment";
+import DeleteCommentModal from "../../Comments/DeleteCommentModal";
 
 export default function PostDetailsPage() {
    const { id } = useParams();
    const { push } = useHistory();
    const dispatch = useDispatch();
-   const [comment, setComment] = useState("");
 
    const user = useSelector((state) => state.session.user);
    const post = useSelector((state) => state.posts.allPosts[id]);
@@ -23,10 +23,6 @@ export default function PostDetailsPage() {
       console.log(id);
    }, [dispatch, id]);
 
-   const disableSubmit = () => {
-      if (comment.length < 10) return true;
-   };
-
    const fixDate = (dateString) => {
       const date = new Date(dateString);
       const formatter = new Intl.DateTimeFormat("en-US", {
@@ -37,13 +33,6 @@ export default function PostDetailsPage() {
       return formatter.format(date);
    };
 
-   // TODO - Needs to be completed
-   const handleSubmit = (e) => {
-      e.preventDefault();
-
-      return;
-   };
-   console.log("this is it", comments);
    if (post === undefined) return null;
    if (comments == undefined) return null;
 
@@ -88,17 +77,17 @@ export default function PostDetailsPage() {
                               {fixDate(comment.createdAt)}{" "}
                            </p>
                            <p className="pushin-p"> "{comment.comment}" </p>
-                           {/* {comment.userId === (user.id ? user.id : null) && ( */}
-                           <OpenModalButton
-                              buttonText="Delete"
-                              modalComponent={
-                                 <DeleteCommentModal
-                                    commentId={comment.id}
-                                    id={id}
-                                 />
-                              }
-                           />
-                           {/* )} */}
+                           {comment.userId === (user.id ? user.id : null) && (
+                              <OpenModalButton
+                                 buttonText="Delete"
+                                 modalComponent={
+                                    <DeleteCommentModal
+                                       commentId={comment.id}
+                                       id={id}
+                                    />
+                                 }
+                              />
+                           )}
                         </div>
                      </div>
                   ))
@@ -109,25 +98,7 @@ export default function PostDetailsPage() {
                   </div>
                )}
             </div>
-            <form onSubmit={handleSubmit} className="comment-form-container">
-               <label>
-                  <textarea
-                     type="text"
-                     id="comment-text-area"
-                     value={comment}
-                     placeholder="Add a comment about this photo..."
-                     onChange={(e) => setComment(e.target.value)}
-                  />
-               </label>
-
-               <button
-                  type="submit"
-                  id="comment-submit"
-                  disabled={disableSubmit()}
-               >
-                  Add Comment
-               </button>
-            </form>
+            <CreateCommentForm postId={id} />
          </div>
       </>
    );

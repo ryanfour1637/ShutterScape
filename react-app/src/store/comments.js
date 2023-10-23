@@ -39,15 +39,17 @@ export const getEveryCommentThunk = () => async (dispatch) => {
 
 // Create Comment
 export const createCommentThunk = (postId, comment) => async (dispatch) => {
-   const response = await fetch(`/api/posts/${postId}/comments/new`, {
+   const response = await fetch(`/api/comments/new/posts/${postId}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(comment),
    });
 
-   const data = response;
-   dispatch(actionCreateComment(data));
-   return data;
+   if (response.ok) {
+   } else {
+      const errors = response.json();
+      return errors;
+   }
 };
 
 // Update/Edit Comment
@@ -93,7 +95,6 @@ export default function commentsReducer(state = initialState, action) {
             action
          );
          return newState;
-
       case DELETE_COMMENT:
          newState = { ...state, allComments: { ...state.allComments } };
          delete newState.allComments[action.id];

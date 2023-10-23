@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useModal } from "../../context/Modal";
-import { deleteCommentThunk } from "../../store/comments";
-import { getEveryPostThunk } from "../../store/posts";
+import { useModal } from "../../../context/Modal";
+import { deleteCommentThunk } from "../../../store/comments";
+import { getEveryPostThunk } from "../../../store/posts";
 import { useParams, useHistory } from "react-router-dom";
 
 export default function DeleteCommentModal({ commentId, id }) {

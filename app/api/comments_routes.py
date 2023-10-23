@@ -1,9 +1,32 @@
-from flask import Blueprint
+from flask import Blueprint, request
 from ..models import Album, Comment, Favorite, Post, User, db
-from flask_login import login_required
+from flask_login import login_required, current_user
+from ..forms import CommentForm
+from .auth_routes import validation_errors_to_error_messages
+from datetime import date
 
 comments_routes = Blueprint('comments', __name__)
 
+#create a comment
+@comments_routes.route('/new/posts/<int:id>', methods=['POST'])
+@login_required
+def post_new_comment(id):
+    form = CommentForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        new_comment = Comment(
+            user_id=current_user.id,
+            post_id=id,
+            comment=form.data['comment'],
+            created_at=date.today()
+        )
+        db.session.add(new_comment)
+        db.session.commit()
+        return
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+
+
+#get all comments
 @comments_routes.route('/all')
 @login_required
 def get_all_comments():
@@ -11,6 +34,7 @@ def get_all_comments():
     return [comment.to_dict() for comment in all_comments]
 
 
+#delete a comment
 @comments_routes.route('/<int:id>', methods=['DELETE'])
 @login_required
 def delete_comment(id):
