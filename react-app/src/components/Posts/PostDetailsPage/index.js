@@ -7,6 +7,7 @@ import OpenModalButton from "../../OpenModalButton";
 import DeletePostModal from "../DeletePostModal";
 import CreateCommentForm from "../../Comments/CreateComment";
 import DeleteCommentModal from "../../Comments/DeleteCommentModal";
+import UpdateCommentModal from "../../Comments/UpdateComment";
 
 export default function PostDetailsPage() {
    const { id } = useParams();
@@ -20,8 +21,7 @@ export default function PostDetailsPage() {
    useEffect(() => {
       dispatch(getEveryPostThunk());
       dispatch(getEveryCommentThunk());
-      console.log(id);
-   }, [dispatch, id]);
+   }, [dispatch]);
 
    const fixDate = (dateString) => {
       const date = new Date(dateString);
@@ -88,6 +88,17 @@ export default function PostDetailsPage() {
                                  }
                               />
                            )}
+                           {comment.userId === (user.id ? user.id : null) && (
+                              <OpenModalButton
+                                 buttonText="Update"
+                                 modalComponent={
+                                    <UpdateCommentModal
+                                       commentId={comment.id}
+                                       postId={id}
+                                    />
+                                 }
+                              />
+                           )}
                         </div>
                      </div>
                   ))
@@ -98,7 +109,12 @@ export default function PostDetailsPage() {
                   </div>
                )}
             </div>
-            <CreateCommentForm postId={id} />
+            <div>
+               <OpenModalButton
+                  buttonText="Create"
+                  modalComponent={<CreateCommentForm postId={id} />}
+               />
+            </div>
          </div>
       </>
    );

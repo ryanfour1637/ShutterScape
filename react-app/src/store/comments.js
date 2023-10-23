@@ -53,16 +53,18 @@ export const createCommentThunk = (postId, comment) => async (dispatch) => {
 };
 
 // Update/Edit Comment
-export const updateCommentThunk = (postId, comment) => async (dispatch) => {
-   const response = await fetch(`/api/posts/${postId}/comments`, {
+export const updateCommentThunk = (comment, commentId) => async (dispatch) => {
+   const response = await fetch(`/api/comments/${commentId}/update/posts/`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(comment),
    });
 
-   const data = response;
-   dispatch(actionCreateComment(data));
-   return data;
+   if (response.ok) {
+   } else {
+      const errors = response.json();
+      return errors;
+   }
 };
 
 // Delete Comment

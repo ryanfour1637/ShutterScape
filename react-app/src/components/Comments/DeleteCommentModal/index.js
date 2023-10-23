@@ -6,7 +6,6 @@ import { getEveryPostThunk } from "../../../store/posts";
 import { useParams, useHistory } from "react-router-dom";
 
 export default function DeleteCommentModal({ commentId, id }) {
-   console.log("🚀 ~ file: index.js:31 ~ handleSubmit ~ id:", id);
    const dispatch = useDispatch();
    const { closeModal } = useModal();
    const { push } = useHistory();

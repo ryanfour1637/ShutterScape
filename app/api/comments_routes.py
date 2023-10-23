@@ -25,6 +25,22 @@ def post_new_comment(id):
         return
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
+@comments_routes.route('/<int:id>/update/posts/', methods=['PUT'])
+@login_required
+def update_new_comment(id):
+    comment_to_update = Comment.query.get(id)
+    print("this is the print", comment_to_update.comment)
+    form = CommentForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        new_comment=form.data['comment'],
+        print("this is new comment", new_comment)
+        comment_to_update.comment = new_comment[0]
+
+        db.session.commit()
+        return "updated"
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+
 
 #get all comments
 @comments_routes.route('/all')

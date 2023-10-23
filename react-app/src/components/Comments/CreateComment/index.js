@@ -5,11 +5,13 @@ import {
    createCommentThunk,
    getEveryCommentThunk,
 } from "../../../store/comments";
+import { useModal } from "../../../context/Modal";
 
 export default function CreateCommentForm({ postId }) {
-   const { push } = useHistory();
+   //    const { push } = useHistory();
    const dispatch = useDispatch();
    const [comment, setComment] = useState("");
+   const { closeModal } = useModal();
 
    const handleSubmit = (e) => {
       e.preventDefault();
@@ -20,7 +22,7 @@ export default function CreateCommentForm({ postId }) {
 
       dispatch(createCommentThunk(postId, newComment));
       setComment("");
-      return dispatch(getEveryCommentThunk());
+      return dispatch(getEveryCommentThunk()).then(closeModal());
    };
 
    const disableSubmit = () => {
@@ -40,7 +42,7 @@ export default function CreateCommentForm({ postId }) {
          </label>
 
          <button type="submit" id="comment-submit" disabled={disableSubmit()}>
-            Add Comment
+            Create Comment
          </button>
       </form>
    );
