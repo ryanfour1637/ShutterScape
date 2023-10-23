@@ -21,7 +21,7 @@ export default function PostDetailsPage() {
    useEffect(() => {
       dispatch(getEveryPostThunk());
       dispatch(getEveryCommentThunk());
-   }, [dispatch]);
+   }, [dispatch, comments]);
 
    const fixDate = (dateString) => {
       const date = new Date(dateString);
