@@ -2,30 +2,32 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { deleteCommentThunk } from "../../store/comments";
+import { getEveryPostThunk } from "../../store/posts";
 import { useParams, useHistory } from "react-router-dom";
 
-export default function DeleteCommentModal({ commentId }) {
+export default function DeleteCommentModal({ commentId, id}) {
+    console.log("🚀 ~ file: index.js:31 ~ handleSubmit ~ id:", id)
     const dispatch = useDispatch();
     const { closeModal } = useModal();
     const [errors, setErrors] = useState({});
     const { push } = useHistory();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         setErrors({});
 
         return dispatch(deleteCommentThunk(commentId))
+        // .then(dispatch(getEveryPostThunk()))
             .then(closeModal)
-            .catch(async (res) => {
-                const data = await res.json();
-
-                if (data.errors) {
-                    setErrors(data.errors);
-                } else {
-                }
-            })
-            .then(push("/"));
+            // .catch(async (res) => {
+            //     const data = await res.json();
+            //     if (data.errors) {
+            //         setErrors(data.errors);
+            //     } else {
+            //     }
+            // })
+            .then(push(`/posts/${id}`));
     };
 
     return (

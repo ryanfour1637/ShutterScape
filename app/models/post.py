@@ -34,5 +34,4 @@ class Post(db.Model):
             "description": self.description,
             "createdAt": self.created_at,
             'users': self.my_post_user_id.to_dict(),
-            'comments': [comment.to_dict() for comment in self.my_post_comment_id]
         }

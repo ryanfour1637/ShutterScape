@@ -137,7 +137,7 @@ def get_post_details(id):
 
 @posts_routes.route('/<int:id>/comments/', methods=["POST"])
 @login_required
-def create_comment():
+def create_comment(id):
     form = CommentForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
@@ -183,3 +183,5 @@ def update_comment():
         return create_comment.to_dict()
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+
+

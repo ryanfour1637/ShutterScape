@@ -8,6 +8,7 @@ import "./Home.css";
 export default function Home() {
    const dispatch = useDispatch();
    const allPost = useSelector((state) => state.posts.allPosts);
+   const objPosts = Object.values(allPost)
 
    console.log("🚀 ~ file: index.js:8 ~ Home ~ allPost:", allPost);
 
@@ -19,7 +20,7 @@ export default function Home() {
       <>
          <h1>Home Page</h1>
          <div>
-            <img src={allPost[0]?.photoUrl} alt=""></img>
+            <img src={objPosts[0]?.photoUrl} alt=""></img>
          </div>
 
          <OpenModalButton
