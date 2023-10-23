@@ -15,9 +15,6 @@ export default function PostDetailsPage() {
    console.log("this is the user", user.id);
    console.log("this is the post", post);
 
-
-
-
    useEffect(() => {
       dispatch(getEveryPostThunk());
       console.log(id);
