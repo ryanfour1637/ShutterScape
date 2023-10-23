@@ -1,13 +1,21 @@
-!!!!!! PASTE BELOW VERSION !!!!!!!
+"""empty message
 
+Revision ID: cc0d1cc6ac63
+Revises: 
+Create Date: 2023-10-23 12:47:22.314957
 
+"""
 from alembic import op
 import sqlalchemy as sa
 import os
 environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
-!!! ADD IN REVISION STUFF !!!
+# revision identifiers, used by Alembic.
+revision = 'cc0d1cc6ac63'
+down_revision = None
+branch_labels = None
+depends_on = None
 
 
 def upgrade():

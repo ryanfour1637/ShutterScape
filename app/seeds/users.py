@@ -1,4 +1,4 @@
-from ..models import db, User, environment, SCHEMA
+from ..models import User, environment, SCHEMA, db
 from sqlalchemy.sql import text
 from random import randint
 from datetime import date
@@ -10,12 +10,12 @@ fake = Faker()
 # Adds a demo user, you can add other users here if you want
 def seed_users():
     new_user1 = User(
-    first_name = fake.first_name(),
-    last_name = fake.last_name(),
+    first_name = 'Demo',
+    last_name = 'User',
     age = randint(13,100),
-    username = fake.name(),
-    email = fake.email(),
-    hashed_password = fake.password()
+    username = 'DemoUser',
+    email = 'Demouser@gmail.com',
+    password = 'password'
     )
     new_user2 = User(
         first_name = fake.first_name(),
@@ -23,7 +23,7 @@ def seed_users():
         age = randint(13,100),
         username = fake.name(),
         email = fake.email(),
-        hashed_password = fake.password()
+        password = fake.password()
         )
     new_user3 = User(
         first_name = fake.first_name(),
@@ -31,7 +31,7 @@ def seed_users():
         age = randint(13,100),
         username = fake.name(),
         email = fake.email(),
-        hashed_password = fake.password()
+        password = fake.password()
         )
     new_user4 = User(
         first_name = fake.first_name(),
@@ -39,7 +39,7 @@ def seed_users():
         age = randint(13,100),
         username = fake.name(),
         email = fake.email(),
-        hashed_password = fake.password()
+        password = fake.password()
         )
     new_user5 = User(
         first_name = fake.first_name(),
@@ -47,7 +47,7 @@ def seed_users():
         age = randint(13,100),
         username = fake.name(),
         email = fake.email(),
-        hashed_password = fake.password()
+        password = fake.password()
         )
     new_user6 = User(
         first_name = fake.first_name(),
@@ -55,7 +55,7 @@ def seed_users():
         age = randint(13,100),
         username = fake.name(),
         email = fake.email(),
-        hashed_password = fake.password()
+        password = fake.password()
         )
     new_user7 = User(
         first_name = fake.first_name(),
@@ -63,7 +63,7 @@ def seed_users():
         age = randint(13,100),
         username = fake.name(),
         email = fake.email(),
-        hashed_password = fake.password()
+        password = fake.password()
         )
     new_user8 = User(
         first_name = fake.first_name(),
@@ -71,7 +71,7 @@ def seed_users():
         age = randint(13,100),
         username = fake.name(),
         email = fake.email(),
-        hashed_password = fake.password()
+        password = fake.password()
         )
     new_user9 = User(
         first_name = fake.first_name(),
@@ -79,7 +79,7 @@ def seed_users():
         age = randint(13,100),
         username = fake.name(),
         email = fake.email(),
-        hashed_password = fake.password()
+        password = fake.password()
         )
     new_user10 = User(
         first_name = fake.first_name(),
@@ -87,7 +87,7 @@ def seed_users():
         age = randint(13,100),
         username = fake.name(),
         email = fake.email(),
-        hashed_password = fake.password()
+        password = fake.password()
         )
 
     users_list = [new_user1, new_user2, new_user3, new_user4, new_user5, new_user6, new_user7, new_user8, new_user9, new_user10]
@@ -106,5 +106,5 @@ def undo_users():
         db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
     else:
         db.session.execute(text("DELETE FROM users"))
-        
+
     db.session.commit()
