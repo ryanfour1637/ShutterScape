@@ -1,0 +1,41 @@
+.banner-parent-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    padding: 20px;
+    background-image: url(https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/rainy-default-bg.jpg);
+}
+
+.banner-user-details {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.profile-photo {
+    display: flex;
+    border: 1px solid white;
+    padding: 20px;
+    border-radius: 50%;
+    background-color: rgb(226, 43, 177);
+    margin-right: 20px;
+}
+
+#banner-fname-lname {
+    font-size: 25px;
+    margin-bottom: 1px;
+}
+
+.banner-totalcount {
+    font-size: 20px;
+    margin-right: 20px;
+}
+
+/* can we get the camera to grow? */
+.fa-camera {
+    width: 100%;
+}
