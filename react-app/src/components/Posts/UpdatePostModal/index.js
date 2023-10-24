@@ -1,7 +1,7 @@
 import {useState, useEffect} from "react";
 import {useDispatch} from "react-redux";
 import {useHistory} from "react-router-dom";
-import { getPostDetailsThunk, updatePostThunk } from "../../../store/posts";
+import { getEveryPostThunk, getPostDetailsThunk, updatePostThunk } from "../../../store/posts";
 import { useModal } from "../../../context/Modal";
 
 export default function UpdatePostModal({postId}) {
@@ -9,6 +9,7 @@ export default function UpdatePostModal({postId}) {
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [image, setImage] = useState(null);
   const [errors, setErrors] = useState([]);
   const { closeModal } = useModal();
 
@@ -18,6 +19,7 @@ export default function UpdatePostModal({postId}) {
     .then(data => {
         setTitle(data.title)
         setDescription(data.description)
+        setImage(data.photoUrl)
     })
 
   }, [postId])
@@ -28,21 +30,20 @@ export default function UpdatePostModal({postId}) {
     const formData = {
 
         title,
-        description
+        description,
     }
 
     const postData = await dispatch(updatePostThunk(formData, postId));
     console.log("🚀 ~ file: index.js:35 ~ handleSubmit ~ postData:", postData)
 
-    if (postData.errors === undefined || !postData.errors) {
+    if (!Object.values(postData).includes("errors")) {
       closeModal()
-      return push(`/posts/${postData.id}`)
+      return dispatch(getEveryPostThunk());
 
     } else {
       setErrors(postData.errors);
     }
 
-    push("/posts/current");
   };
 
   return (

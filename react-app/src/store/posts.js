@@ -105,22 +105,25 @@ export const updatePostThunk = (form, postId) => async (dispatch) => {
    try {
       const res = await fetch(`/api/posts/update/${postId}`, {
          method: "PUT",
-         body: form,
+         headers: { "Content-Type": "application/json" },
+         body: JSON.stringify(form),
       });
 
       if (res.ok) {
-         const { resPost } = await res.json();
-         dispatch(actionGetPostDetails(resPost));
+         const resPost = await res.json();
          console.log("🚀 ~ file: posts.js:112 ~ updatePostThunk ~ resPost:", resPost)
 
          return resPost;
       } else {
-         console.log("There was an error updating your post!");
+
+         return {"errors": "There was an error updating your post"}
       }
    }
 
    catch (error) {
-      const data = await error.json();
+      console.log("🚀 ~ file: posts.js:125 ~ updatePostThunk ~ error:", error)
+
+      const data = await JSON.stringify(error);
       return data;
 
    }
