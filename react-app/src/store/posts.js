@@ -100,18 +100,31 @@ export const createPostThunk = (form) => async (dispatch) => {
 };
 
 //updatePost Thunk
-export const updatePostThunk = (form) => async (dispatch) => {
-   const res = await fetch(`/api/posts/${form.id}`, {
-      method: "PUT",
-      body: form,
-   });
+export const updatePostThunk = (form, postId) => async (dispatch) => {
 
-   if (res.ok) {
-      const { resPost } = await res.json();
-      dispatch(actionGetPostDetails(resPost));
-   } else {
-      console.log("There was an error updating your post!");
+   try {
+      const res = await fetch(`/api/posts/update/${postId}`, {
+         method: "PUT",
+         body: form,
+      });
+
+      if (res.ok) {
+         const { resPost } = await res.json();
+         dispatch(actionGetPostDetails(resPost));
+         console.log("🚀 ~ file: posts.js:112 ~ updatePostThunk ~ resPost:", resPost)
+
+         return resPost;
+      } else {
+         console.log("There was an error updating your post!");
+      }
    }
+
+   catch (error) {
+      const data = await error.json();
+      return data;
+
+   }
+
 };
 
 //deletePost Thunk

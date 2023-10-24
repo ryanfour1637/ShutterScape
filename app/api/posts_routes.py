@@ -88,10 +88,12 @@ def new_post():
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 
-@posts_routes.route("/update/<int:id>", methods=["PUT"])
+@posts_routes.route("/update/<int:id>/", methods=["PUT"])
 @login_required
 def update_post(id):
     form = UpdatePostForm()
+
+    form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
         post_to_update = Post.query.get(id)
