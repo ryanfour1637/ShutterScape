@@ -1,0 +1,10 @@
+.banner-parent-container {
+    padding: 20px;
+    background-image: url(https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/rainy-default-bg.jpg);
+}
+
+.banner-user-details {
+
+    display: flex;
+    flex-direction: column;
+}
