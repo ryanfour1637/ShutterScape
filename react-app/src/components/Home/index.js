@@ -25,7 +25,7 @@ export default function Home() {
 
    useEffect(() => {
       const interval = setInterval(() => {
-         // Update the current and next image indices
+         
          setCurrentImageIndex((prevIndex) =>
             prevIndex === imageUrls.length - 1 ? 0 : prevIndex + 1
          );
@@ -45,7 +45,7 @@ export default function Home() {
       position: "relative",
    };
 
-   // Preload the next image
+
    const preloadNextImage = () => {
       const img = new Image();
       img.src = imageUrls[nextImageIndex];
