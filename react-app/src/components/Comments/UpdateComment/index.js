@@ -7,13 +7,13 @@ import {
    updateCommentThunk,
 } from "../../../store/comments";
 
-export default function UpdateCommentModal({ commentId, setRefresh}) {
+export default function UpdateCommentModal({ commentId, setRefresh, refresh }) {
    const dispatch = useDispatch();
    const { closeModal, setOnModalClose } = useModal();
    const oneComment = useSelector(
       (state) => state.comments.allComments[commentId]
    );
-   
+
    const [comment, setComment] = useState(oneComment.comment);
 
    useEffect(() => {
@@ -35,7 +35,7 @@ export default function UpdateCommentModal({ commentId, setRefresh}) {
       dispatch(updateCommentThunk(updatedComment, commentId));
 
       setComment("");
-      setRefresh(`${updatedComment}`);
+      setRefresh(`${updatedComment.comment}`);
       return closeModal();
    };
 

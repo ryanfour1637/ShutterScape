@@ -114,6 +114,7 @@ export default function PostDetailsPage() {
                                        commentId={comment.id}
                                        postId={id}
                                        setRefresh={setRefresh}
+                                       refresh={refresh}
                                     />
                                  }
                               />
