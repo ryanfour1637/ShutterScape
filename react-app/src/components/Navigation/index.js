@@ -1,13 +1,13 @@
 import React from "react";
-import {NavLink, useHistory} from "react-router-dom";
-import {useSelector} from "react-redux";
+import { NavLink, useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import CreatePostModal from "../Posts/CreatePostModal";
 import OpenModalButton from "../OpenModalButton"
-import "./Navigation.css";
+import "../CSS/john.css"
 
-function Navigation({isLoaded}) {
-  const {push} = useHistory();
+function Navigation({ isLoaded }) {
+  const { push } = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
 
   // const goToCreatePostModal = () => {
