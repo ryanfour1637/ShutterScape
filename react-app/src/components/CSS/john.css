@@ -72,3 +72,39 @@
     align-items: center;
     border: none;
 }
+
+/* userPostPage */
+
+.allposts-photos{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1002px;
+  margin: 0 auto;
+  margin-top: 7px;
+}
+
+.userpost-images {
+  width: 323px;
+  height: 241px;
+  border-radius: 13px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease-in-out;
+  margin: 4px;
+}
+
+.userpost-images:hover {
+  transform: scale(1.05);
+}
+
+.allposts-account-details p{
+  color:blue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* current */
+
+
