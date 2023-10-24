@@ -8,9 +8,13 @@ import "./Navigation.css";
 import logo from "../../images/logo.png";
 
 
+
+
+
 function Navigation({ isLoaded }) {
   const { push } = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
+
 
   return (
     <div className="nav-container">

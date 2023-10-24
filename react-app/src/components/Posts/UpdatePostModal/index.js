@@ -1,55 +1,53 @@
 import {useState, useEffect} from "react";
 import {useDispatch} from "react-redux";
 import {useHistory} from "react-router-dom";
-import { createPostThunk } from "../../../store/posts";
+import { getEveryPostThunk, getPostDetailsThunk, updatePostThunk } from "../../../store/posts";
 import { useModal } from "../../../context/Modal";
 
-export default function CreatePostModal() {
+export default function UpdatePostModal({postId}) {
   const {push} = useHistory();
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
-  const [imageLoading, setImageLoading] = useState(false);
   const [errors, setErrors] = useState([]);
   const { closeModal } = useModal();
 
+  useEffect(() => {
+
+    dispatch(getPostDetailsThunk(postId))
+    .then(data => {
+        setTitle(data.title)
+        setDescription(data.description)
+        setImage(data.photoUrl)
+    })
+
+  }, [postId])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("image", image);
-    formData.append("title", title);
-    formData.append("description", description);
 
-    setImageLoading(true);
-    console.log("🚀 ~ file: index.js:20 ~ handleSubmit ~ formData:", formData)
-    const postData = await dispatch(createPostThunk(formData));
-    console.log("🚀 ~ file: index.js:28 ~ handleSubmit ~ postData:", postData)
+    const formData = {
 
-    setImage("")
-    setTitle("")
-    setDescription("")
+        title,
+        description,
+    }
 
-    if (postData.errors === undefined || !postData.errors) {
+    const postData = await dispatch(updatePostThunk(formData, postId));
+    console.log("🚀 ~ file: index.js:35 ~ handleSubmit ~ postData:", postData)
+
+    if (!Object.values(postData).includes("errors")) {
       closeModal()
-      return push(`/posts/${postData.id}`)
+      return dispatch(getEveryPostThunk());
 
     } else {
       setErrors(postData.errors);
     }
 
-    push("/posts/current");
   };
 
   return (
-    <form onSubmit={handleSubmit} encType="multipart/form-data">
-      <input
-        type="file"
-        accept="image/*"
-        onChange={(e) => setImage(e.target.files[0])}
-      />
-
+    <form onSubmit={handleSubmit}>
       <label>Title</label>
       <input
         type="text"
@@ -69,7 +67,6 @@ export default function CreatePostModal() {
       />
 
       <button type="submit">Submit</button>
-      {imageLoading && <p>Loading...</p>}
     </form>
   );
 }

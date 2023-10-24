@@ -64,15 +64,12 @@ def new_post():
     form = PostForm()
 
     form['csrf_token'].data = request.cookies['csrf_token']
-    print("FORM DATA::", form.data)
 
     if form.validate_on_submit():
         image = form.data["image"]
         image.filename = get_unique_filename(image.filename)
         upload = upload_file_to_s3(image)
         url = upload['url']
-        print("IMAGE FILENAME", image.filename)
-        print("UPLOAD", upload)
 
         post = Post(
             owner_id = current_user.id,
@@ -82,37 +79,36 @@ def new_post():
             created_at = date.today()
         )
 
-        print("API POST DATA::", post)
-
         db.session.add(post)
         db.session.commit()
         # this is a post dictionary.
         # this needs to be validated on the front end once its built out.
         return {"resPost": post.to_dict()}
 
-    print("FORM ERRORS::", form.errors)
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 
 @posts_routes.route("/update/<int:id>", methods=["PUT"])
 @login_required
 def update_post(id):
+    post_to_update = Post.query.get(id)
     form = UpdatePostForm()
+    print(post_to_update)
+
+    form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
-        post_to_update = Post.query.get(id)
-        post = Post(
-            owner_id=current_user.id,
-            title=form.data['title'],
-            photo_url=post_to_update['photo_url'],
-            description=form.data['description'],
-        )
 
-        db.session.add(post)
+        post_title=form.data['title']
+        post_description=form.data['description']
+
+        post_to_update.title=post_title
+        post_to_update.description=post_description
+
         db.session.commit()
         # this is a post dictionary.
         # this needs to be validated on the front end once its built out.
-        return post.to_dict()
+        return {"updated": "updated"}
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 

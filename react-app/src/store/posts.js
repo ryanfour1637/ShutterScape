@@ -78,7 +78,7 @@ export const getPostDetailsThunk = (id) => async (dispatch) => {
    }
 };
 
-//createPost Thunk - boilerplate code - revisit if problems arise
+//createPost Thunk
 export const createPostThunk = (form) => async (dispatch) => {
    try {
       const res = await fetch("/api/posts/new", {
@@ -89,6 +89,7 @@ export const createPostThunk = (form) => async (dispatch) => {
       if (res.ok) {
          const { resPost } = await res.json();
          dispatch(actionGetPostDetails(resPost));
+         return resPost;
       } else {
          console.log("There was an error making your post!");
       }
@@ -99,18 +100,34 @@ export const createPostThunk = (form) => async (dispatch) => {
 };
 
 //updatePost Thunk
-export const updatePostThunk = (form) => async (dispatch) => {
-   const res = await fetch(`/api/posts/${form.id}`, {
-      method: "PUT",
-      body: form,
-   });
+export const updatePostThunk = (form, postId) => async (dispatch) => {
 
-   if (res.ok) {
-      const { resPost } = await res.json();
-      dispatch(actionGetPostDetails(resPost));
-   } else {
-      console.log("There was an error updating your post!");
+   try {
+      const res = await fetch(`/api/posts/update/${postId}`, {
+         method: "PUT",
+         headers: { "Content-Type": "application/json" },
+         body: JSON.stringify(form),
+      });
+
+      if (res.ok) {
+         const resPost = await res.json();
+         console.log("🚀 ~ file: posts.js:112 ~ updatePostThunk ~ resPost:", resPost)
+
+         return resPost;
+      } else {
+
+         return {"errors": "There was an error updating your post"}
+      }
    }
+
+   catch (error) {
+      console.log("🚀 ~ file: posts.js:125 ~ updatePostThunk ~ error:", error)
+
+      const data = await JSON.stringify(error);
+      return data;
+
+   }
+
 };
 
 //deletePost Thunk
