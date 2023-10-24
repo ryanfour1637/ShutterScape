@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
+import UserBanner from "./components/UserBanner";
+import AllUserPostsPage from "./components/Posts/AllUserPostsPage";
 import CreatePostModal from "./components/Posts/CreatePostModal";
 import GetPosts from "./components/Posts/GetPosts";
 import PostDetailsPage from "./components/Posts/PostDetailsPage";
@@ -23,6 +25,9 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route exact path="/userposts">
+            <AllUserPostsPage />
+          </Route>
           <Route exact path="/login" >
             <LoginFormPage />
           </Route>
