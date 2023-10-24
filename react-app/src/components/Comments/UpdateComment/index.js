@@ -7,18 +7,18 @@ import {
    updateCommentThunk,
 } from "../../../store/comments";
 
-export default function UpdateCommentModal({ commentId }) {
+export default function UpdateCommentModal({ commentId, setRefresh}) {
    const dispatch = useDispatch();
-   const { closeModal } = useModal();
+   const { closeModal, setOnModalClose } = useModal();
    const oneComment = useSelector(
       (state) => state.comments.allComments[commentId]
    );
-   const [refresh, setRefresh] = useState(false);
+   
    const [comment, setComment] = useState(oneComment.comment);
 
    useEffect(() => {
       dispatch(getEveryCommentThunk());
-   }, [refresh, dispatch]);
+   }, [dispatch]);
 
    const disableSubmit = () => {
       if (comment.length < 10) return true;
@@ -35,7 +35,7 @@ export default function UpdateCommentModal({ commentId }) {
       dispatch(updateCommentThunk(updatedComment, commentId));
 
       setComment("");
-      setRefresh(true);
+      setRefresh(`${updatedComment}`);
       return closeModal();
    };
 
