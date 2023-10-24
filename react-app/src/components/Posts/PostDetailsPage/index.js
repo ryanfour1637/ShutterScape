@@ -8,20 +8,24 @@ import DeletePostModal from "../DeletePostModal";
 import CreateCommentForm from "../../Comments/CreateComment";
 import DeleteCommentModal from "../../Comments/DeleteCommentModal";
 import UpdateCommentModal from "../../Comments/UpdateComment";
+import { useModal } from "../../../context/Modal";
 
 export default function PostDetailsPage() {
    const { id } = useParams();
    const { push } = useHistory();
    const dispatch = useDispatch();
-
+   const { setModalContent, setOnModalClose } = useModal();
    const user = useSelector((state) => state.session.user);
    const post = useSelector((state) => state.posts.allPosts[id]);
    const comments = useSelector((state) => state.comments.allComments);
+   const [refresh, setRefresh] = useState("");
 
    useEffect(() => {
       dispatch(getEveryPostThunk());
       dispatch(getEveryCommentThunk());
-   }, [dispatch, comments]);
+      
+      console.log("🚀 ~ file: index.js:28 ~ PostDetailsPage ~ refresh:", refresh)
+   }, [dispatch, refresh]);
 
    const fixDate = (dateString) => {
       const date = new Date(dateString);
@@ -95,6 +99,7 @@ export default function PostDetailsPage() {
                                     <UpdateCommentModal
                                        commentId={comment.id}
                                        postId={id}
+                                       setRefresh={setRefresh}
                                     />
                                  }
                               />

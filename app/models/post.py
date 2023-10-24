@@ -34,10 +34,10 @@ class Post(db.Model):
             "description": self.description,
             "createdAt": self.created_at,
             'users': self.my_post_user_id.to_dict(),
-            'albums': self.my_post_album_id.to_dict(),
         }
-        print(my_post_fav_id, "my post fav id****************")
         if self.my_post_fav_id:
-            return_dict[ "favorites"] = self.my_post_fav_id.to_dict()
+            return_dict[ "favorites"] = self.my_post_fav_id.to_dict(),
+        if self.my_post_album_id:
+            return_dict["albums"] = self.my_post_album_id.to_dict(),
 
         return return_dict
