@@ -12,20 +12,18 @@ export default function UserBanner() {
 
   return (
     <div className="banner-parent-container">
-      <div className="banner-banner-container">
         <div className="banner-user-details">
-            <div id="default-profile-photo">
+            <div className="profile-photo">
                 <i className="fa-solid fa-camera"></i>
             </div>
             <div>
-                <p>{user.firstName} {user.lastName}</p>
+                <p id="banner-fname-lname">{user.firstName} {user.lastName}</p>
                 <p>{user.username}</p>
             </div>
         </div>
-        <div className="you-photos-joined-container">
+        <div className="banner-totalcount">
           <p>{allUserPostsTotal} Photos</p>
         </div>
-      </div>
     </div>
   );
 }
