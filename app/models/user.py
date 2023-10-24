@@ -39,5 +39,5 @@ class User(db.Model, UserMixin):
             "lastName": self.last_name,
             "age": self.age,
             "username": self.username,
-            "email": self.email
+            "email": self.email,
         }

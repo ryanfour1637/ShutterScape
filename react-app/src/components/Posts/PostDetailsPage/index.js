@@ -9,20 +9,25 @@ import DeletePostModal from "../DeletePostModal";
 import CreateCommentForm from "../../Comments/CreateComment";
 import DeleteCommentModal from "../../Comments/DeleteCommentModal";
 import UpdateCommentModal from "../../Comments/UpdateComment";
+import { useModal } from "../../../context/Modal";
 
 export default function PostDetailsPage() {
-  const {id} = useParams();
-  const {push} = useHistory();
-  const dispatch = useDispatch();
 
-  const user = useSelector((state) => state.session.user);
-  const post = useSelector((state) => state.posts.allPosts[id]);
-  const comments = useSelector((state) => state.comments.allComments);
+   const { id } = useParams();
+   const { push } = useHistory();
+   const dispatch = useDispatch();
+   const { setModalContent, setOnModalClose } = useModal();
+   const user = useSelector((state) => state.session.user);
+   const post = useSelector((state) => state.posts.allPosts[id]);
+   const comments = useSelector((state) => state.comments.allComments);
+   const [refresh, setRefresh] = useState("");
 
-  useEffect(() => {
-    dispatch(getEveryPostThunk());
-    dispatch(getEveryCommentThunk());
-  }, [dispatch]);
+   useEffect(() => {
+      dispatch(getEveryPostThunk());
+      dispatch(getEveryCommentThunk());
+      
+      console.log("🚀 ~ file: index.js:28 ~ PostDetailsPage ~ refresh:", refresh)
+   }, [dispatch, refresh]);
 
   const fixDate = (dateString) => {
     const date = new Date(dateString);
@@ -46,6 +51,7 @@ export default function PostDetailsPage() {
       <div className="image-container">
         <img src={post.photoUrl} alt=""></img>
 
+
         {user.id === post.ownerId && (
           <>
             <div>
@@ -53,6 +59,71 @@ export default function PostDetailsPage() {
                 buttonText="Update"
                 modalComponent={<UpdatePostModal postId={post.id} />}
               />
+
+            {user.id === post.ownerId && (
+               <div>
+                  <OpenModalButton
+                     buttonText="Delete"
+                     modalComponent={<DeletePostModal postId={post.id} />}
+                  />
+               </div>
+            )}
+         </div>
+
+         <div className="image-details-container">
+            <p id="image-username">
+               {post.users.firstName} {post.users.lastName}
+            </p>
+            <p className="image-title">{post.title}</p>
+            <p className="image-description">{post.description}</p>
+         </div>
+
+         <div className="comments-container">
+            <div className="past-comments">
+               {commentsArr && commentsArr.length >= 1 ? (
+                  commentsArr.map((comment, index) => (
+                     <div className="bottom-comments">
+                        <div key={index} className="bot-comment-bunch">
+                           <h3>
+                              {comment.users.firstName} {comment.users.lastName}
+                           </h3>
+                           <p className="datedate">
+                              {" "}
+                              {fixDate(comment.createdAt)}{" "}
+                           </p>
+                           <p className="pushin-p"> "{comment.comment}" </p>
+                           {comment.userId === (user.id ? user.id : null) && (
+                              <OpenModalButton
+                                 buttonText="Delete"
+                                 modalComponent={
+                                    <DeleteCommentModal
+                                       commentId={comment.id}
+                                       id={id}
+                                    />
+                                 }
+                              />
+                           )}
+                           {comment.userId === (user.id ? user.id : null) && (
+                              <OpenModalButton
+                                 buttonText="Update"
+                                 modalComponent={
+                                    <UpdateCommentModal
+                                       commentId={comment.id}
+                                       postId={id}
+                                       setRefresh={setRefresh}
+                                    />
+                                 }
+                              />
+                           )}
+                        </div>
+                     </div>
+                  ))
+               ) : (
+                  <div className="be-the-first">
+                     {" "}
+                     Be the first to post a comment!{" "}
+                  </div>
+               )}
             </div>
 
             <div>
