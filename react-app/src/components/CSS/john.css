@@ -105,6 +105,20 @@
   justify-content: center;
 }
 
-/* current */
+/* Footer */
 
+.footer-container{
+  background-color: black;
+  color: hsla(0,0%,100%,.6);
+  border-radius: 5px;
+  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+  display: flex;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
 
+.group2{
+  margin-left: 10px;
+}
