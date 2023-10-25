@@ -14,9 +14,12 @@ class Album(db.Model):
     my_album_post_id = db.relationship("Post", back_populates = "my_post_album_id")
 
     def to_dict(self):
-        return {
+        return_dict = {
             "id": self.id,
             "userId": self.user_id,
             "title": self.title,
             "createdAt": self.created_at
         }
+        if self.my_album_post_id:
+            return_dict["posts"] = [post.to_dict() for post in self.my_album_post_id]
+        return return_dict

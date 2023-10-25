@@ -36,3 +36,8 @@ def delete_one_album(id):
         return {"message": "Delete successful"}
     else:
         return {"errors": "Album Not Found"}, 400
+    
+@albums_routes.route("/all")
+def get_all_albums():
+    all_albums = Album.query.all()
+    return [album.to_dict() for album in all_albums]

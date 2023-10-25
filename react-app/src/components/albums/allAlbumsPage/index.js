@@ -6,25 +6,24 @@ import { NavLink } from "react-router-dom";
 import { useModal } from "../../../context/Modal";
 import OpenModalButton from "../../OpenModalButton";
 import CreateAlbumModel from "../createnewalbummodel";
-import { getAllAlbumsThunk } from "../../../store/session";
+import { thunkGetAllAlbums } from "../../../store/albums";
 
-export default function AlbumDetailsPage() {
+
+export default function AllAlbumPage() {
    const dispatch = useDispatch();
-   const allPosts = useSelector((state) => state.posts.allPosts);
-   const user = useSelector((state) => state.session.user);
-   const albums = useSelector((state) => state.session.albums);
+   
+   const getAlbums = useSelector((state) => state.albums.allAlbums);
+   const userId = useSelector((state) => state.session.user.id);
 
-   const arrAllPosts = Object.values(allPosts);
+   const allAlbums = Object.values(getAlbums);
 
-   let userId;
+   const albums = allAlbums.filter((album) => album.userId == userId);
 
-   if (user) {
-      userId = user.id;
-   }
+
 
    useEffect(() => {
       dispatch(getEveryPostThunk());
-      dispatch(getAllAlbumsThunk());
+      dispatch(thunkGetAllAlbums());
    }, [dispatch]);
 
    console.log(albums);
@@ -77,7 +76,7 @@ export default function AlbumDetailsPage() {
                               <img
                                  className="testIMG"
                                  alt=""
-                                 src="https://www.seekpng.com/png/full/346-3460840_add-camera-icon-icon-add.png"
+                                 src={album.posts ? album.posts[0] : "https://cdn-icons-png.flaticon.com/512/3767/3767084.png"}
                               ></img>
                            </div>
                            <div>{album.title}</div>
