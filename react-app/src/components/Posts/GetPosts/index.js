@@ -10,8 +10,7 @@ export default function GetPosts() {
    const dispatch = useDispatch();
    const posts = useSelector((state) => state.posts.allPosts);
    const arrPosts = Object.values(posts);
-   //  const tenPhotos = [];
-   //  const nonUserPosts = posts.filter((post) => post.id !== user.id);
+ 
    console.log("posts", posts);
    useEffect(() => {
       dispatch(getTenRandomNonOwnerPosts());
@@ -21,14 +20,6 @@ export default function GetPosts() {
       push(`/posts/${post.id}`);
       return;
    };
-
-   //  useEffect(() => {
-   //     for (let i = 0; i < 11; i++) {
-   //        const randomIndex = Math.floor(Math.random() * nonUserPosts.length);
-   //        const item = nonUserPosts[randomIndex];
-   //        tenPhotos.push(item);
-   //     }
-   //  });
 
    if (Object.values(posts).length === 0) return null;
 

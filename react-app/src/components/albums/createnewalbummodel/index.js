@@ -7,7 +7,13 @@ import { getEveryPostThunk } from "../../../store/posts";
 export default function CreateAlbumModel({refresh, setRefresh}) {
     const { closeModal } = useModal();
     const [title, setTitle] = useState("");
+    const [errors, setErrors] = useState([]);
     const dispatch = useDispatch()
+    const {push} = useHistory()
+
+    useEffect(() => {
+        
+    }, dispatch)
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -21,9 +27,17 @@ export default function CreateAlbumModel({refresh, setRefresh}) {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(titleObj),
         })
-        dispatch(getEveryPostThunk())
-        setRefresh(title)
-        return closeModal()
+        const response = await data.json()
+        console.log("🚀 ~ file: index.js:30 ~ handleSubmit ~ ***********", response)
+        if (data.errors === undefined || !data.errors) {
+            setRefresh(`${title}`)
+            setTitle("")
+            closeModal()
+            dispatch(() => getEveryPostThunk())
+        return push(`/albums/${response.id}`)
+        } else {
+            setErrors(data.errors)
+        }
     }
     return(<form onSubmit={handleSubmit}>
     <label>Album Title</label>

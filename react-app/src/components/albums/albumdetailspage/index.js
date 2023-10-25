@@ -10,9 +10,7 @@ import CreateAlbumModel from "../createnewalbummodel";
 export default function AlbumDetailsPage() {
    const dispatch = useDispatch();
    const [refresh, setRefresh] = useState("");
-   const [photo, setPhoto] = useState(
-      "https://www.seekpng.com/png/full/346-3460840_add-camera-icon-icon-add.png"
-   );
+   
    const allPosts = useSelector((state) => state.posts.allPosts);
    const user = useSelector((state) => state.session.user);
 
@@ -29,26 +27,28 @@ export default function AlbumDetailsPage() {
 
    useEffect(() => {
       dispatch(getEveryPostThunk());
-   }, [dispatch]);
+      console.log(refresh)
+      setRefresh("refresh")
+   }, [dispatch, refresh]);
 
    if (!arrAllPosts) return null;
    if (!user) return null;
 
-   while (albumArray.length) {
-      const filteredPosts = arrAllPosts.filter(
-         (post) => albumArray[0].id == post.albumId
-      );
-      if (filteredPosts.length > 0) {
-         albumArray[0]["imageUrl"] = filteredPosts[0].imageUrl;
-         newAlbumArray.shift(albumArray);
-      } else {
-         albumArray[0]["imageUrl"] =
-            "https://www.seekpng.com/png/full/346-3460840_add-camera-icon-icon-add.png";
-         newAlbumArray.shift(albumArray);
-      }
-   }
+   // while (albumArray.length) {
+   //    const filteredPosts = arrAllPosts.filter(
+   //       (post) => albumArray[0].id == post.albumId
+   //    );
+   //    if (filteredPosts.length > 0) {
+   //       albumArray[0]["imageUrl"] = filteredPosts[0].imageUrl;
+   //       newAlbumArray.shift(albumArray);
+   //    } else {
+   //       albumArray[0]["imageUrl"] =
+   //          "https://www.seekpng.com/png/full/346-3460840_add-camera-icon-icon-add.png";
+   //       newAlbumArray.shift(albumArray);
+   //    }
+   // }
 
-   console.log("this is the album array", newAlbumArray);
+   console.log("this is the album array", albumArray);
    return (
       <div>
          <h1>Album Details Page</h1>
@@ -61,9 +61,9 @@ export default function AlbumDetailsPage() {
             />
          </div>
          <div className="albumMapping">
-            {newAlbumArray.map((album) => (
+            {albumArray.map((album) => (
                <div key={album.id}>
-                  <NavLink to="posts/current">
+                  <NavLink to={`/albums/${album.id}`}>
                      <div className="albumImageTitleContainer">
                         <div>
                            <img
