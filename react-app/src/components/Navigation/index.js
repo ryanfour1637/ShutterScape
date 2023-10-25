@@ -2,14 +2,17 @@ import React from "react";
 import {NavLink, useHistory} from "react-router-dom";
 import {useSelector} from "react-redux";
 import ProfileButton from "./ProfileButton";
-import CreatePostModal from "../Posts/CreatePostModal";
-import OpenModalButton from "../OpenModalButton";
+import YouButton from "./YouButton";
 import "./Navigation.css";
 import logo from "../../images/logo.png";
 
 function Navigation({isLoaded}) {
   const {push} = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
+
+  const goToCurrent = () => {
+    return push("/posts/current");
+  };
 
   return (
     <div className="nav-container">
@@ -18,12 +21,12 @@ function Navigation({isLoaded}) {
           <NavLink exact to="/posts/current">
             <img src={logo} alt="logo" id="logo" />
           </NavLink>
-          <NavLink exact to="/userposts">
-            <p>You</p>
-          </NavLink>
-          <NavLink exact to="/posts/current">
-            <p>Explore</p>
-          </NavLink>
+          {isLoaded && sessionUser && (
+            <>
+              <YouButton user={sessionUser} className="youbutton-button" />
+              <div onClick={goToCurrent}>Explore</div>
+            </>
+          )}
         </div>
 
         <div>
