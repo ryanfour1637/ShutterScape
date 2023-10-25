@@ -23,10 +23,7 @@ export default function PostDetailsPage() {
    const [refreshUpdate, setRefreshUpdate] = useState("");
 
    const post = allPosts[id];
-   // const [commentsForRefresh, setCommentsForRefresh] = useState({});
-   // const [thisPost, setThisPost] = useState({});
 
-   // setThisPost(post);
 
    useEffect(() => {
       dispatch(getEveryPostThunk());

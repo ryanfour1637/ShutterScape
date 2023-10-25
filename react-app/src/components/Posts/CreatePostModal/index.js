@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { createPostThunk } from "../../../store/posts";
 import { useModal } from "../../../context/Modal";
 
-export default function CreatePostModal({ setRefresh, refresh }) {
+export default function CreatePostModal({ setRefreshCreate }) {
    const { push } = useHistory();
    const dispatch = useDispatch();
    const [title, setTitle] = useState("");
@@ -30,7 +30,7 @@ export default function CreatePostModal({ setRefresh, refresh }) {
 
       if (postData.errors === undefined || !postData.errors) {
          closeModal();
-         setRefresh(`${description}`);
+         setRefreshCreate(description);
          return push(`/posts/${postData.id}`);
       } else {
          setErrors(postData.errors);
