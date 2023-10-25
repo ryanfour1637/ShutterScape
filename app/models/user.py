@@ -40,9 +40,6 @@ class User(db.Model, UserMixin):
             "age": self.age,
             "username": self.username,
             "email": self.email,
-            # "albums": [album.to_dict() for album in self.my_album_id]
         }
-        if self.my_album_id:
-            return_dict["albums"] = [album.to_dict() for album in self.my_album_id],
         return return_dict
 

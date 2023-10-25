@@ -7,4 +7,5 @@ class PostForm(FlaskForm):
     title = StringField("Title", validators=[DataRequired()])
     image = FileField("Select a Photo", validators=[FileRequired(), FileAllowed(["pdf", "png", "jpg", "jpeg", "gif"])])
     description = TextAreaField("Description", validators=[DataRequired()])
+    album_id = IntegerField("Album Id", validators=[DataRequired()])
     submit = SubmitField("Submit")

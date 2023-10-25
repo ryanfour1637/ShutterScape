@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { createPostThunk } from "../../../store/posts";
 import { useModal } from "../../../context/Modal";
 
-export default function CreatePostModal({ setRefreshCreate }) {
+export default function CreatePostModal({ setRefreshCreate, id }) {
    const { push } = useHistory();
    const dispatch = useDispatch();
    const [title, setTitle] = useState("");
@@ -20,6 +20,7 @@ export default function CreatePostModal({ setRefreshCreate }) {
       formData.append("image", image);
       formData.append("title", title);
       formData.append("description", description);
+      formData.append("album_id", id)
 
       setImageLoading(true);
       const postData = await dispatch(createPostThunk(formData));

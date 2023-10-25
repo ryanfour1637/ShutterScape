@@ -74,6 +74,7 @@ def new_post():
         post = Post(
             owner_id = current_user.id,
             title = form.data['title'],
+            album_id = form.data['album_id'],
             photo_url = url,
             description = form.data['description'],
             created_at = date.today()

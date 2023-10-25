@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useModal } from "../../../context/Modal";
 import { getEveryPostThunk } from "../../../store/posts";
+import { thunkCreateAlbum, thunkGetAllAlbums} from "../../../store/albums";
 
 export default function CreateAlbumModel() {
    const { closeModal } = useModal();
@@ -20,25 +21,17 @@ export default function CreateAlbumModel() {
          title: title,
       };
 
-      const data = await fetch("/api/albums/new", {
-         method: "POST",
-         headers: { "Content-Type": "application/json" },
-         body: JSON.stringify(titleObj),
-      });
-      const response = await data.json();
-      console.log(
-         "🚀 ~ file: index.js:30 ~ handleSubmit ~ ***********",
-         response
-      );
-      if (data.errors === undefined || !data.errors) {
+      const res = await dispatch(thunkCreateAlbum(titleObj))
+      if (res.errors === undefined || !res.errors) {
          setTitle("");
          closeModal();
-         dispatch(() => getEveryPostThunk());
-         return push(`/albums/${response.id}`);
+         dispatch(thunkGetAllAlbums());
+         return push(`/albums/${res.id}`);
       } else {
-         setErrors(data.errors);
+         setErrors(res.errors);
       }
    };
+   
    return (
       <form onSubmit={handleSubmit}>
          <label>Album Title</label>

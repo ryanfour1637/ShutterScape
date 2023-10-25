@@ -11,8 +11,8 @@ import PostDetailsPage from "./components/Posts/PostDetailsPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import Home from "./components/Home"
-import AlbumDetailsPage from "./components/albums/albumdetailspage";
-import AlbumLandingPage from "./components/albums/albumlandingpage";
+import SpecificAlbumPage from "./components/albums/specificAlbumPage";
+import AllAlbumPage from "./components/albums/allAlbumsPage";
 import Footer from "./components/Footer";
 
 
@@ -53,10 +53,10 @@ function App() {
               <PostDetailsPage />
             </Route>
             <Route exact path="/albums">
-            <AlbumDetailsPage />
+            <AllAlbumPage />
           </Route>
           <Route exact path="/albums/:id">
-            <AlbumLandingPage />
+            <SpecificAlbumPage />
           </Route>
           <Route>Page Not Found</Route>
         </Switch>

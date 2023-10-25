@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useModal } from "../../../context/Modal";
-import { getEveryPostThunk } from "../../../store/posts";
-import { getAllAlbumsThunk } from "../../../store/session";
+import { thunkDeleteAlbum } from "../../../store/albums";
+
 
 export default function DeleteAlbumModel({ id }) {
    const { closeModal } = useModal();
@@ -11,11 +11,8 @@ export default function DeleteAlbumModel({ id }) {
    const dispatch = useDispatch();
 
    async function deleteAlbum() {
-      await fetch(`/api/albums/${id}`, {
-         method: "DELETE",
-      });
-      dispatch(getAllAlbumsThunk());
-
+    
+      dispatch(thunkDeleteAlbum(id))
       push("/albums");
       return closeModal();
    }
@@ -27,7 +24,7 @@ export default function DeleteAlbumModel({ id }) {
          <button
             id="delete-album-modal-button"
             className="action-button"
-            onClick={async () => deleteAlbum()}
+            onClick={() => deleteAlbum()}
          >
             Yes (Delete Album)
          </button>
