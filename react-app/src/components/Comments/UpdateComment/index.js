@@ -7,7 +7,7 @@ import {
    updateCommentThunk,
 } from "../../../store/comments";
 
-export default function UpdateCommentModal({ commentId, setRefresh, refresh }) {
+export default function UpdateCommentModal({ commentId, setRefreshUpdate }) {
    const dispatch = useDispatch();
    const { closeModal, setOnModalClose } = useModal();
    const oneComment = useSelector(
@@ -35,7 +35,7 @@ export default function UpdateCommentModal({ commentId, setRefresh, refresh }) {
       dispatch(updateCommentThunk(updatedComment, commentId));
 
       setComment("");
-      setRefresh(`${updatedComment.comment}`);
+      setRefreshUpdate(updatedComment.comment);
       return closeModal();
    };
 
@@ -53,7 +53,11 @@ export default function UpdateCommentModal({ commentId, setRefresh, refresh }) {
                />
             </label>
 
-            <button type="submit" className="comment-submit" disabled={disableSubmit()}>
+            <button
+               type="submit"
+               className="comment-submit"
+               disabled={disableSubmit()}
+            >
                Update Comment
             </button>
          </form>

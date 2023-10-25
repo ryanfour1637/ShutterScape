@@ -17,19 +17,23 @@ export default function PostDetailsPage() {
    const dispatch = useDispatch();
    const { setModalContent, setOnModalClose } = useModal();
    const user = useSelector((state) => state.session.user);
-   const post = useSelector((state) => state.posts.allPosts[id]);
+   const allPosts = useSelector((state) => state.posts.allPosts);
    const comments = useSelector((state) => state.comments.allComments);
-   const [refresh, setRefresh] = useState("");
+   const [refreshCreate, setRefreshCreate] = useState("");
+   const [refreshUpdate, setRefreshUpdate] = useState("");
+
+   const post = allPosts[id];
+   // const [commentsForRefresh, setCommentsForRefresh] = useState({});
+   // const [thisPost, setThisPost] = useState({});
+
+   // setThisPost(post);
 
    useEffect(() => {
       dispatch(getEveryPostThunk());
       dispatch(getEveryCommentThunk());
-
-      console.log(
-         "🚀 ~ file: index.js:28 ~ PostDetailsPage ~ refresh:",
-         refresh
-      );
-   }, [dispatch, refresh]);
+      setRefreshCreate("");
+      setRefreshUpdate("");
+   }, [dispatch, refreshCreate, refreshUpdate]);
 
    const fixDate = (dateString) => {
       const date = new Date(dateString);
@@ -93,7 +97,9 @@ export default function PostDetailsPage() {
                            <p className="postdetails-datedate">
                               {fixDate(comment.createdAt)}
                            </p>
-                           <p className="postdetail-comment">"{comment.comment}"</p>
+                           <p className="postdetail-comment">
+                              "{comment.comment}"
+                           </p>
 
                            {comment.userId === (user.id ? user.id : null) && (
                               <OpenModalButton
@@ -102,8 +108,7 @@ export default function PostDetailsPage() {
                                     <UpdateCommentModal
                                        commentId={comment.id}
                                        postId={id}
-                                       setRefresh={setRefresh}
-                                       refresh={refresh}
+                                       setRefreshUpdate={setRefreshUpdate}
                                     />
                                  }
                               />
@@ -119,7 +124,6 @@ export default function PostDetailsPage() {
                                  }
                               />
                            )}
-
                         </div>
                      </div>
                   ))
@@ -133,8 +137,12 @@ export default function PostDetailsPage() {
             <div className="create-comment-button">
                <OpenModalButton
                   buttonText="Post Comment"
-
-                  modalComponent={<CreateCommentForm postId={id} />}
+                  modalComponent={
+                     <CreateCommentForm
+                        postId={id}
+                        setRefreshCreate={setRefreshCreate}
+                     />
+                  }
                />
             </div>
          </div>
