@@ -109,7 +109,7 @@
 
 .footer-container{
   background-color: black;
-  color: hsla(0,0%,100%,.6);
+  color: white;
   border-radius: 5px;
   font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
   display: flex;
@@ -117,8 +117,51 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
+  text-shadow: 1px 1px grey;
 }
 
 .group2{
   margin-left: 10px;
+}
+
+/* Post Details */
+
+.image-container{
+  background-color: #212124;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 6px;
+  border-radius: 2px;
+}
+
+.detail-photo{
+  width: 543px;
+  height: 356px;
+  margin-top: 41px;
+  border-radius: 8px;
+}
+
+.Post-Details-Buttons{
+  margin: 19px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.image-container button {
+  padding: 7px;
+  margin: 7px;
+  border-radius: 2px;
+  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+}
+
+#image-username{
+  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+  font-size: 20px;
+}
+
+.image-title,
+.image-description{
+  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+  font-size: 13px;
 }

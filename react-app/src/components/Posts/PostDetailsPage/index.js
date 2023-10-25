@@ -51,25 +51,26 @@ export default function PostDetailsPage() {
    return (
       <div>
          <div className="image-container">
-            <img src={post.photoUrl} alt="" />
+            <img className="detail-photo" src={post.photoUrl} alt="" />
+            <div className="Post-Details-Buttons">
+               {user.id === post.ownerId && (
+                  <div>
+                     <OpenModalButton
+                        buttonText="Update Post"
+                        modalComponent={<UpdatePostModal postId={post.id} />}
+                     />
+                  </div>
+               )}
 
-            {user.id === post.ownerId && (
-               <div>
-                  <OpenModalButton
-                     buttonText="Update"
-                     modalComponent={<UpdatePostModal postId={post.id} />}
-                  />
-               </div>
-            )}
-
-            {user.id === post.ownerId && (
-               <div>
-                  <OpenModalButton
-                     buttonText="Delete"
-                     modalComponent={<DeletePostModal postId={post.id} />}
-                  />
-               </div>
-            )}
+               {user.id === post.ownerId && (
+                  <div>
+                     <OpenModalButton
+                        buttonText="Delete Post"
+                        modalComponent={<DeletePostModal postId={post.id} />}
+                     />
+                  </div>
+               )}
+            </div>
          </div>
 
          <div className="image-details-container">
@@ -96,7 +97,7 @@ export default function PostDetailsPage() {
 
                            {comment.userId === (user.id ? user.id : null) && (
                               <OpenModalButton
-                                 buttonText="Delete"
+                                 buttonText="Delete Comment"
                                  modalComponent={
                                     <DeleteCommentModal
                                        commentId={comment.id}
@@ -108,7 +109,7 @@ export default function PostDetailsPage() {
 
                            {comment.userId === (user.id ? user.id : null) && (
                               <OpenModalButton
-                                 buttonText="Update"
+                                 buttonText="Update Comment"
                                  modalComponent={
                                     <UpdateCommentModal
                                        commentId={comment.id}
