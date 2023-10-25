@@ -10,6 +10,7 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import Home from "./components/Home"
 import AlbumDetailsPage from "./components/albums/albumdetailspage";
+import AlbumLandingPage from "./components/albums/albumlandingpage";
 
 
 function App() {
@@ -44,6 +45,9 @@ function App() {
           </Route>
           <Route exact path="/albums">
             <AlbumDetailsPage />
+          </Route>
+          <Route exact path="/albums/:id">
+            <AlbumLandingPage />
           </Route>
           <Route>Page Not Found</Route>
         </Switch>
