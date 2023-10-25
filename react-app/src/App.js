@@ -11,11 +11,12 @@ import PostDetailsPage from "./components/Posts/PostDetailsPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import Home from "./components/Home"
-
+import Footer from "./components/Footer";
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+
   useEffect(() => {
     dispatch(authenticate()).then(() => setIsLoaded(true));
   }, [dispatch]);
@@ -24,30 +25,33 @@ function App() {
     <>
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
-        <Switch>
-          <Route exact path="/userposts">
-            <AllUserPostsPage />
-          </Route>
-          <Route exact path="/login" >
-            <LoginFormPage />
-          </Route>
-          <Route exact path="/signup">
-            <SignupFormPage />
-          </Route>
-          <Route exact path="/" >
-            <Home/>
-          </Route>
-          <Route exact path="/posts/new" >
-            <CreatePostModal />
-          </Route>
-          <Route exact path="/posts/current" >
-            <GetPosts/>
-          </Route>
-          <Route exact path="/posts/:id" >
-            <PostDetailsPage />
-          </Route>
-          <Route>Page Not Found</Route>
-        </Switch>
+        <>
+          <Switch>
+            <Route exact path="/userposts">
+              <AllUserPostsPage />
+            </Route>
+            <Route exact path="/login">
+              <LoginFormPage />
+            </Route>
+            <Route exact path="/signup">
+              <SignupFormPage />
+            </Route>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/posts/new">
+              <CreatePostModal />
+            </Route>
+            <Route exact path="/posts/current">
+              <GetPosts />
+            </Route>
+            <Route exact path="/posts/:id">
+              <PostDetailsPage />
+            </Route>
+            <Route>Page Not Found</Route>
+          </Switch>
+          <Footer />
+        </>
       )}
     </>
   );

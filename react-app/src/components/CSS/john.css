@@ -1,4 +1,6 @@
-
+.body{
+  background-color: #f3f5f6;
+}
 /* home */
 
 .slideshow-container {
@@ -105,6 +107,289 @@
   justify-content: center;
 }
 
-/* current */
+/* Footer */
 
+.footer-container{
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+  display: flex;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  text-shadow: 1px 1px grey;
+}
 
+.group2{
+  margin-left: 10px;
+}
+
+/* Post Details */
+
+.image-container{
+  background-color: #212124;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 6px;
+  border-radius: 2px;
+}
+
+.detail-photo{
+  width: 543px;
+  height: 356px;
+  margin-top: 41px;
+  border-radius: 8px;
+}
+
+.Post-Details-Buttons{
+  margin: 19px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.image-container button {
+  padding: 7px;
+  margin: 7px;
+  border-radius: 13px;
+  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+}
+
+#image-username{
+  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+  font-size: 20px;
+}
+
+.image-title{
+  display: flex;
+  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+  font-size: 26px;
+  font-weight: bold;
+  justify-content: center;
+  text-shadow: 1px 1px #5380FA;
+}
+.image-description{
+  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+  font-size: 14px;
+}
+
+.post-details-name{
+  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+  font-size: 20px;
+  font-weight: normal;
+  margin-left: 10px;
+  margin-top: 7px;
+  text-shadow: 1px 1px white;
+}
+
+.bot-comment-bunch{
+  border-radius: 10px;
+}
+
+.bottom-comments{
+  border-radius: 10px;
+}
+
+.bottom-comments :hover{
+  background-color: rgb(212, 212, 212);
+}
+
+.postdetails-datedate{
+  margin-left: 10px;
+  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+  font-size: 13px;
+}
+
+.postdetail-comment{
+  margin-left: 10px;
+  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+  font-size: 13px;
+}
+
+.bottom-comments button{
+  padding: 3px;
+  margin: 4px;
+  border-radius: 8px;
+  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+}
+
+.create-comment-button button{
+  padding: 3px;
+  border-radius: 8px;
+  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+  margin-bottom: 21px;
+  margin-top: 10px;
+}
+
+/* Delete */
+
+#delete-comment-modal-container{
+justify-content: center;
+display: flex;
+flex-direction: column;
+}
+
+.delete-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 300px;
+  align-items: center;
+  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+}
+
+.confirm-delete1 {
+  display: flex;
+  flex-direction: row;
+  font-weight: normal;
+  text-shadow: 1px 1px #5380FA;
+  margin-left: 81px;
+}
+
+.confirm-delete {
+  display: flex;
+  flex-direction: row;
+  font-weight: normal;
+  text-shadow: 1px 1px #5380FA;
+  margin-left: 52px;
+}
+
+.delete-writing{
+  display: flex;
+  flex-direction: row;
+  font-weight: normal;
+  margin-left: 3px;
+  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+}
+
+.delete-da-bttn {
+  display: flex;
+justify-content: center;
+align-items: center;
+width: 90%;
+height: 30px;
+border-radius: 5px;
+border: none;
+background-color: #5380FA;
+margin-left: 18px;
+
+box-shadow: 1px 5px 1px black;
+color: white;
+font-size: 15px;
+/* font-weight: bold; */
+cursor: pointer;
+margin-bottom: 10px;
+font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+}
+
+.cancel-delete{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  height: 30px;
+  border-radius: 5px;
+  border: none;
+  background-color: #544d4d;
+  margin-left: 18px;
+
+  box-shadow: 1px 5px 1px black;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+}
+
+/* Misc Update */
+
+.Updatepost{
+  display: flex;
+  flex-direction: row;
+  font-weight: normal;
+  text-shadow: 1px 1px #5380FA;
+  margin-left: 89px;
+}
+
+.update-comment1{
+  display: flex;
+  flex-direction: row;
+  font-weight: normal;
+  text-shadow: 1px 1px #5380FA;
+  margin-left: 37px;
+  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+}
+
+.comment-submit{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  height: 30px;
+  border-radius: 5px;
+  border: none;
+  background-color: #5380FA;
+  margin-left: -2px;
+
+  box-shadow: 1px 5px 1px black;
+  color: white;
+  font-size: 12px;
+  /* font-weight: bold; */
+  cursor: pointer;
+  margin-bottom: 10px;
+  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+}
+
+.update-post-stuff{
+  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+}
+
+.submit-update-post{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  height: 30px;
+  border-radius: 5px;
+  border: none;
+  background-color: #5380FA;
+  margin-left: -2px;
+
+  box-shadow: 1px 5px 1px black;
+  color: white;
+  font-size: 15px;
+  /* font-weight: bold; */
+  cursor: pointer;
+  margin-bottom: 10px;
+  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+}
+
+.update-post-container{
+  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+}
+
+.update-post-container label{
+  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+  font-weight: bold;
+  margin:10px;
+}
+
+.update-post-text-area {
+  width: 281px;
+    height: 97px;
+}
+
+#comment-text-area{
+  width: 278px;
+  height: 121px;
+}
+
+.post-commenth1{
+  display: flex;
+  flex-direction: row;
+  font-weight: normal;
+  text-shadow: 1px 1px #5380FA;
+  margin-left: 62px;
+}
