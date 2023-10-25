@@ -80,20 +80,20 @@ export default function PostDetailsPage() {
             <p className="image-title">{post.title}</p>
             <p className="image-description">{post.description}</p>
          </div>
-
+         <hr></hr>
          <div className="comments-container">
             <div className="past-comments">
                {commentsArr && commentsArr.length >= 1 ? (
                   commentsArr.map((comment, index) => (
                      <div className="bottom-comments" key={index}>
                         <div className="bot-comment-bunch">
-                           <h3>
+                           <h3 className="post-details-name">
                               {comment.users.firstName} {comment.users.lastName}
                            </h3>
-                           <p className="datedate">
+                           <p className="postdetails-datedate">
                               {fixDate(comment.createdAt)}
                            </p>
-                           <p className="pushin-p">"{comment.comment}"</p>
+                           <p className="postdetail-comment">"{comment.comment}"</p>
 
                            {comment.userId === (user.id ? user.id : null) && (
                               <OpenModalButton
@@ -130,9 +130,10 @@ export default function PostDetailsPage() {
                )}
             </div>
 
-            <div>
+            <div className="create-comment-button">
                <OpenModalButton
-                  buttonText="Create"
+                  buttonText="Post Comment"
+
                   modalComponent={<CreateCommentForm postId={id} />}
                />
             </div>

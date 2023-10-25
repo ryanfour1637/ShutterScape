@@ -1,4 +1,6 @@
-
+.body{
+  background-color: #f3f5f6;
+}
 /* home */
 
 .slideshow-container {
@@ -151,7 +153,7 @@
 .image-container button {
   padding: 7px;
   margin: 7px;
-  border-radius: 2px;
+  border-radius: 13px;
   font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
 }
 
@@ -163,5 +165,52 @@
 .image-title,
 .image-description{
   font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+  font-size: 14px;
+}
+
+.post-details-name{
+  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+  font-size: 20px;
+  font-weight: normal;
+  margin-left: 10px;
+  margin-top: 7px;
+  text-shadow: 1px 1px white;
+}
+
+.bot-comment-bunch{
+  border-radius: 10px;
+}
+
+.bottom-comments{
+  border-radius: 10px;
+}
+
+.bottom-comments :hover{
+  background-color: rgb(212, 212, 212);
+}
+
+.postdetails-datedate{
+  margin-left: 10px;
+  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
   font-size: 13px;
+}
+
+.postdetail-comment{
+  margin-left: 10px;
+  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+  font-size: 13px;
+}
+
+.bottom-comments button{
+  padding: 3px;
+  margin: 4px;
+  border-radius: 8px;
+  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+}
+
+.create-comment-button button{
+  padding: 3px;
+  border-radius: 8px;
+  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+  margin-bottom: 21px;
 }
