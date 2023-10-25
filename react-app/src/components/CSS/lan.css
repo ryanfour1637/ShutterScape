@@ -5,6 +5,7 @@
     align-items: center;
     color: white;
     padding: 20px;
+    padding-bottom: 56px;
     background-image: url(https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/rainy-default-bg.jpg);
 }
 
