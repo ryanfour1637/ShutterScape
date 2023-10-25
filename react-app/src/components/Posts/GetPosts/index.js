@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { getTenRandomNonOwnerPosts } from "../../../store/posts";
+import "../../CSS/john.css"
 
 export default function GetPosts() {
    const { push } = useHistory();
@@ -24,10 +25,10 @@ export default function GetPosts() {
 
    return (
       <>
-         <div>
+         <div className="allposts-photos">
             {arrPosts.map((post) => (
                <div onClick={() => goToPost(post)} key={post.id}>
-                  <img src={post.photoUrl} alt=""></img>
+                  <img src={post.photoUrl} alt="" className="userpost-images"></img>
                </div>
             ))}
          </div>

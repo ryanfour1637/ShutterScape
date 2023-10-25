@@ -4,6 +4,7 @@ import { useModal } from "../../../context/Modal";
 import { deleteCommentThunk } from "../../../store/comments";
 import { getEveryPostThunk } from "../../../store/posts";
 import { useParams, useHistory } from "react-router-dom";
+import "../../CSS/john.css"
 
 export default function DeleteCommentModal({ commentId, id }) {
    const dispatch = useDispatch();
@@ -20,18 +21,17 @@ export default function DeleteCommentModal({ commentId, id }) {
 
    return (
       <div id="delete-comment-modal-container">
-         <h1>Confirm Delete</h1>
-         <div>Are you sure you want to remove this comment?</div>
+         <h1 className="confirm-delete">Delete Comment</h1>
+         <p className="delete-writing">Are you sure you want to remove this comment?</p>
          <button
-            id="delete-comment-modal-button"
-            className="action-button"
+            className="delete-da-bttn"
             onClick={handleSubmit}
          >
             Yes (Delete comment)
          </button>
-         <button id="keep-comment" onClick={closeModal}>
+         <button className="cancel-delete" onClick={closeModal}>
             No (Keep comment)
          </button>
-      </div>
+      </div >
    );
 }

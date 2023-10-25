@@ -1,16 +1,16 @@
 //types
 
 const READ_COMMENTS = "/read_comment";
-const CREATE_COMMENT = "/create_comment";
-const UPDATE_COMMENT = "/update_comment";
+const ADD_ONE_COMMENT = "/add_one_comment";
+// const UPDATE_COMMENT = "/update_comment";
 const DELETE_COMMENT = "/delete_comment";
 
 //action creator
 
 const actionReadComments = (comment) => ({ type: READ_COMMENTS, comment });
-const actionCreateComment = (comment) => ({ type: CREATE_COMMENT, comment });
-const actionUpdateComment = (comment) => ({ type: UPDATE_COMMENT, comment });
+// const actionUpdateComment = (comment) => ({ type: UPDATE_COMMENT, comment });
 const actionDeleteComment = (id) => ({ type: DELETE_COMMENT, id });
+const actionAddOneComment = (comment) => ({ type: ADD_ONE_COMMENT, comment });
 
 //thunks
 
@@ -37,6 +37,20 @@ export const getEveryCommentThunk = () => async (dispatch) => {
    }
 };
 
+//Get One Comment
+// export const getOneCommentThunk = (postId) => async (dispatch) => {
+//    const res = await csrfFetch(`/api/spots/${spotId}/reviews`);
+
+//    if (res.ok) {
+//       const data = await res.json();
+//       dispatch(actionReadReviewsOneSpot(data.Reviews));
+//       return data;
+//    } else {
+//       const errors = await res.json();
+//       return errors;
+//    }
+// };
+
 // Create Comment
 export const createCommentThunk = (postId, comment) => async (dispatch) => {
    const response = await fetch(`/api/comments/new/posts/${postId}`, {
@@ -46,8 +60,13 @@ export const createCommentThunk = (postId, comment) => async (dispatch) => {
    });
 
    if (response.ok) {
+      const data = await response.json();
+
+      console.log("this is the data", data.comment);
+      dispatch(actionAddOneComment(data.comment));
+      return data;
    } else {
-      const errors = response.json();
+      const errors = await response.json();
       return errors;
    }
 };
@@ -96,6 +115,14 @@ export default function commentsReducer(state = initialState, action) {
             "🚀 ~ file: comments.js:81 ~ commentsReducer ~ action:",
             action
          );
+         return newState;
+      case ADD_ONE_COMMENT:
+         console.log(state.allComments);
+         newState = {
+            ...state,
+            allComments: { ...state.allComments },
+         };
+         newState.allComments[action.comment.id] = action.comment;
          return newState;
       case DELETE_COMMENT:
          newState = { ...state, allComments: { ...state.allComments } };

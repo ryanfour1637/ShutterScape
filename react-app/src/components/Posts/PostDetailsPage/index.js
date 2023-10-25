@@ -51,25 +51,26 @@ export default function PostDetailsPage() {
    return (
       <div>
          <div className="image-container">
-            <img src={post.photoUrl} alt="" />
+            <img className="detail-photo" src={post.photoUrl} alt="" />
+            <div className="Post-Details-Buttons">
+               {user.id === post.ownerId && (
+                  <div>
+                     <OpenModalButton
+                        buttonText="Update Post"
+                        modalComponent={<UpdatePostModal postId={post.id} />}
+                     />
+                  </div>
+               )}
 
-            {user.id === post.ownerId && (
-               <div>
-                  <OpenModalButton
-                     buttonText="Update"
-                     modalComponent={<UpdatePostModal postId={post.id} />}
-                  />
-               </div>
-            )}
-
-            {user.id === post.ownerId && (
-               <div>
-                  <OpenModalButton
-                     buttonText="Delete"
-                     modalComponent={<DeletePostModal postId={post.id} />}
-                  />
-               </div>
-            )}
+               {user.id === post.ownerId && (
+                  <div>
+                     <OpenModalButton
+                        buttonText="Delete Post"
+                        modalComponent={<DeletePostModal postId={post.id} />}
+                     />
+                  </div>
+               )}
+            </div>
          </div>
 
          <div className="image-details-container">
@@ -79,36 +80,24 @@ export default function PostDetailsPage() {
             <p className="image-title">{post.title}</p>
             <p className="image-description">{post.description}</p>
          </div>
-
+         <hr></hr>
          <div className="comments-container">
             <div className="past-comments">
                {commentsArr && commentsArr.length >= 1 ? (
                   commentsArr.map((comment, index) => (
                      <div className="bottom-comments" key={index}>
                         <div className="bot-comment-bunch">
-                           <h3>
+                           <h3 className="post-details-name">
                               {comment.users.firstName} {comment.users.lastName}
                            </h3>
-                           <p className="datedate">
+                           <p className="postdetails-datedate">
                               {fixDate(comment.createdAt)}
                            </p>
-                           <p className="pushin-p">"{comment.comment}"</p>
+                           <p className="postdetail-comment">"{comment.comment}"</p>
 
                            {comment.userId === (user.id ? user.id : null) && (
                               <OpenModalButton
-                                 buttonText="Delete"
-                                 modalComponent={
-                                    <DeleteCommentModal
-                                       commentId={comment.id}
-                                       id={id}
-                                    />
-                                 }
-                              />
-                           )}
-
-                           {comment.userId === (user.id ? user.id : null) && (
-                              <OpenModalButton
-                                 buttonText="Update"
+                                 buttonText="Update Comment"
                                  modalComponent={
                                     <UpdateCommentModal
                                        commentId={comment.id}
@@ -119,6 +108,18 @@ export default function PostDetailsPage() {
                                  }
                               />
                            )}
+                           {comment.userId === (user.id ? user.id : null) && (
+                              <OpenModalButton
+                                 buttonText="Delete Comment"
+                                 modalComponent={
+                                    <DeleteCommentModal
+                                       commentId={comment.id}
+                                       id={id}
+                                    />
+                                 }
+                              />
+                           )}
+
                         </div>
                      </div>
                   ))
@@ -129,9 +130,10 @@ export default function PostDetailsPage() {
                )}
             </div>
 
-            <div>
+            <div className="create-comment-button">
                <OpenModalButton
-                  buttonText="Create"
+                  buttonText="Post Comment"
+
                   modalComponent={<CreateCommentForm postId={id} />}
                />
             </div>
