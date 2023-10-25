@@ -11,7 +11,9 @@ import PostDetailsPage from "./components/Posts/PostDetailsPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import Home from "./components/Home"
+import AlbumDetailsPage from "./components/albums/albumdetailspage";
 import Footer from "./components/Footer";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -48,10 +50,14 @@ function App() {
             <Route exact path="/posts/:id">
               <PostDetailsPage />
             </Route>
+            <Route exact path="/albums">
+            <AlbumDetailsPage />
+            </Route>
             <Route>Page Not Found</Route>
           </Switch>
           <Footer />
         </>
+
       )}
     </>
   );

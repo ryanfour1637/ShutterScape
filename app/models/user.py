@@ -32,12 +32,17 @@ class User(db.Model, UserMixin):
     def check_password(self, password):
         return check_password_hash(self.password, password)
 
-    def to_dict(self):
-        return {
+    def to_dict(self, my_album_id = False):
+        return_dict = {
             "id": self.id,
             "firstName": self.first_name,
             "lastName": self.last_name,
             "age": self.age,
             "username": self.username,
             "email": self.email,
+            # "albums": [album.to_dict() for album in self.my_album_id]
         }
+        if self.my_album_id:
+            return_dict["albums"] = [album.to_dict() for album in self.my_album_id],
+        return return_dict
+
