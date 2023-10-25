@@ -22,7 +22,7 @@ def post_new_comment(id):
         )
         db.session.add(new_comment)
         db.session.commit()
-        return
+        return new_comment.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 @comments_routes.route('/<int:id>/update/posts/', methods=['PUT'])
@@ -48,6 +48,9 @@ def update_new_comment(id):
 def get_all_comments():
     all_comments = Comment.query.all()
     return [comment.to_dict() for comment in all_comments]
+
+#get one comment
+@comments_routes.route('/')
 
 
 #delete a comment
