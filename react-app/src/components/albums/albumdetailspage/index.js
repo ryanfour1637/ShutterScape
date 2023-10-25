@@ -6,13 +6,13 @@ import { NavLink } from "react-router-dom";
 import { useModal } from "../../../context/Modal";
 import OpenModalButton from "../../OpenModalButton";
 import CreateAlbumModel from "../createnewalbummodel";
+import { getAllAlbumsThunk } from "../../../store/session";
 
 export default function AlbumDetailsPage() {
    const dispatch = useDispatch();
-   const [refresh, setRefresh] = useState("");
-   
    const allPosts = useSelector((state) => state.posts.allPosts);
    const user = useSelector((state) => state.session.user);
+   const albums = useSelector((state) => state.session.albums);
 
    const arrAllPosts = Object.values(allPosts);
 
@@ -22,17 +22,26 @@ export default function AlbumDetailsPage() {
       userId = user.id;
    }
 
-   const albumArray = [...user.albums[0]];
-   const newAlbumArray = [];
-
    useEffect(() => {
       dispatch(getEveryPostThunk());
-      console.log(refresh)
-      setRefresh("refresh")
-   }, [dispatch, refresh]);
+      dispatch(getAllAlbumsThunk());
+   }, [dispatch]);
 
-   if (!arrAllPosts) return null;
-   if (!user) return null;
+   console.log(albums);
+   if (albums?.length > 0) {
+   } else {
+      return (
+         <div>
+            <h1>Album Details Page</h1>
+            <div>
+               <OpenModalButton
+                  buttonText="Create New Album"
+                  modalComponent={<CreateAlbumModel />}
+               />
+            </div>
+         </div>
+      );
+   }
 
    // while (albumArray.length) {
    //    const filteredPosts = arrAllPosts.filter(
@@ -48,35 +57,34 @@ export default function AlbumDetailsPage() {
    //    }
    // }
 
-   console.log("this is the album array", albumArray);
+   if (!albums) return null;
    return (
       <div>
          <h1>Album Details Page</h1>
          <div>
             <OpenModalButton
                buttonText="Create New Album"
-               modalComponent={
-                  <CreateAlbumModel refresh={refresh} setRefresh={setRefresh} />
-               }
+               modalComponent={<CreateAlbumModel />}
             />
          </div>
          <div className="albumMapping">
-            {albumArray.map((album) => (
-               <div key={album.id}>
-                  <NavLink to={`/albums/${album.id}`}>
-                     <div className="albumImageTitleContainer">
-                        <div>
-                           <img
-                              className="testIMG"
-                              alt=""
-                              src="https://www.seekpng.com/png/full/346-3460840_add-camera-icon-icon-add.png"
-                           ></img>
+            {albums.length > 0 &&
+               albums.map((album) => (
+                  <div key={album.id}>
+                     <NavLink to={`/albums/${album.id}`}>
+                        <div className="albumImageTitleContainer">
+                           <div>
+                              <img
+                                 className="testIMG"
+                                 alt=""
+                                 src="https://www.seekpng.com/png/full/346-3460840_add-camera-icon-icon-add.png"
+                              ></img>
+                           </div>
+                           <div>{album.title}</div>
                         </div>
-                        <div>{album.title}</div>
-                     </div>
-                  </NavLink>
-               </div>
-            ))}
+                     </NavLink>
+                  </div>
+               ))}
          </div>
       </div>
    );

@@ -59,18 +59,6 @@ function ProfileButton({ user }) {
                   <p>{user.email}</p>
 
                   <div>
-                     <OpenModalButton
-                        buttonText="Create a new post"
-                        modalComponent={
-                           <CreatePostModal
-                              setRefresh={setRefresh}
-                              refresh={refresh}
-                           />
-                        }
-                     />
-                  </div>
-
-                  <div>
                      <button onClick={handleLogout} id="logout-button">
                         Log Out
                      </button>

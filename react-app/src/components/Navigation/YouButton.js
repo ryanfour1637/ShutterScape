@@ -1,82 +1,89 @@
-import React, {useState, useEffect, useRef} from "react";
-import {useDispatch} from "react-redux";
-import {useHistory} from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import OpenModalMenuItem from "./OpenModalMenuItem";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
-import "../../index.css"
+import "../../index.css";
 
-function YouButton({user}) {
-  const dispatch = useDispatch();
-  const {push} = useHistory();
-  const [showMenu, setShowMenu] = useState(false);
-  const ulRef = useRef();
+function YouButton({ user }) {
+   const dispatch = useDispatch();
+   const { push } = useHistory();
+   const [showMenu, setShowMenu] = useState(false);
+   const ulRef = useRef();
 
-  const openMenu = () => {
-    if (showMenu) return;
-    setShowMenu(true);
-  };
+   const openMenu = () => {
+      if (showMenu) return;
+      setShowMenu(true);
+   };
 
-  useEffect(() => {
-    if (!showMenu) return;
+   useEffect(() => {
+      if (!showMenu) return;
 
-    const closeMenu = (e) => {
-      if (!ulRef.current.contains(e.target)) {
-        setShowMenu(false);
-      }
-    };
+      const closeMenu = (e) => {
+         if (!ulRef.current.contains(e.target)) {
+            setShowMenu(false);
+         }
+      };
 
-    document.addEventListener("click", closeMenu);
+      document.addEventListener("click", closeMenu);
 
-    return () => document.removeEventListener("click", closeMenu);
-  }, [showMenu]);
+      return () => document.removeEventListener("click", closeMenu);
+   }, [showMenu]);
 
-  const closeMenu = () => setShowMenu(false);
+   const closeMenu = () => setShowMenu(false);
 
-  const logout = (e) => {
-    e.preventDefault();
-    dispatch(sessionActions.logout());
-    closeMenu();
-    push("/");
-  };
+   const logout = (e) => {
+      e.preventDefault();
+      dispatch(sessionActions.logout());
+      closeMenu();
+      push("/");
+   };
 
-  const goToUserPosts = () => {
-    push("/userposts");
-    return;
-  };
+   const goToUserPosts = () => {
+      push("/userposts");
+      return;
+   };
 
-  const ulClassName = "youbutton-dropdown" + (showMenu ? "" : " hidden");
+   const goToUserAlbums = () => {
+      push("/albums");
+      return;
+   };
 
-  return (
-    <div className="youbutton-parent-container">
-      <div onClick={openMenu} className="youbutton-button">
-        You
+   const ulClassName = "youbutton-dropdown" + (showMenu ? "" : " hidden");
+
+   return (
+      <div className="youbutton-parent-container">
+         <div onClick={openMenu} className="youbutton-button">
+            You
+         </div>
+         <div className={ulClassName} ref={ulRef}>
+            {user ? (
+               <div className="youbutton-container">
+                  <div id="manage-link" onClick={() => goToUserPosts()}>
+                     About
+                  </div>
+                  <div onClick={() => goToUserAlbums()}>Albums</div>
+                  <div>Favorites</div>
+               </div>
+            ) : (
+               <div className="youbutton-container">
+                  <OpenModalMenuItem
+                     itemText="Log In"
+                     onItemClick={closeMenu}
+                     modalComponent={<LoginFormModal />}
+                  />
+                  <OpenModalMenuItem
+                     itemText="Sign Up"
+                     onItemClick={closeMenu}
+                     modalComponent={<SignupFormModal />}
+                  />
+               </div>
+            )}
+         </div>
       </div>
-      <div className={ulClassName} ref={ulRef}>
-        {user ? (
-          <div className="youbutton-container">
-            <div id="manage-link" onClick={() => goToUserPosts()}>About</div>
-            <div>Albums</div>
-            <div>Favorites</div>
-          </div>
-        ) : (
-          <div className="youbutton-container">
-            <OpenModalMenuItem
-              itemText="Log In"
-              onItemClick={closeMenu}
-              modalComponent={<LoginFormModal />}
-            />
-            <OpenModalMenuItem
-              itemText="Sign Up"
-              onItemClick={closeMenu}
-              modalComponent={<SignupFormModal />}
-            />
-          </div>
-        )}
-      </div>
-    </div>
-  );
+   );
 }
 
 export default YouButton;
