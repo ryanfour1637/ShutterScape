@@ -51,6 +51,11 @@ function YouButton({ user }) {
       return;
    };
 
+   const goToUserFaves = () => {
+      push("/favorites");
+      return;
+   };
+
    const ulClassName = "youbutton-dropdown" + (showMenu ? "" : " hidden");
 
    return (
@@ -65,7 +70,7 @@ function YouButton({ user }) {
                      About
                   </div>
                   <div onClick={() => goToUserAlbums()}>Albums</div>
-                  <div>Favorites</div>
+                  <div onClick={() => goToUserFaves()}>Favorites</div>
                </div>
             ) : (
                <div className="youbutton-container">

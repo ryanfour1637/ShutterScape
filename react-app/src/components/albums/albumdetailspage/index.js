@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 import { useModal } from "../../../context/Modal";
 import OpenModalButton from "../../OpenModalButton";
 import CreateAlbumModel from "../createnewalbummodel";
-import { getAllAlbumsThunk } from "../../../store/session";
+
 
 export default function AlbumDetailsPage() {
    const dispatch = useDispatch();
@@ -24,7 +24,7 @@ export default function AlbumDetailsPage() {
 
    useEffect(() => {
       dispatch(getEveryPostThunk());
-      dispatch(getAllAlbumsThunk());
+      // dispatch(getAllAlbumsThunk());
    }, [dispatch]);
 
    console.log(albums);

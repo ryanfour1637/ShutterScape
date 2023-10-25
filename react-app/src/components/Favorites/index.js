@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory, Link } from "react-router-dom";
-import { getEveryPostThunk } from "../../../store/posts";
-import UserBanner from "../../UserBanner";
-import "../../CSS/john.css"
+import { getEveryPostThunk } from "../../store/posts";
+import { thunkGetAllFavorites } from "../../store/favorites"
+import UserBanner from "../UserBanner";
+import "../CSS/john.css"
 
-export default function AllUserPostsPage() {
+export default function FavoritesPage() {
   const { id } = useParams();
   const { push } = useHistory();
   const dispatch = useDispatch();
@@ -16,6 +17,7 @@ export default function AllUserPostsPage() {
 
   useEffect(() => {
     dispatch(getEveryPostThunk());
+    dispatch((thunkGetAllFavorites))
   }, [dispatch]);
 
 
@@ -23,7 +25,7 @@ export default function AllUserPostsPage() {
     <div >
       <UserBanner />
       <div className="allposts-parent-container">
-        <h1>Your Posts</h1>
+        <h1>Posts You Have Favorited</h1>
         <div className="allposts-photos">
           {postsArr &&
             postsArr.map((singlepost) =>

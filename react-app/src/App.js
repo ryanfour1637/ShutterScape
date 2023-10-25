@@ -14,6 +14,7 @@ import Home from "./components/Home"
 import AlbumDetailsPage from "./components/albums/albumdetailspage";
 import AlbumLandingPage from "./components/albums/albumlandingpage";
 import Footer from "./components/Footer";
+import FavoritesPage from "./components/Favorites";
 
 
 
@@ -33,6 +34,9 @@ function App() {
           <Switch>
             <Route exact path="/userposts">
               <AllUserPostsPage />
+            </Route>
+            <Route exact path="/favorites">
+              <FavoritesPage />
             </Route>
             <Route exact path="/login">
               <LoginFormPage />

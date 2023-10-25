@@ -6,12 +6,30 @@ const DELETE_FAVORITE = "/delete-favorite"
 
 
 // action creators
-const actionGetOneFavorite = (favId) => ({ type: GET_ONE_FAVORITE, favId });
+const actionGetOneFavorite = (favorite) => ({ type: GET_ONE_FAVORITE, favorite });
 const actionGetAllFavorites = (favorites) => ({ type: GET_ALL_FAVORITES, favorites });
 const actionDeleteFavorite = (favId) => ({ type: DELETE_FAVORITE, favId });
 
 
 // thunks
+
+export const thunkCreateFavorite = (postId) => async (dispatch) => {
+
+    const res = await fetch(`/api/favorites/${postId}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(postId)
+    });
+
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(actionGetOneFavorite(data));
+        return data;
+     } else {
+        const errors = await res.json();
+        return errors;
+     }
+}
 
 export const thunkGetOneFavorite = (favId) => async (dispatch) => {
 
@@ -43,11 +61,13 @@ export const thunkGetAllFavorites = () => async (dispatch) => {
 
 export const thunkDeleteFavorite = (favId) => async (dispatch) => {
 
-    const res = await fetch(`/api/favorites/${favId}`)
+    const res = await fetch(`/api/favorites/${favId}`, {
+        method: "DELETE"
+    })
 
     if (res.ok) {
         const data = await res.json();
-        dispatch(actionDeleteFavorite(data));
+        dispatch(actionDeleteFavorite(favId));
         return data;
      } else {
         const errors = await res.json();
@@ -58,7 +78,7 @@ export const thunkDeleteFavorite = (favId) => async (dispatch) => {
 
 // reducer
 
-const initialState = { favorites: {} };
+const initialState = { allFavorites: {} };
 
 export default function favesReducer(state = initialState, action) {
 
@@ -67,17 +87,18 @@ export default function favesReducer(state = initialState, action) {
     switch (action.type) {
 
         case GET_ONE_FAVORITE:
-            newState = { ...state, favorites: action.favorite };
+            newState = { ...state, allFavorites: {} };
+            newState.allFavorites[action.favorite.id] = action.favorite;
             return newState;
 
         case GET_ALL_FAVORITES:
             newState = { ...state, favorites: {}}
-            action.favorites.forEach((favorite) => (newState.favorites[favorite.id] = favorite));
+            action.allFavorites.forEach((favorite) => (newState.allFavorites[favorite.id] = favorite));
             return newState;
 
         case DELETE_FAVORITE:
-            newState = { ...state, favorites: { ...state.favorites }};
-            delete newState.favorites[action];
+            newState = { ...state, allFavorites: { ...state.allFavorites }};
+            delete newState.allFavorites[action.favId];
             return newState;
 
         default:

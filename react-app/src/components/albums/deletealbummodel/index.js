@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useModal } from "../../../context/Modal";
 import { getEveryPostThunk } from "../../../store/posts";
-import { getAllAlbumsThunk } from "../../../store/session";
+
 
 export default function DeleteAlbumModel({ id }) {
    const { closeModal } = useModal();
@@ -14,7 +14,7 @@ export default function DeleteAlbumModel({ id }) {
       await fetch(`/api/albums/${id}`, {
          method: "DELETE",
       });
-      dispatch(getAllAlbumsThunk());
+      // dispatch(getAllAlbumsThunk());
 
       push("/albums");
       return closeModal();
