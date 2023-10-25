@@ -97,18 +97,6 @@ export default function PostDetailsPage() {
 
                            {comment.userId === (user.id ? user.id : null) && (
                               <OpenModalButton
-                                 buttonText="Delete Comment"
-                                 modalComponent={
-                                    <DeleteCommentModal
-                                       commentId={comment.id}
-                                       id={id}
-                                    />
-                                 }
-                              />
-                           )}
-
-                           {comment.userId === (user.id ? user.id : null) && (
-                              <OpenModalButton
                                  buttonText="Update Comment"
                                  modalComponent={
                                     <UpdateCommentModal
@@ -120,6 +108,18 @@ export default function PostDetailsPage() {
                                  }
                               />
                            )}
+                           {comment.userId === (user.id ? user.id : null) && (
+                              <OpenModalButton
+                                 buttonText="Delete Comment"
+                                 modalComponent={
+                                    <DeleteCommentModal
+                                       commentId={comment.id}
+                                       id={id}
+                                    />
+                                 }
+                              />
+                           )}
+
                         </div>
                      </div>
                   ))

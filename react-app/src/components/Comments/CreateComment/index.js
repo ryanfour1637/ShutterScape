@@ -6,6 +6,7 @@ import {
    getEveryCommentThunk,
 } from "../../../store/comments";
 import { useModal } from "../../../context/Modal";
+import "../../CSS/john.css"
 
 export default function CreateCommentForm({ postId }) {
    //    const { push } = useHistory();
@@ -30,20 +31,23 @@ export default function CreateCommentForm({ postId }) {
    };
 
    return (
-      <form onSubmit={handleSubmit} className="comment-form-container">
-         <label>
-            <textarea
-               type="text"
-               id="comment-text-area"
-               value={comment}
-               placeholder="Add a comment about this photo..."
-               onChange={(e) => setComment(e.target.value)}
-            />
-         </label>
+      <div>
+         <h1 className="post-commenth1">Post Comment</h1>
+         <form onSubmit={handleSubmit} className="comment-form-container">
+            <label>
+               <textarea
+                  type="text"
+                  id="comment-text-area"
+                  value={comment}
+                  placeholder="Add a comment about this photo..."
+                  onChange={(e) => setComment(e.target.value)}
+               />
+            </label>
 
-         <button type="submit" id="comment-submit" disabled={disableSubmit()}>
-            Create Comment
-         </button>
-      </form>
+            <button type="submit" className="comment-submit" disabled={disableSubmit()}>
+               Create Comment
+            </button>
+         </form>
+      </div>
    );
 }
