@@ -40,20 +40,23 @@ export default function UpdateCommentModal({ commentId, setRefresh, refresh }) {
    };
 
    return (
-      <form onSubmit={handleSubmit} className="comment-form-container">
-         <label>
-            <textarea
-               type="text"
-               id="comment-text-area"
-               value={comment}
-               placeholder="Add a comment about this photo..."
-               onChange={(e) => setComment(e.target.value)}
-            />
-         </label>
+      <>
+         <h1 className="update-comment1">Update Comment</h1>
+         <form onSubmit={handleSubmit} className="comment-form-container">
+            <label>
+               <textarea
+                  type="text"
+                  id="comment-text-area"
+                  value={comment}
+                  placeholder="Add a comment about this photo..."
+                  onChange={(e) => setComment(e.target.value)}
+               />
+            </label>
 
-         <button type="submit" id="comment-submit" disabled={disableSubmit()}>
-            Update Comment
-         </button>
-      </form>
+            <button type="submit" className="comment-submit" disabled={disableSubmit()}>
+               Update Comment
+            </button>
+         </form>
+      </>
    );
 }
