@@ -10,6 +10,11 @@ import CreateCommentForm from "../../Comments/CreateComment";
 import DeleteCommentModal from "../../Comments/DeleteCommentModal";
 import UpdateCommentModal from "../../Comments/UpdateComment";
 import { useModal } from "../../../context/Modal";
+import {
+   thunkCreateFavorite,
+   thunkDeleteFavorite,
+   thunkGetAllFavorites,
+} from "../../../store/favorites";
 
 export default function PostDetailsPage() {
    const { id } = useParams();
@@ -17,17 +22,19 @@ export default function PostDetailsPage() {
    const dispatch = useDispatch();
    const { setModalContent, setOnModalClose } = useModal();
    const user = useSelector((state) => state.session.user);
+   const getAllFavorites = useSelector((state) => state.favorites.allFavorites);
    const allPosts = useSelector((state) => state.posts.allPosts);
    const comments = useSelector((state) => state.comments.allComments);
    const [refreshCreate, setRefreshCreate] = useState("");
    const [refreshUpdate, setRefreshUpdate] = useState("");
+   const [favorite, setFavorite] = useState(false);
 
    const post = allPosts[id];
-
 
    useEffect(() => {
       dispatch(getEveryPostThunk());
       dispatch(getEveryCommentThunk());
+      dispatch(thunkGetAllFavorites());
       setRefreshCreate("");
       setRefreshUpdate("");
    }, [dispatch, refreshCreate, refreshUpdate]);
@@ -48,6 +55,18 @@ export default function PostDetailsPage() {
    const commentsArr = Object.values(comments).filter(
       (comment) => comment.postId == id
    );
+
+   const deleteFavorite = () => {
+      setFavorite(false);
+      dispatch(thunkDeleteFavorite(id));
+      return;
+   };
+
+   const createFavorite = () => {
+      setFavorite(true);
+      dispatch(thunkCreateFavorite(id));
+      return;
+   };
 
    return (
       <div>
@@ -72,6 +91,12 @@ export default function PostDetailsPage() {
                   </div>
                )}
             </div>
+
+            <button
+               onClick={favorite ? () => deleteFavorite() : createFavorite()}
+            >
+               <i className="fa-solid fa-star"></i>
+            </button>
          </div>
 
          <div className="image-details-container">
