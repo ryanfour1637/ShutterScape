@@ -35,7 +35,7 @@ class Post(db.Model):
             "createdAt": self.created_at,
             'users': self.my_post_user_id.to_dict(),
         }
-        if self.my_post_fav_id:
-            return_dict[ "favorites"] = self.my_post_fav_id.to_dict(),
+        # if self.my_post_fav_id:
+        #     return_dict[ "favorites"] = self.my_post_fav_id.to_dict(),
 
         return return_dict

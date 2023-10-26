@@ -17,22 +17,12 @@ const actionAddOneComment = (comment) => ({ type: ADD_ONE_COMMENT, comment });
 //Get all Comments
 export const getEveryCommentThunk = () => async (dispatch) => {
    const res = await fetch("/api/comments/all");
-   console.log("🚀 ~ file: comments.js:20 ~ getEveryCommentThunk ~ res:", res);
-
    if (res.ok) {
       const data = await res.json();
       dispatch(actionReadComments(data));
-      console.log(
-         "🚀 ~ file: comments.js:26 ~ getEveryCommentThunk ~ data:",
-         data
-      );
       return data;
    } else {
       const errors = await res.json();
-      console.log(
-         "🚀 ~ file: comments.js:29 ~ getEveryCommentThunk ~ errors:",
-         errors
-      );
       return errors;
    }
 };
@@ -88,10 +78,7 @@ export const updateCommentThunk = (comment, commentId) => async (dispatch) => {
 
 // Delete Comment
 export const deleteCommentThunk = (commentId) => async (dispatch) => {
-   console.log(
-      "🚀 ~ file: comments.js:43 ~ deleteCommentThunk ~ commentId):",
-      commentId
-   );
+  
    const response = await fetch(`/api/comments/${commentId}`, {
       method: "DELETE",
    });
@@ -111,10 +98,6 @@ export default function commentsReducer(state = initialState, action) {
       case READ_COMMENTS:
          newState = { ...state, allComments: {} };
          action.comment.forEach((com) => (newState.allComments[com.id] = com));
-         console.log(
-            "🚀 ~ file: comments.js:81 ~ commentsReducer ~ action:",
-            action
-         );
          return newState;
       case ADD_ONE_COMMENT:
          console.log(state.allComments);
@@ -127,10 +110,6 @@ export default function commentsReducer(state = initialState, action) {
       case DELETE_COMMENT:
          newState = { ...state, allComments: { ...state.allComments } };
          delete newState.allComments[action.id];
-         console.log(
-            "🚀 ~ file: comments.js:68 ~ commentsReducer ~ action:",
-            action
-         );
          return newState;
 
       default:
