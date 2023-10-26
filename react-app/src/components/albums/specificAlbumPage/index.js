@@ -56,10 +56,8 @@ export default function SpecificAlbumPage() {
    }
    return (
 
-      <div>
-         <UserBanner />
       <div className="specific-album-container">
-
+         <UserBanner />
          <div>
             <OpenModalButton
                buttonText="Create a new post"
