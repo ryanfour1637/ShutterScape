@@ -77,7 +77,8 @@ def upgrade():
     sa.Column('created_at', sa.Date(), nullable=False),
     sa.ForeignKeyConstraint(['post_id'], ['posts.id'], ),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
-    sa.PrimaryKeyConstraint('id')
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('user_id', 'post_id')
     )
 
     if environment == "production":
