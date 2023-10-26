@@ -1,13 +1,13 @@
-import React, {useState} from "react";
-import {useDispatch} from "react-redux";
-import {useHistory} from "react-router-dom";
-import {useModal} from "../../context/Modal";
-import {signUp} from "../../store/session";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { useModal } from "../../context/Modal";
+import { signUp } from "../../store/session";
 import "../CSS/john.css";
 
 function SignupFormModal() {
   const dispatch = useDispatch();
-  const {push} = useHistory();
+  const { push } = useHistory();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [age, setAge] = useState("");
@@ -16,7 +16,7 @@ function SignupFormModal() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
-  const {closeModal} = useModal();
+  const { closeModal } = useModal();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,7 +32,7 @@ function SignupFormModal() {
       newErrors.password = "Password must be at least six characters";
     if (password !== confirmPassword)
       newErrors.confirmPassword =
-        "Confirm Password field must be the same as the Password field";
+        "Passwords must match";
     if (isNaN(age) || age <= 0) newErrors.age = "Age must be a positive number";
 
     if (Object.keys(newErrors).length === 0) {
@@ -40,10 +40,6 @@ function SignupFormModal() {
         signUp(firstName, lastName, age, username, email, password)
       );
       if (data) {
-        console.log(
-          "🚀 ~ file: index.js:38 ~ handleSubmit DATA ERRORS ~ data:",
-          data
-        );
         setErrors(data);
       } else {
         closeModal();
@@ -59,8 +55,8 @@ function SignupFormModal() {
       <h1 className="Sign-up-h1">Sign Up for ShutterScape</h1>
       <form onSubmit={handleSubmit}>
         <ul>
-          {errors.map((error, idx) => (
-            <div key={idx}>{error}</div>
+          {errors && errors.length >= 1 && errors.map((error, idx) => (
+            <div className="error" key={idx}>{error}</div>
           ))}
         </ul>
         <label>
