@@ -28,17 +28,26 @@ export default function PostDetailsPage() {
    const [refreshCreate, setRefreshCreate] = useState("");
    const [refreshUpdate, setRefreshUpdate] = useState("");
    const [favorite, setFavorite] = useState(false);
-
+   
    const post = allPosts[id];
-
+   
+   const ownerFavorites = Object.values(getAllFavorites).filter((favorite) => favorite.userId == user.id)
+   console.log("🚀 ~ file: index.js:35 ~ PostDetailsPage ~ ownerFavorites:", ownerFavorites)
+   const thisPostFavorites = ownerFavorites.filter((favorite) => favorite.postId == id)
+   
+   console.log("🚀 ~ file: index.js:37 ~ PostDetailsPage ~ thisPostFavorites:", thisPostFavorites)
+   let favId
+   if (thisPostFavorites.length) {
+      favId = thisPostFavorites[0]?.id
+   }
    useEffect(() => {
       dispatch(getEveryPostThunk());
       dispatch(getEveryCommentThunk());
       dispatch(thunkGetAllFavorites());
       setRefreshCreate("");
       setRefreshUpdate("");
-   }, [dispatch, refreshCreate, refreshUpdate]);
-
+   }, [dispatch, refreshCreate, refreshUpdate, favorite]);
+   
    const fixDate = (dateString) => {
       const date = new Date(dateString);
       const formatter = new Intl.DateTimeFormat("en-US", {
@@ -48,24 +57,27 @@ export default function PostDetailsPage() {
       });
       return formatter.format(date);
    };
-
+   
    if (post === undefined) return null;
    if (comments == undefined) return null;
-
+   
    const commentsArr = Object.values(comments).filter(
       (comment) => comment.postId == id
-   );
+      );
+      
+      const deleteFavorite = () => {
+         console.log("🚀 ~ DELETE TOP file: index.js:31 ~ PostDetailsPage ~ favorite:", favorite)
+         
+         dispatch(thunkDeleteFavorite(favId));
+         return setFavorite(false);
+      };
+      
+      const createFavorite = () => {
+         console.log("🚀 ~ CREATE TOP file: index.js:31 ~ PostDetailsPage ~ favorite:", favorite)
+         
+         dispatch(thunkCreateFavorite(id));
 
-   const deleteFavorite = () => {
-      setFavorite(false);
-      dispatch(thunkDeleteFavorite(id));
-      return;
-   };
-
-   const createFavorite = () => {
-      setFavorite(true);
-      dispatch(thunkCreateFavorite(id));
-      return;
+         return setFavorite(true);
    };
 
    return (
@@ -93,7 +105,7 @@ export default function PostDetailsPage() {
             </div>
 
             <button
-               onClick={favorite ? () => deleteFavorite() : createFavorite()}
+               onClick={favorite ? () => deleteFavorite() : () => createFavorite()}
             >
                <i className="fa-solid fa-star"></i>
             </button>

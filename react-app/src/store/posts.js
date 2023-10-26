@@ -29,14 +29,8 @@ export const getTenRandomPostsThunk = () => async (dispatch) => {
 //getAllOwnerPosts Thunk
 export const getTenRandomNonOwnerPosts = () => async (dispatch) => {
    const res = await fetch("/api/posts/current");
-   console.log("🚀 ~ file: posts.js:34 ~ getAllOwnerPostsThunk ~ res:", res);
-
    if (res.ok) {
       const data = await res.json();
-      console.log(
-         "🚀 ~ file: posts.js:39 ~ getAllOwnerPostsThunk ~ data:",
-         data
-      );
       dispatch(actionGetPosts(data));
       return data;
    } else {
@@ -47,14 +41,8 @@ export const getTenRandomNonOwnerPosts = () => async (dispatch) => {
 
 export const getEveryPostThunk = () => async (dispatch) => {
    const res = await fetch("/api/posts/all");
-   console.log("🚀 ~ file: posts.js:34 ~ getAllOwnerPostsThunk ~ res:", res);
-
    if (res.ok) {
       const data = await res.json();
-      console.log(
-         "🚀 ~ file: posts.js:39 ~ getAllOwnerPostsThunk ~ data:",
-         data
-      );
       dispatch(actionGetPosts(data));
       return data;
    } else {
@@ -65,9 +53,6 @@ export const getEveryPostThunk = () => async (dispatch) => {
 //getPostDetails Thunk
 export const getPostDetailsThunk = (id) => async (dispatch) => {
    const res = await fetch(`/api/posts/${id}`);
-
-   console.log("🚀 ~ file: posts.js:53 ~ getPostDetailsThunk ~ res:", res);
-
    if (res.ok) {
       const data = await res.json();
       dispatch(actionGetPostDetails(data));
@@ -111,8 +96,6 @@ export const updatePostThunk = (form, postId) => async (dispatch) => {
 
       if (res.ok) {
          const resPost = await res.json();
-         console.log("🚀 ~ file: posts.js:112 ~ updatePostThunk ~ resPost:", resPost)
-
          return resPost;
       } else {
 
@@ -121,8 +104,6 @@ export const updatePostThunk = (form, postId) => async (dispatch) => {
    }
 
    catch (error) {
-      console.log("🚀 ~ file: posts.js:125 ~ updatePostThunk ~ error:", error)
-
       const data = await JSON.stringify(error);
       return data;
 

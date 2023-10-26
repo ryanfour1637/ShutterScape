@@ -26,15 +26,15 @@ export default function FavoritesPage() {
             <h1>Posts You Have Favorited</h1>
             <div className="allposts-photos">
                {postsArr &&
-                  postsArr.map((singlepost) =>
-                     singlepost.ownerId === user.id ? (
-                        <div key={singlepost.id}>
-                           <Link to={`/posts/${singlepost.id}`}>
+                  postsArr.map((singlePost) =>
+                     singlePost.ownerId === user.id ? (
+                        <div key={singlePost.id}>
+                           <Link to={`/posts/${singlePost.id}`}>
                               <img
                                  className="userpost-images"
-                                 src={singlepost.photoUrl}
-                                 alt={singlepost.title}
-                              />
+                                 src={singlePost.photoUrl}
+                                 alt={singlePost.title}
+                              ></img>
                            </Link>
                         </div>
                      ) : null
