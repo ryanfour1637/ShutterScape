@@ -8,41 +8,49 @@ import CreatePostModal from "../../Posts/CreatePostModal";
 import { setUser } from "../../../store/session";
 import { thunkGetAllAlbums } from "../../../store/albums";
 import { NavLink } from "react-router-dom";
+import "../../CSS/john.css";
 
 export default function SpecificAlbumPage() {
    const { id } = useParams();
    const dispatch = useDispatch();
    const [refreshCreate, setRefreshCreate] = useState("");
 
-   const getAlbums = useSelector((state) => state.albums.allAlbums)
+   const getAlbums = useSelector((state) => state.albums.allAlbums);
 
-   const thisAlbum = getAlbums[id]
-   console.log("🚀 ~ file: index.js:19 ~ SpecificAlbumPage ~ thisAlbum:", thisAlbum)
-
+   const thisAlbum = getAlbums[id];
+   console.log(
+      "🚀 ~ file: index.js:19 ~ SpecificAlbumPage ~ thisAlbum:",
+      thisAlbum
+   );
 
    useEffect(() => {
-      dispatch(thunkGetAllAlbums())
+      dispatch(thunkGetAllAlbums());
       setRefreshCreate("");
-   }, [dispatch]);
+   }, [dispatch, refreshCreate]);
 
    if (thisAlbum?.posts == undefined || !thisAlbum?.posts) {
-      return (<div className="specific-album-container">
-         <div>
-            <OpenModalButton
-               buttonText="Create a new post"
-               modalComponent={
-                  <CreatePostModal id={id} setRefreshCreate={setRefreshCreate} />
-               }
-            />
+      return (
+         <div className="specific-album-container">
+            <div>
+               <OpenModalButton
+                  buttonText="Create a new post"
+                  modalComponent={
+                     <CreatePostModal
+                        id={id}
+                        setRefreshCreate={setRefreshCreate}
+                     />
+                  }
+               />
+            </div>
+            <div>
+               <OpenModalButton
+                  buttonText="Delete"
+                  modalComponent={<DeleteAlbumModel id={id} />}
+               />
+            </div>
+            <h1>Add Photos to Album</h1>
          </div>
-         <div>
-            <OpenModalButton
-               buttonText="Delete"
-               modalComponent={<DeleteAlbumModel id={id} />}
-            />
-         </div>
-         <h1>Add Photos to Album</h1>
-      </div>)
+      );
    }
    return (
       <div className="specific-album-container">
@@ -64,7 +72,13 @@ export default function SpecificAlbumPage() {
          <div className="allposts-photos">
             {thisAlbum.posts.map((post) => (
                <NavLink to={`/posts/${post.id}`}>
-                  <div title={`${post.title}`}><img src={post.photoUrl} className="userpost-images"></img></div>
+                  <div title={`${post.title}`}>
+                     <img
+                        src={post.photoUrl}
+                        className="userpost-images"
+                        alt=""
+                     ></img>
+                  </div>
                </NavLink>
             ))}
          </div>

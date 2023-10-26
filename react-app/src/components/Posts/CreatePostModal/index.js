@@ -3,9 +3,10 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { createPostThunk } from "../../../store/posts";
 import { useModal } from "../../../context/Modal";
+import "../../CSS/john.css";
 
 export default function CreatePostModal({ id, setRefreshCreate }) {
-   console.log("🚀 ~ file: index.js:8 ~ CreatePostModal ~ id :", id )
+   console.log("🚀 ~ file: index.js:8 ~ CreatePostModal ~ id :", id);
    const { push } = useHistory();
    const dispatch = useDispatch();
    const [title, setTitle] = useState("");
@@ -14,8 +15,7 @@ export default function CreatePostModal({ id, setRefreshCreate }) {
    const [imageLoading, setImageLoading] = useState(false);
    const [errors, setErrors] = useState([]);
    const { closeModal } = useModal();
-   const [validationObject, setValidationObject] = useState({})
-   const [disableSubmitButton, setdisableSubmitButton] = useState(true);
+   const [validationObject, setValidationObject] = useState({});
 
    const handleSubmit = async (e) => {
       e.preventDefault();
@@ -23,8 +23,8 @@ export default function CreatePostModal({ id, setRefreshCreate }) {
       formData.append("image", image);
       formData.append("title", title);
       formData.append("description", description);
-      formData.append("album_id", id)
-      console.log("🚀 ~ file: index.js:24 ~ handleSubmit ~ id:", id)
+      formData.append("album_id", id);
+      console.log("🚀 ~ file: index.js:24 ~ handleSubmit ~ id:", id);
 
       setImageLoading(true);
       const postData = await dispatch(createPostThunk(formData));
@@ -34,7 +34,6 @@ export default function CreatePostModal({ id, setRefreshCreate }) {
       setDescription("");
 
       if (postData.errors === undefined || !postData.errors) {
-         
          setRefreshCreate(description);
          // return push(`/posts/${postData.id}`);
          return closeModal();
@@ -49,23 +48,21 @@ export default function CreatePostModal({ id, setRefreshCreate }) {
       const errorsObject = {};
 
       if (description.length < 10) {
-         errorsObject.description = "Description must be more than 10 characters."
+         errorsObject.description =
+            "Description must be more than 10 characters.";
       }
 
-
-
-
-      setValidationObject(errorsObject)
-   }, [description])
-
-   useEffect(() => {
-      setdisableSubmitButton(!(description.length >= 10));
+      setValidationObject(errorsObject);
    }, [description]);
 
    return (
       <div>
          <h1 className="create-post-h1">Create a Post</h1>
-         <form className="create-post-form" onSubmit={handleSubmit} encType="multipart/form-data">
+         <form
+            className="create-post-form"
+            onSubmit={handleSubmit}
+            encType="multipart/form-data"
+         >
             <input
                type="file"
                accept="image/*"
@@ -84,8 +81,12 @@ export default function CreatePostModal({ id, setRefreshCreate }) {
 
             <label>Description</label>
             <div className="error-box-post">
-               {validationObject.description && <p
-                  className="errors-one-post"> {validationObject.description}</p>}
+               {validationObject.description && (
+                  <p className="errors-one-post">
+                     {" "}
+                     {validationObject.description}
+                  </p>
+               )}
             </div>
             <textarea
                type="text"
@@ -95,7 +96,13 @@ export default function CreatePostModal({ id, setRefreshCreate }) {
                onChange={(e) => setDescription(e.target.value)}
             />
 
-            <button className="create-post-submit" type="submit" disabled={Object.keys(validationObject).length > 0}>Submit</button>
+            <button
+               className="create-post-submit"
+               type="submit"
+               disabled={Object.keys(validationObject).length > 0}
+            >
+               Submit
+            </button>
             {imageLoading && <p>Loading...</p>}
          </form>
       </div>
