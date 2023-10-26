@@ -13,6 +13,8 @@ export default function UpdatePostModal({ postId }) {
   const [image, setImage] = useState(null);
   const [errors, setErrors] = useState([]);
   const { closeModal } = useModal();
+  const [validationObject, setValidationObject] = useState({})
+  const [disableSubmitButton, setdisableSubmitButton] = useState(true);
 
   useEffect(() => {
 
@@ -47,6 +49,23 @@ export default function UpdatePostModal({ postId }) {
 
   };
 
+  useEffect(() => {
+    const errorsObject = {};
+
+    if (description.length < 10) {
+      errorsObject.description = "Description must be more than 10 characters."
+    }
+
+
+
+
+    setValidationObject(errorsObject)
+  }, [description])
+
+  useEffect(() => {
+    setdisableSubmitButton(!(description.length >= 10));
+  }, [description]);
+
   return (
     <div className="update-post-container">
       <h1 className="Updatepost">Update Post</h1>
@@ -61,6 +80,10 @@ export default function UpdatePostModal({ postId }) {
         />
 
         <label style={{ fontFamily: 'Proxima Nova,helvetica neue,helvetica,arial,sans-serif' }}>Description</label>
+        <div className="error-box-post">
+          {validationObject.description && <p
+            className="errors-one-post"> {validationObject.description}</p>}
+        </div>
         <textarea
           type="text"
           className="update-post-text-area"
@@ -70,7 +93,7 @@ export default function UpdatePostModal({ postId }) {
           onChange={(e) => setDescription(e.target.value)}
         />
 
-        <button className="submit-update-post" type="submit">Submit</button>
+        <button className="submit-update-post" type="submit" disabled={Object.keys(validationObject).length > 0}>Submit</button>
       </form>
     </div>
   );

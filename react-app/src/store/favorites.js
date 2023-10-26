@@ -50,6 +50,7 @@ export const thunkGetAllFavorites = () => async (dispatch) => {
 
    if (res.ok) {
       const data = await res.json();
+      console.log("🚀 ~ file: favorites.js:53 ~ thunkGetAllFavorites ~ data:", data)
       dispatch(actionGetAllFavorites(data));
       return data;
    } else {
@@ -59,7 +60,7 @@ export const thunkGetAllFavorites = () => async (dispatch) => {
 };
 
 export const thunkDeleteFavorite = (favId) => async (dispatch) => {
-   const res = await fetch(`/api/favorites/${favId}`, {
+   const res = await fetch(`/api/favorites/delete/${favId}`, {
       method: "DELETE",
    });
 
@@ -87,15 +88,16 @@ export default function favesReducer(state = initialState, action) {
          return newState;
 
       case GET_ALL_FAVORITES:
-         newState = { ...state, favorites: {} };
-         action.allFavorites.forEach(
+         newState = { ...state, allFavorites: {} };
+         action.favorites.forEach(
             (favorite) => (newState.allFavorites[favorite.id] = favorite)
          );
          return newState;
 
       case DELETE_FAVORITE:
+         console.log("🚀 ~ file: favorites.js:100 ~ favesReducer ~ action:", action)
          newState = { ...state, allFavorites: { ...state.allFavorites } };
-         delete newState.allFavorites[action.favId];
+         delete newState.allFavorites[action];
          return newState;
 
       default:

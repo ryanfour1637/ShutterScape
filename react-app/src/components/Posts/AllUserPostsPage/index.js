@@ -23,6 +23,7 @@ export default function AllUserPostsPage() {
     <div >
       <UserBanner />
       <div className="allposts-parent-container">
+        <h1 className="album-page-h1">Your Photos</h1>
         <div className="allposts-photos">
           {postsArr &&
             postsArr.map((singlepost) =>

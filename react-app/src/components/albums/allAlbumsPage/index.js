@@ -9,6 +9,9 @@ import CreateAlbumModel from "../createnewalbummodel";
 import { thunkGetAllAlbums } from "../../../store/albums";
 import UserBanner from "../../UserBanner";
 
+import "../../CSS/john.css"
+
+
 
 export default function AllAlbumPage() {
    const dispatch = useDispatch();
@@ -31,9 +34,14 @@ export default function AllAlbumPage() {
    if (albums?.length > 0) {
    } else {
       return (
+
          <div>
             <UserBanner />
             <h1>Album Details Page</h1>
+
+         <div className="da-album-page">
+            <h1 className="album-page-h1">Add Albums</h1>
+
             <div>
                <OpenModalButton
                   buttonText="Create New Album"
@@ -41,6 +49,7 @@ export default function AllAlbumPage() {
                />
             </div>
          </div>
+    </div>
       );
    }
 
@@ -60,9 +69,11 @@ export default function AllAlbumPage() {
 
    if (!albums) return null;
    return (
-      <div>
-         <UserBanner />
-         <h1>Album Details Page</h1>
+
+      <div className="da-album-page">
+              <UserBanner />
+         <h1 className="album-page-h1">Album Details Page</h1>
+
          <div>
             <OpenModalButton
                buttonText="Create New Album"
@@ -79,10 +90,10 @@ export default function AllAlbumPage() {
                               <img
                                  className="testIMG"
                                  alt=""
-                                 src={album.posts ? album.posts[0] : "https://cdn-icons-png.flaticon.com/512/3767/3767084.png"}
+                                 src={album.posts ? album.posts[0].photoUrl : "https://cdn-icons-png.flaticon.com/512/3767/3767084.png"}
                               ></img>
                            </div>
-                           <div>{album.title}</div>
+                           <div className="album-title">{album.title}</div>
                         </div>
                      </NavLink>
                   </div>

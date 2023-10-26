@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useModal } from "../../../context/Modal";
 import { getEveryPostThunk } from "../../../store/posts";
-import { thunkCreateAlbum, thunkGetAllAlbums} from "../../../store/albums";
+import { thunkCreateAlbum, thunkGetAllAlbums } from "../../../store/albums";
 
 export default function CreateAlbumModel() {
    const { closeModal } = useModal();
@@ -12,7 +12,7 @@ export default function CreateAlbumModel() {
    const dispatch = useDispatch();
    const { push } = useHistory();
 
-   useEffect(() => {}, [dispatch]);
+   useEffect(() => { }, [dispatch]);
 
    const handleSubmit = async (e) => {
       e.preventDefault();
@@ -33,16 +33,19 @@ export default function CreateAlbumModel() {
    };
 
    return (
-      <form onSubmit={handleSubmit}>
-         <label>Album Title</label>
-         <input
-            type="text"
-            name="title"
-            placeholder="Title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-         />
-         <button type="submit">Submit</button>
-      </form>
+      <div>
+         <h1 className="create-album-h1">Create Album</h1>
+         <form onSubmit={handleSubmit} className="album-form-container">
+            <label>Album Title</label>
+            <input
+               type="text"
+               name="title"
+               placeholder="Title"
+               value={title}
+               onChange={(e) => setTitle(e.target.value)}
+            />
+            <button type="submit" className="album-submit">Submit</button>
+         </form>
+      </div>
    );
 }
