@@ -6,122 +6,122 @@ from sqlalchemy.sql import text
 
 def seed_favorites():
     new_favorite1 = Favorite(
-            user_id = randint(1,len(User.query.all())),
-            post_id = randint(1,len(Post.query.all())),
+            user_id = 1,
+            post_id = 1,
             created_at = date.today()
 
         )
     new_favorite2 = Favorite(
-            user_id = randint(1,len(User.query.all())),
-            post_id = randint(1,len(Post.query.all())),
+            user_id = 2,
+            post_id = 2,
             created_at = date.today()
 
         )
     new_favorite3 = Favorite(
-            user_id = randint(1,len(User.query.all())),
-            post_id = randint(1,len(Post.query.all())),
+            user_id = 3,
+            post_id = 3,
             created_at = date.today()
 
         )
     new_favorite4 = Favorite(
-            user_id = randint(1,len(User.query.all())),
-            post_id = randint(1,len(Post.query.all())),
+            user_id = 4,
+            post_id = 4,
             created_at = date.today()
 
         )
     new_favorite5 = Favorite(
-            user_id = randint(1,len(User.query.all())),
-            post_id = randint(1,len(Post.query.all())),
+            user_id = 5,
+            post_id = 5,
             created_at = date.today()
 
         )
     new_favorite6 = Favorite(
-            user_id = randint(1,len(User.query.all())),
-            post_id = randint(1,len(Post.query.all())),
+            user_id = 6,
+            post_id = 6,
             created_at = date.today()
 
         )
     new_favorite7 = Favorite(
-            user_id = randint(1,len(User.query.all())),
-            post_id = randint(1,len(Post.query.all())),
+            user_id = 7,
+            post_id = 7,
             created_at = date.today()
 
         )
     new_favorite8 = Favorite(
-            user_id = randint(1,len(User.query.all())),
-            post_id = randint(1,len(Post.query.all())),
+            user_id = 8,
+            post_id = 8,
             created_at = date.today()
 
         )
     new_favorite9 = Favorite(
-            user_id = randint(1,len(User.query.all())),
-            post_id = randint(1,len(Post.query.all())),
+            user_id = 9,
+            post_id = 9,
             created_at = date.today()
 
         )
     new_favorite10 = Favorite(
-            user_id = randint(1,len(User.query.all())),
-            post_id = randint(1,len(Post.query.all())),
+            user_id = 10,
+            post_id = 10,
             created_at = date.today()
 
         )
     new_favorite11 = Favorite(
-            user_id = randint(1,len(User.query.all())),
-            post_id = randint(1,len(Post.query.all())),
+            user_id = 1,
+            post_id = 2,
             created_at = date.today()
 
         )
     new_favorite12 = Favorite(
-            user_id = randint(1,len(User.query.all())),
-            post_id = randint(1,len(Post.query.all())),
+            user_id = 1,
+            post_id = 3,
             created_at = date.today()
 
         )
     new_favorite13 = Favorite(
-            user_id = randint(1,len(User.query.all())),
-            post_id = randint(1,len(Post.query.all())),
+            user_id = 1,
+            post_id = 4,
             created_at = date.today()
 
         )
     new_favorite14 = Favorite(
-            user_id = randint(1,len(User.query.all())),
-            post_id = randint(1,len(Post.query.all())),
+            user_id = 1,
+            post_id = 5,
             created_at = date.today()
 
         )
     new_favorite15 = Favorite(
-            user_id = randint(1,len(User.query.all())),
-            post_id = randint(1,len(Post.query.all())),
+            user_id = 1,
+            post_id = 6,
             created_at = date.today()
 
         )
     new_favorite16 = Favorite(
-            user_id = randint(1,len(User.query.all())),
-            post_id = randint(1,len(Post.query.all())),
+            user_id = 1,
+            post_id = 7,
             created_at = date.today()
 
         )
     new_favorite17 = Favorite(
-            user_id = randint(1,len(User.query.all())),
-            post_id = randint(1,len(Post.query.all())),
+            user_id = 1,
+            post_id = 8,
             created_at = date.today()
 
         )
     new_favorite18 = Favorite(
-            user_id = randint(1,len(User.query.all())),
-            post_id = randint(1,len(Post.query.all())),
+            user_id = 1,
+            post_id = 9,
             created_at = date.today()
 
         )
     new_favorite19 = Favorite(
-            user_id = randint(1,len(User.query.all())),
-            post_id = randint(1,len(Post.query.all())),
+            user_id = 1,
+            post_id = 10,
             created_at = date.today()
 
         )
     new_favorite20 = Favorite(
-            user_id = randint(1,len(User.query.all())),
-            post_id = randint(1,len(Post.query.all())),
+            user_id = 1,
+            post_id = 11,
             created_at = date.today()
 
         )
@@ -135,5 +135,5 @@ def undo_favorites():
         db.session.execute(f"TRUNCATE table {SCHEMA}.favorites RESTART IDENTITY CASCADE;")
     else:
         db.session.execute(text("DELETE FROM favorites"))
-        
+
     db.session.commit()

@@ -94,12 +94,8 @@ export default function favesReducer(state = initialState, action) {
          return newState;
 
       case DELETE_FAVORITE:
-         console.log(
-            "🚀 ~ file: favorites.js:100 ~ favesReducer ~ action:",
-            action
-         );
          newState = { ...state, allFavorites: { ...state.allFavorites } };
-         delete newState.allFavorites[action];
+         delete newState.allFavorites[action.favId];
          return newState;
 
       default:
