@@ -10,47 +10,26 @@ import CreateCommentForm from "../../Comments/CreateComment";
 import DeleteCommentModal from "../../Comments/DeleteCommentModal";
 import UpdateCommentModal from "../../Comments/UpdateComment";
 import { useModal } from "../../../context/Modal";
-import {
-   thunkCreateFavorite,
-   thunkDeleteFavorite,
-   thunkGetAllFavorites,
-} from "../../../store/favorites";
+import FavoriteTracker from "../../Favorites-Component/favorite-tracker";
 
 export default function PostDetailsPage() {
    const { id } = useParams();
    const { push } = useHistory();
    const dispatch = useDispatch();
-   const { setModalContent, setOnModalClose } = useModal();
    const user = useSelector((state) => state.session.user);
-   const getAllFavorites = useSelector((state) => state.favorites.allFavorites);
    const allPosts = useSelector((state) => state.posts.allPosts);
    const comments = useSelector((state) => state.comments.allComments);
    const [refreshCreate, setRefreshCreate] = useState("");
    const [refreshUpdate, setRefreshUpdate] = useState("");
-   const [favorite, setFavorite] = useState("");
-   // const [hasFavorite, setHasFavorite] = useState(false);
 
    const post = allPosts[id];
 
-   const ownerFavorites = Object.values(getAllFavorites).filter(
-      (favorite) => favorite.userId == user.id
-   );
-
-   const thisPostFavorites = ownerFavorites.filter(
-      (favorite) => favorite.postId == id
-   );
-
-   let favId;
-   if (thisPostFavorites.length) {
-      favId = thisPostFavorites[0]?.id;
-   }
    useEffect(() => {
       dispatch(getEveryPostThunk());
       dispatch(getEveryCommentThunk());
-      dispatch(thunkGetAllFavorites());
       setRefreshCreate("");
       setRefreshUpdate("");
-   }, [dispatch, refreshCreate, refreshUpdate, favorite]);
+   }, [dispatch, refreshCreate, refreshUpdate]);
 
    const fixDate = (dateString) => {
       const date = new Date(dateString);
@@ -70,16 +49,6 @@ export default function PostDetailsPage() {
    const commentsArr = Object.values(comments).filter(
       (comment) => comment.postId == id
    );
-
-   const deleteFavorite = () => {
-      setFavorite(false);
-      return dispatch(thunkDeleteFavorite(favId));
-   };
-
-   const createFavorite = () => {
-      setFavorite(true);
-      return dispatch(thunkCreateFavorite(id));
-   };
 
    return (
       <div>
@@ -109,23 +78,7 @@ export default function PostDetailsPage() {
                   </div>
                )}
             </div>
-
-            <button
-               className="fav-button"
-               onClick={
-                  thisPostFavorites.length
-                     ? () => deleteFavorite()
-                     : () => createFavorite()
-               }
-            >
-               <i
-                  className={
-                     thisPostFavorites.length
-                        ? "fa-solid fa-star filled-fav"
-                        : "fa-solid fa-star unfilled-fav"
-                  }
-               ></i>
-            </button>
+            <FavoriteTracker postId={id} userId={user.id} />
          </div>
 
          <div className="image-details-container">

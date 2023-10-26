@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory, Link } from "react-router-dom";
 import { getEveryPostThunk } from "../../store/posts";
@@ -20,10 +20,6 @@ export default function FavoritesPage() {
       dispatch(getEveryPostThunk());
       dispatch(thunkGetAllFavorites());
    }, [dispatch]);
-   console.log(
-      "🚀 ~ file: index.js:sdfasfda ~ PostDetailsPage ~ ownerFavorites:",
-      ownerFavorites
-   );
 
    return (
       <div>
