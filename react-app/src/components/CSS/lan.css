@@ -6,6 +6,7 @@
     color: white;
     padding: 20px;
     padding-bottom: 56px;
+    font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
     background-image: url(https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/rainy-default-bg.jpg);
 }
 
@@ -15,13 +16,15 @@
     justify-content: left;
     align-items: center;
     padding: 8px 0px 0px 20px;
-    font-size: 10px;
+    font-size: 14px;
     color: black;
     background-color: white;
 }
 
 .banner-nav-container div {
     padding-right: 32px;
+    cursor: pointer;
+    font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
 }
 .banner-user-details {
 
