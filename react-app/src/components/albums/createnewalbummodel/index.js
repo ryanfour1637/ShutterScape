@@ -31,7 +31,7 @@ export default function CreateAlbumModel() {
          setErrors(res.errors);
       }
    };
-   
+
    return (
       <form onSubmit={handleSubmit}>
          <label>Album Title</label>

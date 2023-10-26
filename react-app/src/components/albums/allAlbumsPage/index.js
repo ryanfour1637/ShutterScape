@@ -7,11 +7,12 @@ import { useModal } from "../../../context/Modal";
 import OpenModalButton from "../../OpenModalButton";
 import CreateAlbumModel from "../createnewalbummodel";
 import { thunkGetAllAlbums } from "../../../store/albums";
+import UserBanner from "../../UserBanner";
 
 
 export default function AllAlbumPage() {
    const dispatch = useDispatch();
-   
+
    const getAlbums = useSelector((state) => state.albums.allAlbums);
    const userId = useSelector((state) => state.session.user.id);
 
@@ -31,6 +32,7 @@ export default function AllAlbumPage() {
    } else {
       return (
          <div>
+            <UserBanner />
             <h1>Album Details Page</h1>
             <div>
                <OpenModalButton
@@ -59,6 +61,7 @@ export default function AllAlbumPage() {
    if (!albums) return null;
    return (
       <div>
+         <UserBanner />
          <h1>Album Details Page</h1>
          <div>
             <OpenModalButton

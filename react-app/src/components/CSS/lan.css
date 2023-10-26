@@ -1,4 +1,4 @@
-.banner-parent-container {
+.banner-parent-container > div {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -9,12 +9,27 @@
     background-image: url(https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/rainy-default-bg.jpg);
 }
 
+.banner-nav-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    padding: 8px 0px 0px 20px;
+    font-size: 10px;
+    color: black;
+    background-color: white;
+}
+
+.banner-nav-container div {
+    padding-right: 32px;
+}
 .banner-user-details {
 
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
+
 }
 
 .profile-photo {
@@ -29,6 +44,10 @@
 #banner-fname-lname {
     font-size: 25px;
     margin-bottom: 1px;
+}
+
+#banner-username {
+    margin-top: 0px;
 }
 
 .banner-totalcount {

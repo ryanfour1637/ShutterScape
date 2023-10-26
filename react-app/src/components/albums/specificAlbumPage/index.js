@@ -8,6 +8,7 @@ import CreatePostModal from "../../Posts/CreatePostModal";
 import { setUser } from "../../../store/session";
 import { thunkGetAllAlbums } from "../../../store/albums";
 import { NavLink } from "react-router-dom";
+import UserBanner from "../../UserBanner";
 
 export default function SpecificAlbumPage() {
    const { id } = useParams();
@@ -19,7 +20,7 @@ export default function SpecificAlbumPage() {
    const thisAlbum = getAlbums[id]
    console.log("🚀 ~ file: index.js:19 ~ SpecificAlbumPage ~ thisAlbum:", thisAlbum)
 
-   
+
    useEffect(() => {
       dispatch(thunkGetAllAlbums())
       setRefreshCreate("");
@@ -45,6 +46,7 @@ export default function SpecificAlbumPage() {
 }
    return (
       <div>
+         <UserBanner />
          <div>
             <OpenModalButton
                buttonText="Create a new post"
