@@ -76,7 +76,7 @@ export default function AllAlbumPage() {
                               <img
                                  className="testIMG"
                                  alt=""
-                                 src={album.posts ? album.posts[0] : "https://cdn-icons-png.flaticon.com/512/3767/3767084.png"}
+                                 src={album.posts ? album.posts[0].photoUrl : "https://cdn-icons-png.flaticon.com/512/3767/3767084.png"}
                               ></img>
                            </div>
                            <div>{album.title}</div>

@@ -11,6 +11,7 @@ import { NavLink } from "react-router-dom";
 
 export default function SpecificAlbumPage() {
    const { id } = useParams();
+   console.log("🚀 ~ file: index.js:14 ~ SpecificAlbumPage ~ id:", id)
    const dispatch = useDispatch();
    const [refreshCreate, setRefreshCreate] = useState("");
 
@@ -23,7 +24,7 @@ export default function SpecificAlbumPage() {
    useEffect(() => {
       dispatch(thunkGetAllAlbums())
       setRefreshCreate("");
-   }, [dispatch]);
+   }, [dispatch, refreshCreate]);
 
    if (thisAlbum?.posts == undefined || !thisAlbum?.posts) {
       return (<div>
@@ -42,14 +43,14 @@ export default function SpecificAlbumPage() {
          />
       </div>
    </div>)
-}
+   }
    return (
       <div>
          <div>
             <OpenModalButton
                buttonText="Create a new post"
                modalComponent={
-                  <CreatePostModal setRefreshCreate={setRefreshCreate} />
+                  <CreatePostModal id={id} setRefreshCreate={setRefreshCreate} />
                }
             />
          </div>

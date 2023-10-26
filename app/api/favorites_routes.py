@@ -1,7 +1,7 @@
 from flask import Blueprint, request
 from ..models import Favorite, db
 from flask_login import login_required, current_user
-from ..forms import FavoriteForm
+# from ..forms import FavoriteForm
 from datetime import date
 from .auth_routes import validation_errors_to_error_messages
 
