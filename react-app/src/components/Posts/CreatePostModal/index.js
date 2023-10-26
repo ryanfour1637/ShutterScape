@@ -14,6 +14,8 @@ export default function CreatePostModal({ id, setRefreshCreate }) {
    const [imageLoading, setImageLoading] = useState(false);
    const [errors, setErrors] = useState([]);
    const { closeModal } = useModal();
+   const [validationObject, setValidationObject] = useState({})
+   const [disableSubmitButton, setdisableSubmitButton] = useState(true);
 
    const handleSubmit = async (e) => {
       e.preventDefault();
@@ -43,34 +45,59 @@ export default function CreatePostModal({ id, setRefreshCreate }) {
       push("/posts/current");
    };
 
+   useEffect(() => {
+      const errorsObject = {};
+
+      if (description.length < 10) {
+         errorsObject.description = "Description must be more than 10 characters."
+      }
+
+
+
+
+      setValidationObject(errorsObject)
+   }, [description])
+
+   useEffect(() => {
+      setdisableSubmitButton(!(description.length >= 10));
+   }, [description]);
+
    return (
-      <form onSubmit={handleSubmit} encType="multipart/form-data">
-         <input
-            type="file"
-            accept="image/*"
-            onChange={(e) => setImage(e.target.files[0])}
-         />
+      <div>
+         <h1 className="create-post-h1">Create a Post</h1>
+         <form className="create-post-form" onSubmit={handleSubmit} encType="multipart/form-data">
+            <input
+               type="file"
+               accept="image/*"
+               className="file-upload"
+               onChange={(e) => setImage(e.target.files[0])}
+            />
 
-         <label>Title</label>
-         <input
-            type="text"
-            name="title"
-            placeholder="Title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-         />
+            <label>Title</label>
+            <input
+               type="text"
+               name="title"
+               placeholder="Title"
+               value={title}
+               onChange={(e) => setTitle(e.target.value)}
+            />
 
-         <label>Description</label>
-         <textarea
-            type="text"
-            name="description"
-            placeholder="Please write at least 10 characters"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-         />
+            <label>Description</label>
+            <div className="error-box-post">
+               {validationObject.description && <p
+                  className="errors-one-post"> {validationObject.description}</p>}
+            </div>
+            <textarea
+               type="text"
+               name="description"
+               placeholder="Please write at least 10 characters"
+               value={description}
+               onChange={(e) => setDescription(e.target.value)}
+            />
 
-         <button type="submit">Submit</button>
-         {imageLoading && <p>Loading...</p>}
-      </form>
+            <button className="create-post-submit" type="submit" disabled={Object.keys(validationObject).length > 0}>Submit</button>
+            {imageLoading && <p>Loading...</p>}
+         </form>
+      </div>
    );
 }

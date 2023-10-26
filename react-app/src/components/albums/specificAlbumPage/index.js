@@ -11,7 +11,6 @@ import { NavLink } from "react-router-dom";
 
 export default function SpecificAlbumPage() {
    const { id } = useParams();
-   console.log("🚀 ~ file: index.js:14 ~ SpecificAlbumPage ~ id:", id)
    const dispatch = useDispatch();
    const [refreshCreate, setRefreshCreate] = useState("");
 
@@ -20,32 +19,14 @@ export default function SpecificAlbumPage() {
    const thisAlbum = getAlbums[id]
    console.log("🚀 ~ file: index.js:19 ~ SpecificAlbumPage ~ thisAlbum:", thisAlbum)
 
-   
+
    useEffect(() => {
       dispatch(thunkGetAllAlbums())
       setRefreshCreate("");
-   }, [dispatch, refreshCreate]);
+   }, [dispatch]);
 
    if (thisAlbum?.posts == undefined || !thisAlbum?.posts) {
-      return (<div>
-      <div>
-         <OpenModalButton
-            buttonText="Create a new post"
-            modalComponent={
-               <CreatePostModal id={id} setRefreshCreate={setRefreshCreate} />
-            }
-         />
-      </div>
-      <div>
-         <OpenModalButton
-            buttonText="Delete"
-            modalComponent={<DeleteAlbumModel id={id} />}
-         />
-      </div>
-   </div>)
-   }
-   return (
-      <div>
+      return (<div className="specific-album-container">
          <div>
             <OpenModalButton
                buttonText="Create a new post"
@@ -60,10 +41,30 @@ export default function SpecificAlbumPage() {
                modalComponent={<DeleteAlbumModel id={id} />}
             />
          </div>
+         <h1>Add Photos to Album</h1>
+      </div>)
+   }
+   return (
+      <div className="specific-album-container">
          <div>
+            <OpenModalButton
+               buttonText="Create a new post"
+               modalComponent={
+                  <CreatePostModal setRefreshCreate={setRefreshCreate} />
+               }
+            />
+         </div>
+         <div>
+            <OpenModalButton
+               buttonText="Delete Album"
+               modalComponent={<DeleteAlbumModel id={id} />}
+            />
+         </div>
+         <h1 className="album-page-h1">Photos in Album</h1>
+         <div className="allposts-photos">
             {thisAlbum.posts.map((post) => (
                <NavLink to={`/posts/${post.id}`}>
-                  <div title={`${post.title}`}><img src={post.photoUrl}></img></div>
+                  <div title={`${post.title}`}><img src={post.photoUrl} className="userpost-images"></img></div>
                </NavLink>
             ))}
          </div>

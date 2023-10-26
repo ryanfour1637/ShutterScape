@@ -7,11 +7,12 @@ import { useModal } from "../../../context/Modal";
 import OpenModalButton from "../../OpenModalButton";
 import CreateAlbumModel from "../createnewalbummodel";
 import { thunkGetAllAlbums } from "../../../store/albums";
+import "../../CSS/john.css"
 
 
 export default function AllAlbumPage() {
    const dispatch = useDispatch();
-   
+
    const getAlbums = useSelector((state) => state.albums.allAlbums);
    const userId = useSelector((state) => state.session.user.id);
 
@@ -30,8 +31,8 @@ export default function AllAlbumPage() {
    if (albums?.length > 0) {
    } else {
       return (
-         <div>
-            <h1>Album Details Page</h1>
+         <div className="da-album-page">
+            <h1 className="album-page-h1">Add Albums</h1>
             <div>
                <OpenModalButton
                   buttonText="Create New Album"
@@ -58,8 +59,8 @@ export default function AllAlbumPage() {
 
    if (!albums) return null;
    return (
-      <div>
-         <h1>Album Details Page</h1>
+      <div className="da-album-page">
+         <h1 className="album-page-h1">Album Details Page</h1>
          <div>
             <OpenModalButton
                buttonText="Create New Album"
@@ -79,7 +80,7 @@ export default function AllAlbumPage() {
                                  src={album.posts ? album.posts[0].photoUrl : "https://cdn-icons-png.flaticon.com/512/3767/3767084.png"}
                               ></img>
                            </div>
-                           <div>{album.title}</div>
+                           <div className="album-title">{album.title}</div>
                         </div>
                      </NavLink>
                   </div>

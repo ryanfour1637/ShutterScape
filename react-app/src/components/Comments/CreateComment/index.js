@@ -13,6 +13,8 @@ export default function CreateCommentForm({ postId, setRefreshCreate }) {
    const dispatch = useDispatch();
    const [comment, setComment] = useState("");
    const { closeModal } = useModal();
+   const [validationObject, setValidationObject] = useState({})
+   const [disableSubmitButton, setdisableSubmitButton] = useState(true);
 
    const handleSubmit = (e) => {
       e.preventDefault();
@@ -27,13 +29,32 @@ export default function CreateCommentForm({ postId, setRefreshCreate }) {
       return dispatch(getEveryCommentThunk()).then(closeModal());
    };
 
-   const disableSubmit = () => {
-      if (comment.length < 10) return true;
-   };
+
+   useEffect(() => {
+      const errorsObject = {};
+
+      if (comment.length < 10) {
+         errorsObject.comment = "Comment must be more than 10 characters."
+      }
+
+
+
+
+      setValidationObject(errorsObject)
+   }, [comment])
+
+   useEffect(() => {
+      setdisableSubmitButton(!(comment.length >= 10));
+   }, [comment]);
+
 
    return (
       <div>
          <h1 className="post-commenth1">Post Comment</h1>
+         <div className="error-box">
+            {validationObject.comment && <p
+               className="errors-one"> {validationObject.comment}</p>}
+         </div>
          <form onSubmit={handleSubmit} className="comment-form-container">
             <label>
                <textarea
@@ -48,7 +69,7 @@ export default function CreateCommentForm({ postId, setRefreshCreate }) {
             <button
                type="submit"
                className="comment-submit"
-               disabled={disableSubmit()}
+               disabled={Object.keys(validationObject).length > 0}
             >
                Create Comment
             </button>

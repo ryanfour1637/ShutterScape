@@ -10,7 +10,7 @@ export default function GetPosts() {
    const dispatch = useDispatch();
    const posts = useSelector((state) => state.posts.allPosts);
    const arrPosts = Object.values(posts);
- 
+
    console.log("posts", posts);
    useEffect(() => {
       dispatch(getTenRandomNonOwnerPosts());
@@ -25,6 +25,7 @@ export default function GetPosts() {
 
    return (
       <>
+         <h1 className="album-page-h1">Trending</h1>
          <div className="allposts-photos">
             {arrPosts.map((post) => (
                <div onClick={() => goToPost(post)} key={post.id}>
