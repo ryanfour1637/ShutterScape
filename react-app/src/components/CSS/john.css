@@ -511,3 +511,25 @@ margin:10px;
   margin-bottom: 15px;
   text-decoration: none;
 }
+
+.errors-one{
+  margin-left: 55px;
+  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+  color:red;
+  font-size: 11px;
+}
+
+.create-post-form textarea {
+  height: 124px;
+  width: 287px;
+}
+
+.create-post-form label {
+  margin: 10px;
+}
+
+.errors-one-post{
+  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+  color: red;
+  font-size: 11px;
+}

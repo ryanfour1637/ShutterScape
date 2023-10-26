@@ -9,6 +9,8 @@ import {
 
 export default function UpdateCommentModal({ commentId, setRefreshUpdate }) {
    const dispatch = useDispatch();
+   const [validationObject, setValidationObject] = useState({})
+   const [disableSubmitButton, setdisableSubmitButton] = useState(true);
    const { closeModal, setOnModalClose } = useModal();
    const oneComment = useSelector(
       (state) => state.comments.allComments[commentId]
@@ -20,11 +22,24 @@ export default function UpdateCommentModal({ commentId, setRefreshUpdate }) {
       dispatch(getEveryCommentThunk());
    }, [dispatch]);
 
-   const disableSubmit = () => {
-      if (comment.length < 10) return true;
-   };
+   useEffect(() => {
+      const errorsObject = {};
 
-   //we need to figure out why the comment isnt updating consistently when we are hitting update.
+      if (comment.length < 10) {
+         errorsObject.comment = "Comment must be more than 10 characters."
+      }
+
+
+
+
+      setValidationObject(errorsObject)
+   }, [comment])
+
+   useEffect(() => {
+      setdisableSubmitButton(!(comment.length >= 10));
+   }, [comment]);
+
+
    const handleSubmit = (e) => {
       e.preventDefault();
 
@@ -42,6 +57,10 @@ export default function UpdateCommentModal({ commentId, setRefreshUpdate }) {
    return (
       <>
          <h1 className="update-comment1">Update Comment</h1>
+         <div className="error-box">
+            {validationObject.comment && <p
+               className="errors-one"> {validationObject.comment}</p>}
+         </div>
          <form onSubmit={handleSubmit} className="comment-form-container">
             <label>
                <textarea
@@ -56,7 +75,7 @@ export default function UpdateCommentModal({ commentId, setRefreshUpdate }) {
             <button
                type="submit"
                className="comment-submit"
-               disabled={disableSubmit()}
+               disabled={Object.keys(validationObject).length > 0}
             >
                Update Comment
             </button>

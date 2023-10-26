@@ -13,6 +13,8 @@ export default function CreatePostModal({ setRefreshCreate, id }) {
    const [imageLoading, setImageLoading] = useState(false);
    const [errors, setErrors] = useState([]);
    const { closeModal } = useModal();
+   const [validationObject, setValidationObject] = useState({})
+   const [disableSubmitButton, setdisableSubmitButton] = useState(true);
 
    const handleSubmit = async (e) => {
       e.preventDefault();
@@ -40,6 +42,23 @@ export default function CreatePostModal({ setRefreshCreate, id }) {
       push("/posts/current");
    };
 
+   useEffect(() => {
+      const errorsObject = {};
+
+      if (description.length < 10) {
+         errorsObject.description = "Description must be more than 10 characters."
+      }
+
+
+
+
+      setValidationObject(errorsObject)
+   }, [description])
+
+   useEffect(() => {
+      setdisableSubmitButton(!(description.length >= 10));
+   }, [description]);
+
    return (
       <div>
          <h1 className="create-post-h1">Create a Post</h1>
@@ -61,6 +80,10 @@ export default function CreatePostModal({ setRefreshCreate, id }) {
             />
 
             <label>Description</label>
+            <div className="error-box-post">
+               {validationObject.description && <p
+                  className="errors-one-post"> {validationObject.description}</p>}
+            </div>
             <textarea
                type="text"
                name="description"
@@ -69,7 +92,7 @@ export default function CreatePostModal({ setRefreshCreate, id }) {
                onChange={(e) => setDescription(e.target.value)}
             />
 
-            <button className="create-post-submit" type="submit">Submit</button>
+            <button className="create-post-submit" type="submit" disabled={Object.keys(validationObject).length > 0}>Submit</button>
             {imageLoading && <p>Loading...</p>}
          </form>
       </div>
