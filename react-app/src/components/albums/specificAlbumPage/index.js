@@ -11,7 +11,6 @@ import { NavLink } from "react-router-dom";
 import UserBanner from "../../UserBanner";
 import "../../CSS/john.css";
 
-
 export default function SpecificAlbumPage() {
    const { id } = useParams();
    const dispatch = useDispatch();
@@ -55,14 +54,16 @@ export default function SpecificAlbumPage() {
       );
    }
    return (
-
       <div className="specific-album-container">
          <UserBanner />
          <div>
             <OpenModalButton
                buttonText="Create a new post"
                modalComponent={
-                  <CreatePostModal setRefreshCreate={setRefreshCreate} />
+                  <CreatePostModal
+                     id={id}
+                     setRefreshCreate={setRefreshCreate}
+                  />
                }
             />
          </div>

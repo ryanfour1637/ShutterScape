@@ -27,18 +27,29 @@ export default function PostDetailsPage() {
    const comments = useSelector((state) => state.comments.allComments);
    const [refreshCreate, setRefreshCreate] = useState("");
    const [refreshUpdate, setRefreshUpdate] = useState("");
-   const [favorite, setFavorite] = useState(false);
-   
+   const [favorite, setFavorite] = useState("");
+   // const [hasFavorite, setHasFavorite] = useState(false);
+
    const post = allPosts[id];
-   
-   const ownerFavorites = Object.values(getAllFavorites).filter((favorite) => favorite.userId == user.id)
-   console.log("🚀 ~ file: index.js:35 ~ PostDetailsPage ~ ownerFavorites:", ownerFavorites)
-   const thisPostFavorites = ownerFavorites.filter((favorite) => favorite.postId == id)
-   
-   console.log("🚀 ~ file: index.js:37 ~ PostDetailsPage ~ thisPostFavorites:", thisPostFavorites)
-   let favId
+
+   const ownerFavorites = Object.values(getAllFavorites).filter(
+      (favorite) => favorite.userId == user.id
+   );
+   console.log(
+      "🚀 ~ file: index.js:35 ~ PostDetailsPage ~ ownerFavorites:",
+      ownerFavorites
+   );
+   const thisPostFavorites = ownerFavorites.filter(
+      (favorite) => favorite.postId == id
+   );
+
+   console.log(
+      "🚀 ~ file: index.js:37 ~ PostDetailsPage ~ thisPostFavorites:",
+      thisPostFavorites
+   );
+   let favId;
    if (thisPostFavorites.length) {
-      favId = thisPostFavorites[0]?.id
+      favId = thisPostFavorites[0]?.id;
    }
    useEffect(() => {
       dispatch(getEveryPostThunk());
@@ -47,7 +58,7 @@ export default function PostDetailsPage() {
       setRefreshCreate("");
       setRefreshUpdate("");
    }, [dispatch, refreshCreate, refreshUpdate, favorite]);
-   
+
    const fixDate = (dateString) => {
       const date = new Date(dateString);
       const formatter = new Intl.DateTimeFormat("en-US", {
@@ -57,27 +68,34 @@ export default function PostDetailsPage() {
       });
       return formatter.format(date);
    };
-   
+
    if (post === undefined) return null;
    if (comments == undefined) return null;
-   
+
+   const albumId = post.albumId;
+
    const commentsArr = Object.values(comments).filter(
       (comment) => comment.postId == id
-      );
-      
-      const deleteFavorite = () => {
-         console.log("🚀 ~ DELETE TOP file: index.js:31 ~ PostDetailsPage ~ favorite:", favorite)
-         
-         dispatch(thunkDeleteFavorite(favId));
-         return setFavorite(false);
-      };
-      
-      const createFavorite = () => {
-         console.log("🚀 ~ CREATE TOP file: index.js:31 ~ PostDetailsPage ~ favorite:", favorite)
-         
-         dispatch(thunkCreateFavorite(id));
+   );
 
-         return setFavorite(true);
+   const deleteFavorite = () => {
+      console.log(
+         "🚀 ~ DELETE TOP file: index.js:31 ~ PostDetailsPage ~ favorite:",
+         favorite
+      );
+
+      dispatch(thunkDeleteFavorite(favId));
+      return setFavorite(false);
+   };
+
+   const createFavorite = () => {
+      console.log(
+         "🚀 ~ CREATE TOP file: index.js:31 ~ PostDetailsPage ~ favorite:",
+         favorite
+      );
+
+      dispatch(thunkCreateFavorite(id));
+      return setFavorite(true);
    };
 
    return (
@@ -98,16 +116,32 @@ export default function PostDetailsPage() {
                   <div>
                      <OpenModalButton
                         buttonText="Delete Post"
-                        modalComponent={<DeletePostModal postId={post.id} />}
+                        modalComponent={
+                           <DeletePostModal
+                              postId={post.id}
+                              albumId={albumId}
+                           />
+                        }
                      />
                   </div>
                )}
             </div>
 
             <button
-               onClick={favorite ? () => deleteFavorite() : () => createFavorite()}
+               className="fav-button"
+               onClick={
+                  thisPostFavorites.length
+                     ? () => deleteFavorite()
+                     : () => createFavorite()
+               }
             >
-               <i className="fa-solid fa-star"></i>
+               <i
+                  className={
+                     thisPostFavorites.length
+                        ? "fa-solid fa-star filled-fav"
+                        : "fa-solid fa-star unfilled-fav"
+                  }
+               ></i>
             </button>
          </div>
 

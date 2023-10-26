@@ -1,667 +1,672 @@
-.body{
-  background-color: #f3f5f6;
+.body {
+   background-color: #f3f5f6;
 }
 /* home */
 
 .slideshow-container {
-    position: relative;
-    max-width: 100%;
-    height: 100vh;
-    overflow: hidden;
+   position: relative;
+   max-width: 100%;
+   height: 100vh;
+   overflow: hidden;
 }
 
-
-  .slideshow-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    transition: opacity 3s ease-in-out;
-  }
-
-
-  .slideshow-image.visible {
-    opacity: 1;
-  }
-
-.home-container{
-    border-radius: 9px;
+.slideshow-image {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   position: absolute;
+   top: 0;
+   left: 0;
+   opacity: 0;
+   transition: opacity 3s ease-in-out;
 }
 
-
-  .home-button {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #007BFF;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
+.slideshow-image.visible {
+   opacity: 1;
 }
 
-.text-container{
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* text-shadow: 2px 2px black; */
+.home-container {
+   border-radius: 9px;
 }
 
-.inspiration{
-    margin-top: 142px;
-    font-size: 56px;
-    font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
-    font-weight: normal;
+.home-button {
+   position: absolute;
+   bottom: 20px;
+   left: 50%;
+   transform: translateX(-50%);
+   background-color: #007bff;
+   color: #fff;
+   padding: 10px 20px;
+   border: none;
+   cursor: pointer;
+}
+
+.text-container {
+   color: white;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   /* text-shadow: 2px 2px black; */
+}
+
+.inspiration {
+   margin-top: 142px;
+   font-size: 56px;
+   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+   font-weight: normal;
 }
 
 .text-container h2 {
-    font-size: 29px;
-    font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
-    font-weight: normal;
+   font-size: 29px;
+   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+   font-weight: normal;
 }
 
-.text-container button{
-    font-size: 24px;
-    height: 64px;
-    border-radius: 6px;
-    width: 205px;
-    font-weight: 550;
-    align-items: center;
-    border: none;
+.text-container button {
+   font-size: 24px;
+   height: 64px;
+   border-radius: 6px;
+   width: 205px;
+   font-weight: 550;
+   align-items: center;
+   border: none;
 }
 
 /* userPostPage */
 
-.allposts-photos{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 1002px;
-  margin: 0 auto;
-  margin-top: 7px;
+.allposts-photos {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+   width: 100%;
+   max-width: 1002px;
+   margin: 0 auto;
+   margin-top: 7px;
 }
 
 .userpost-images {
-  width: 323px;
-  height: 241px;
-  border-radius: 13px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  transition: transform 0.2s ease-in-out;
-  margin: 4px;
+   width: 323px;
+   height: 241px;
+   border-radius: 13px;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+   transition: transform 0.2s ease-in-out;
+   margin: 4px;
 }
 
 .userpost-images:hover {
-  transform: scale(1.05);
+   transform: scale(1.05);
 }
 
-.allposts-account-details p{
-  color:blue;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.allposts-account-details p {
+   color: blue;
+   display: flex;
+   align-items: center;
+   justify-content: center;
 }
 
 /* Footer */
 
-.footer-container{
-  background-color: black;
-  color: white;
-  border-radius: 5px;
-  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
-  display: flex;
-  height: 54px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  text-shadow: 1px 1px grey;
+.footer-container {
+   background-color: black;
+   color: white;
+   border-radius: 5px;
+   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+   display: flex;
+   height: 54px;
+   display: flex;
+   align-items: center;
+   justify-content: space-around;
+   text-shadow: 1px 1px grey;
 }
 
-.group2{
-  margin-left: 10px;
+.group2 {
+   margin-left: 10px;
 }
 
 /* Post Details */
 
-.image-container{
-  background-color: #212124;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 6px;
-  border-radius: 2px;
+.image-container {
+   background-color: #212124;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   border-radius: 6px;
+   border-radius: 2px;
 }
 
-.detail-photo{
-  width: 543px;
-  height: 356px;
-  margin-top: 41px;
-  border-radius: 8px;
+.detail-photo {
+   width: 543px;
+   height: 356px;
+   margin-top: 41px;
+   border-radius: 8px;
 }
 
-.Post-Details-Buttons{
-  margin: 19px;
-  display: flex;
-  justify-content: space-between;
+.Post-Details-Buttons {
+   margin: 19px;
+   display: flex;
+   justify-content: space-between;
 }
 
 .image-container button {
-  padding: 7px;
-  margin: 7px;
-  border-radius: 13px;
-  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+   padding: 7px;
+   margin: 7px;
+   border-radius: 13px;
+   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
 }
 
-#image-username{
-  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
-  font-size: 20px;
+#image-username {
+   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+   font-size: 20px;
 }
 
-.image-title{
-  display: flex;
-  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
-  font-size: 26px;
-  font-weight: bold;
-  justify-content: center;
-  text-shadow: 1px 1px #5380FA;
+.image-title {
+   display: flex;
+   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+   font-size: 26px;
+   font-weight: bold;
+   justify-content: center;
+   text-shadow: 1px 1px #5380fa;
 }
-.image-description{
-  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
-  font-size: 14px;
-}
-
-.post-details-name{
-  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
-  font-size: 20px;
-  font-weight: normal;
-  margin-left: 10px;
-  margin-top: 7px;
-  text-shadow: 1px 1px white;
+.image-description {
+   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+   font-size: 14px;
 }
 
-.bot-comment-bunch{
-  border-radius: 10px;
+.post-details-name {
+   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+   font-size: 20px;
+   font-weight: normal;
+   margin-left: 10px;
+   margin-top: 7px;
+   text-shadow: 1px 1px white;
 }
 
-.bottom-comments{
-  border-radius: 10px;
+.bot-comment-bunch {
+   border-radius: 10px;
 }
 
-.bottom-comments :hover{
-  background-color: rgb(212, 212, 212);
+.bottom-comments {
+   border-radius: 10px;
 }
 
-.postdetails-datedate{
-  margin-left: 10px;
-  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
-  font-size: 13px;
+.bottom-comments :hover {
+   background-color: rgb(212, 212, 212);
 }
 
-.postdetail-comment{
-  margin-left: 10px;
-  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
-  font-size: 13px;
+.postdetails-datedate {
+   margin-left: 10px;
+   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+   font-size: 13px;
 }
 
-.bottom-comments button{
-  padding: 3px;
-  margin: 4px;
-  border-radius: 8px;
-  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+.postdetail-comment {
+   margin-left: 10px;
+   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+   font-size: 13px;
 }
 
-.create-comment-button button{
-  padding: 3px;
-  border-radius: 8px;
-  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
-  margin-bottom: 21px;
-  margin-top: 10px;
+.bottom-comments button {
+   padding: 3px;
+   margin: 4px;
+   border-radius: 8px;
+   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+}
+
+.create-comment-button button {
+   padding: 3px;
+   border-radius: 8px;
+   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+   margin-bottom: 21px;
+   margin-top: 10px;
 }
 
 /* Delete */
 
-#delete-comment-modal-container{
-justify-content: center;
-display: flex;
-flex-direction: column;
+#delete-comment-modal-container {
+   justify-content: center;
+   display: flex;
+   flex-direction: column;
 }
 
 .delete-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 300px;
-  align-items: center;
-  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   width: 300px;
+   align-items: center;
+   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
 }
 
 .confirm-delete1 {
-  display: flex;
-  flex-direction: row;
-  font-weight: normal;
-  text-shadow: 1px 1px #5380FA;
-  margin-left: 81px;
+   display: flex;
+   flex-direction: row;
+   font-weight: normal;
+   text-shadow: 1px 1px #5380fa;
+   margin-left: 81px;
 }
 
 .confirm-delete {
-  display: flex;
-  flex-direction: row;
-  font-weight: normal;
-  text-shadow: 1px 1px #5380FA;
-  margin-left: 52px;
+   display: flex;
+   flex-direction: row;
+   font-weight: normal;
+   text-shadow: 1px 1px #5380fa;
+   margin-left: 52px;
 }
 
-.delete-writing{
-  display: flex;
-  flex-direction: row;
-  font-weight: normal;
-  margin-left: 3px;
-  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+.delete-writing {
+   display: flex;
+   flex-direction: row;
+   font-weight: normal;
+   margin-left: 3px;
+   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
 }
 
 .delete-da-bttn {
-  display: flex;
-justify-content: center;
-align-items: center;
-width: 90%;
-height: 30px;
-border-radius: 5px;
-border: none;
-background-color: #5380FA;
-margin-left: 18px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 90%;
+   height: 30px;
+   border-radius: 5px;
+   border: none;
+   background-color: #5380fa;
+   margin-left: 18px;
 
-box-shadow: 1px 5px 1px black;
-color: white;
-font-size: 15px;
-/* font-weight: bold; */
-cursor: pointer;
-margin-bottom: 10px;
-font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+   box-shadow: 1px 5px 1px black;
+   color: white;
+   font-size: 15px;
+   /* font-weight: bold; */
+   cursor: pointer;
+   margin-bottom: 10px;
+   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
 }
 
-.cancel-delete{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 90%;
-  height: 30px;
-  border-radius: 5px;
-  border: none;
-  background-color: #544d4d;
-  margin-left: 18px;
+.cancel-delete {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 90%;
+   height: 30px;
+   border-radius: 5px;
+   border: none;
+   background-color: #544d4d;
+   margin-left: 18px;
 
-  box-shadow: 1px 5px 1px black;
-  color: white;
-  font-size: 15px;
-  cursor: pointer;
-  margin-bottom: 10px;
-  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+   box-shadow: 1px 5px 1px black;
+   color: white;
+   font-size: 15px;
+   cursor: pointer;
+   margin-bottom: 10px;
+   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
 }
 
 /* Misc Update */
 
-.Updatepost{
-  display: flex;
-  flex-direction: row;
-  font-weight: normal;
-  text-shadow: 1px 1px #5380FA;
-  margin-left: 89px;
+.Updatepost {
+   display: flex;
+   flex-direction: row;
+   font-weight: normal;
+   text-shadow: 1px 1px #5380fa;
+   margin-left: 89px;
 }
 
-.update-comment1{
-  display: flex;
-  flex-direction: row;
-  font-weight: normal;
-  text-shadow: 1px 1px #5380FA;
-  margin-left: 37px;
-  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+.update-comment1 {
+   display: flex;
+   flex-direction: row;
+   font-weight: normal;
+   text-shadow: 1px 1px #5380fa;
+   margin-left: 37px;
+   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
 }
 
-.comment-submit{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 90%;
-  height: 30px;
-  border-radius: 5px;
-  border: none;
-  background-color: #5380FA;
-  margin-left: -2px;
+.comment-submit {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 90%;
+   height: 30px;
+   border-radius: 5px;
+   border: none;
+   background-color: #5380fa;
+   margin-left: -2px;
 
-  box-shadow: 1px 5px 1px black;
-  color: white;
-  font-size: 12px;
-  /* font-weight: bold; */
-  cursor: pointer;
-  margin-bottom: 10px;
-  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+   box-shadow: 1px 5px 1px black;
+   color: white;
+   font-size: 12px;
+   /* font-weight: bold; */
+   cursor: pointer;
+   margin-bottom: 10px;
+   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
 }
 
-.update-post-stuff{
-  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+.update-post-stuff {
+   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
 }
 
-.submit-update-post{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 90%;
-  height: 30px;
-  border-radius: 5px;
-  border: none;
-  background-color: #5380FA;
-  margin-left: -2px;
+.submit-update-post {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 90%;
+   height: 30px;
+   border-radius: 5px;
+   border: none;
+   background-color: #5380fa;
+   margin-left: -2px;
 
-  box-shadow: 1px 5px 1px black;
-  color: white;
-  font-size: 15px;
-  /* font-weight: bold; */
-  cursor: pointer;
-  margin-bottom: 10px;
-  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+   box-shadow: 1px 5px 1px black;
+   color: white;
+   font-size: 15px;
+   /* font-weight: bold; */
+   cursor: pointer;
+   margin-bottom: 10px;
+   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
 }
 
-.update-post-container{
-  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+.update-post-container {
+   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
 }
 
-.update-post-container label{
-  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
-  font-weight: bold;
-  margin:10px;
+.update-post-container label {
+   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+   font-weight: bold;
+   margin: 10px;
 }
 
 .update-post-text-area {
-  width: 281px;
-    height: 97px;
+   width: 281px;
+   height: 97px;
 }
 
-#comment-text-area{
-  width: 278px;
-  height: 121px;
+#comment-text-area {
+   width: 278px;
+   height: 121px;
 }
 
-.post-commenth1{
-  display: flex;
-  flex-direction: row;
-  font-weight: normal;
-  text-shadow: 1px 1px #5380FA;
-  margin-left: 62px;
+.post-commenth1 {
+   display: flex;
+   flex-direction: row;
+   font-weight: normal;
+   text-shadow: 1px 1px #5380fa;
+   margin-left: 62px;
 }
 
 /* Albums */
 
-.create-album-h1{
-  display: flex;
-  flex-direction: row;
-  font-weight: normal;
-  text-shadow: 1px 1px #5380FA;
-  margin-left: 69px;
-  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+.create-album-h1 {
+   display: flex;
+   flex-direction: row;
+   font-weight: normal;
+   text-shadow: 1px 1px #5380fa;
+   margin-left: 69px;
+   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
 }
 
-.album-form-container{
-  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+.album-form-container {
+   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
 }
 
-.album-form-container label{
-  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+.album-form-container label {
+   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
 }
 
-.album-submit{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 90%;
-  height: 30px;
-  border-radius: 5px;
-  border: none;
-  background-color: #5380FA;
-  margin-left: -2px;
+.album-submit {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 90%;
+   height: 30px;
+   border-radius: 5px;
+   border: none;
+   background-color: #5380fa;
+   margin-left: -2px;
 
-  box-shadow: 1px 5px 1px black;
-  color: white;
-  font-size: 15px;
-  /* font-weight: bold; */
-  cursor: pointer;
-  margin-bottom: 10px;
-  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+   box-shadow: 1px 5px 1px black;
+   color: white;
+   font-size: 15px;
+   /* font-weight: bold; */
+   cursor: pointer;
+   margin-bottom: 10px;
+   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
 }
 
 .album-page-h1 {
-  display: flex;
-  justify-content: center;
-  font-family: Proxima Nova, Helvetica Neue, Helvetica, Arial, sans-serif;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-  font-weight: normal;
+   display: flex;
+   justify-content: center;
+   font-family: Proxima Nova, Helvetica Neue, Helvetica, Arial, sans-serif;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+   font-weight: normal;
 }
 
-
-.specific-album-container button{
- margin:10px;
- height: 33px;
- font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
- border-radius: 12px;
- margin-bottom: 0px;
+.specific-album-container button {
+   margin: 10px;
+   height: 33px;
+   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+   border-radius: 12px;
+   margin-bottom: 0px;
 }
 
 /* Create Post */
 
-.create-post-h1{
-  display: flex;
-  flex-direction: row;
-  font-weight: normal;
-  text-shadow: 1px 1px #5380FA;
-  margin-left: 69px;
-  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+.create-post-h1 {
+   display: flex;
+   flex-direction: row;
+   font-weight: normal;
+   text-shadow: 1px 1px #5380fa;
+   margin-left: 69px;
+   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
 }
 
-.create-post-form{
-  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+.create-post-form {
+   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
 }
 
-.create-post-submit{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 90%;
-  height: 30px;
-  border-radius: 5px;
-  border: none;
-  background-color: #5380FA;
-  margin-left: -2px;
+.create-post-submit {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 90%;
+   height: 30px;
+   border-radius: 5px;
+   border: none;
+   background-color: #5380fa;
+   margin-left: -2px;
 
-  box-shadow: 1px 5px 1px black;
-  color: white;
-  font-size: 15px;
-  /* font-weight: bold; */
-  cursor: pointer;
-  margin-bottom: 10px;
-  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+   box-shadow: 1px 5px 1px black;
+   color: white;
+   font-size: 15px;
+   /* font-weight: bold; */
+   cursor: pointer;
+   margin-bottom: 10px;
+   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
 }
 
-
-.delete-writing1{
-  display: flex;
-  flex-direction: row;
-  font-weight: normal;
-  margin-left: 3px;
-  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
-  margin-bottom: 6px;
+.delete-writing1 {
+   display: flex;
+   flex-direction: row;
+   font-weight: normal;
+   margin-left: 3px;
+   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+   margin-bottom: 6px;
 }
 
-.da-album-page button{
-margin:10px;
- height: 33px;
- font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
- border-radius: 12px;
- margin-bottom: 15px;
+.da-album-page button {
+   margin: 10px;
+   height: 33px;
+   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+   border-radius: 12px;
+   margin-bottom: 15px;
 }
 
-.album-title{
-  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
-  color:black;
-  font-style: none;
-  margin-bottom: 15px;
-  text-decoration: none;
+.album-title {
+   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+   color: black;
+   font-style: none;
+   margin-bottom: 15px;
+   text-decoration: none;
 }
 
-.errors-one{
-  margin-left: 55px;
-  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
-  color:red;
-  font-size: 11px;
+.errors-one {
+   margin-left: 55px;
+   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+   color: red;
+   font-size: 11px;
 }
 
 .create-post-form textarea {
-  height: 124px;
-  width: 287px;
+   height: 124px;
+   width: 287px;
 }
 
 .create-post-form label {
-  margin: 10px;
+   margin: 10px;
 }
 
-.errors-one-post{
-  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
-  color: red;
-  font-size: 11px;
+.errors-one-post {
+   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+   color: red;
+   font-size: 11px;
 }
 
 /* Sign-Up */
 
 .Sign-up-h1 {
-  display: flex;
-  font-size: 20px;
-  font-weight: normal;
-  text-shadow: 1px 1px #5380FA;
-  margin-left: 63px;
-  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+   display: flex;
+   font-size: 20px;
+   font-weight: normal;
+   text-shadow: 1px 1px #5380fa;
+   margin-left: 63px;
+   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
 }
 
-.sign-up-container form{
-display: flex;
-flex-direction: column;
-align-items: center;
-width: 300px;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  justify-content: center;
+.sign-up-container form {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   width: 300px;
+   margin: 0 auto;
+   padding: 20px;
+   border: 1px solid #ccc;
+   border-radius: 10px;
+   background-color: #fff;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+   justify-content: center;
 }
 
 .error {
-  margin-left: 55px;
-  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
-  color:red;
-  font-size: 11px;
+   margin-left: 55px;
+   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+   color: red;
+   font-size: 11px;
 }
 
-.sign-up-container label{
-display: flex;
-  flex-direction: column;
-  margin-bottom: 10px;
+.sign-up-container label {
+   display: flex;
+   flex-direction: column;
+   margin-bottom: 10px;
 }
 
 .sign-up-container input[type="text"],
 input[type="password"] {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
+   width: 100%;
+   padding: 10px;
+   border: 1px solid #ccc;
+   border-radius: 5px;
+   font-size: 16px;
 }
 
 .sign-up-container button[type="submit"] {
    display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 90%;
-  height: 30px;
-  border-radius: 5px;
-  border: none;
-  background-color: #5380FA;
-  margin-left: -2px;
+   justify-content: center;
+   align-items: center;
+   width: 90%;
+   height: 30px;
+   border-radius: 5px;
+   border: none;
+   background-color: #5380fa;
+   margin-left: -2px;
 
-  box-shadow: 1px 5px 1px black;
-  color: white;
-  font-size: 15px;
-  /* font-weight: bold; */
-  cursor: pointer;
-  margin-bottom: 10px;
-  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+   box-shadow: 1px 5px 1px black;
+   color: white;
+   font-size: 15px;
+   /* font-weight: bold; */
+   cursor: pointer;
+   margin-bottom: 10px;
+   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
 }
 
-
 .sign-up-container button[type="submit"]:hover {
-  background-color: #0056b3;
+   background-color: #0056b3;
 }
 
 /* Log in */
 
 .login-modal-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 255px;
-  width: 263px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   height: 255px;
+   width: 263px;
 }
 
-
-.Login-h1{
-  display: flex;
-  font-size: 33px;
-  font-weight: normal;
-  text-shadow: 1px 1px #5380FA;
-  margin-left: -11px;
-  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
-  margin-bottom: 0px;
-  margin-top: 5px;
+.Login-h1 {
+   display: flex;
+   font-size: 33px;
+   font-weight: normal;
+   text-shadow: 1px 1px #5380fa;
+   margin-left: -11px;
+   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+   margin-bottom: 0px;
+   margin-top: 5px;
 }
 
-.login-modal-container button{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 212px;
-  height: 30px;
-  border-radius: 5px;
-  border: none;
-  background-color: #5380FA;
-  margin-left: -2px;
+.login-modal-container button {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 212px;
+   height: 30px;
+   border-radius: 5px;
+   border: none;
+   background-color: #5380fa;
+   margin-left: -2px;
 
-  box-shadow: 1px 5px 1px black;
-  color: white;
-  font-size: 15px;
-  /* font-weight: bold; */
-  cursor: pointer;
-  margin-bottom: 10px;
-  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+   box-shadow: 1px 5px 1px black;
+   color: white;
+   font-size: 15px;
+   /* font-weight: bold; */
+   cursor: pointer;
+   margin-bottom: 10px;
+   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
 }
 
 .login-form-modal input {
-  height: 20px;
-  width: 176px;
-  margin: 4px;
+   height: 20px;
+   width: 176px;
+   margin: 4px;
 }
 
 .login-form-modal {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
 }
 
-.list-errors{
-  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
-  color:red;
-  font-size: 11px;
+.list-errors {
+   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+   color: red;
+   font-size: 11px;
+}
+
+.filled-fav {
+   color: yellow;
+}
+
+.unfilled-fav {
+   color: white;
+}
+
+.fav-button {
+   background-color: #212124;
 }

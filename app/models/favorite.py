@@ -18,5 +18,6 @@ class Favorite(db.Model):
             "id": self.id,
             "userId": self.user_id,
             "postId": self.post_id,
-            "createdAt": self.created_at
+            "createdAt": self.created_at,
+            'post': self.my_fav_post_id.to_dict()
         }

@@ -11,13 +11,19 @@ export default function FavoritesPage() {
    const { push } = useHistory();
    const dispatch = useDispatch();
    const user = useSelector((state) => state.session.user);
-   const all_posts = useSelector((state) => state.posts.allPosts);
-   const postsArr = Object.values(all_posts);
+   const getAllFavorites = useSelector((state) => state.favorites.allFavorites);
+   const ownerFavorites = Object.values(getAllFavorites).filter(
+      (favorite) => favorite.userId == user.id
+   );
 
    useEffect(() => {
       dispatch(getEveryPostThunk());
       dispatch(thunkGetAllFavorites());
    }, [dispatch]);
+   console.log(
+      "🚀 ~ file: index.js:sdfasfda ~ PostDetailsPage ~ ownerFavorites:",
+      ownerFavorites
+   );
 
    return (
       <div>
@@ -25,15 +31,15 @@ export default function FavoritesPage() {
          <div className="allposts-parent-container">
             <h1>Posts You Have Favorited</h1>
             <div className="allposts-photos">
-               {postsArr &&
-                  postsArr.map((singlePost) =>
-                     singlePost.ownerId === user.id ? (
-                        <div key={singlePost.id}>
-                           <Link to={`/posts/${singlePost.id}`}>
+               {ownerFavorites &&
+                  ownerFavorites.map((singleFav) =>
+                     singleFav.userId == user.id ? (
+                        <div key={singleFav.post.id}>
+                           <Link to={`/posts/${singleFav.post.id}`}>
                               <img
                                  className="userpost-images"
-                                 src={singlePost.photoUrl}
-                                 alt={singlePost.title}
+                                 src={singleFav.post.photoUrl}
+                                 alt={singleFav.post.title}
                               ></img>
                            </Link>
                         </div>
