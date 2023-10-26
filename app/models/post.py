@@ -18,14 +18,14 @@ class Post(db.Model):
     created_at = db.Column(db.Date, nullable=False)
     my_post_user_id = db.relationship("User", back_populates="my_post_id")
     my_post_fav_id = db.relationship(
-        "Favorite", back_populates="my_fav_post_id", cascade="all, delete-orphan")
+        "Favorite", back_populates="my_fav_post_id", cascade="all, delete-orphan", uselist=False)
     my_post_comment_id = db.relationship(
         "Comment", back_populates="my_comment_post_id", cascade="all, delete-orphan")
     my_post_album_id = db.relationship(
         "Album", back_populates="my_album_post_id")
 
     def to_dict(self):
-        return {
+        return_dict = {
             "id": self.id,
             "ownerId": self.owner_id,
             "albumId": self.album_id,
@@ -35,3 +35,7 @@ class Post(db.Model):
             "createdAt": self.created_at,
             'users': self.my_post_user_id.to_dict(),
         }
+        # if self.my_post_fav_id:
+        #     return_dict[ "favorites"] = self.my_post_fav_id.to_dict(),
+
+        return return_dict

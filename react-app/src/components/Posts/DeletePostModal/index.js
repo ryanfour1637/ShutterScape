@@ -4,7 +4,7 @@ import { useModal } from "../../../context/Modal";
 import { deletePostThunk } from "../../../store/posts";
 import { useParams, useHistory } from "react-router-dom";
 
-export default function DeletePostModal({ postId }) {
+export default function DeletePostModal({ postId, albumId }) {
    const dispatch = useDispatch();
    const { closeModal } = useModal();
    const [errors, setErrors] = useState({});
@@ -25,21 +25,19 @@ export default function DeletePostModal({ postId }) {
             } else {
             }
          })
-         .then(push("/"));
+         .then(push(`/albums/${albumId}`));
    };
 
    return (
-      <div id="delete-post-modal-container">
-         <h1>Confirm Delete</h1>
-         <div>Are you sure you want to remove this post?</div>
-         <button
-            id="delete-post-modal-button"
-            className="action-button"
-            onClick={handleSubmit}
-         >
+      <div id="delete-comment-modal-container">
+         <h1 className="confirm-delete1">Delete Post</h1>
+         <p className="delete-writing">
+            Are you sure you want to remove this Post?
+         </p>
+         <button className="delete-da-bttn" onClick={handleSubmit}>
             Yes (Delete Post)
          </button>
-         <button id="keep-post" onClick={closeModal}>
+         <button className="cancel-delete" onClick={closeModal}>
             No (Keep Post)
          </button>
       </div>

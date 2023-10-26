@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { getTenRandomNonOwnerPosts } from "../../../store/posts";
+import "../../CSS/john.css"
 
 export default function GetPosts() {
    const { push } = useHistory();
@@ -9,8 +10,7 @@ export default function GetPosts() {
    const dispatch = useDispatch();
    const posts = useSelector((state) => state.posts.allPosts);
    const arrPosts = Object.values(posts);
-   //  const tenPhotos = [];
-   //  const nonUserPosts = posts.filter((post) => post.id !== user.id);
+
    console.log("posts", posts);
    useEffect(() => {
       dispatch(getTenRandomNonOwnerPosts());
@@ -21,22 +21,15 @@ export default function GetPosts() {
       return;
    };
 
-   //  useEffect(() => {
-   //     for (let i = 0; i < 11; i++) {
-   //        const randomIndex = Math.floor(Math.random() * nonUserPosts.length);
-   //        const item = nonUserPosts[randomIndex];
-   //        tenPhotos.push(item);
-   //     }
-   //  });
-
    if (Object.values(posts).length === 0) return null;
 
    return (
       <>
-         <div>
+         <h1 className="album-page-h1">Trending</h1>
+         <div className="allposts-photos">
             {arrPosts.map((post) => (
-               <div onClick={() => goToPost(post)}>
-                  <img src={post.photoUrl} alt="" key={post.id}></img>
+               <div onClick={() => goToPost(post)} key={post.id}>
+                  <img src={post.photoUrl} alt="" className="userpost-images"></img>
                </div>
             ))}
          </div>

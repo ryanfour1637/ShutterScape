@@ -7,24 +7,39 @@ import {
    updateCommentThunk,
 } from "../../../store/comments";
 
-export default function UpdateCommentModal({ commentId }) {
+export default function UpdateCommentModal({ commentId, setRefreshUpdate }) {
    const dispatch = useDispatch();
-   const { closeModal } = useModal();
+   const [validationObject, setValidationObject] = useState({})
+   const [disableSubmitButton, setdisableSubmitButton] = useState(true);
+   const { closeModal, setOnModalClose } = useModal();
    const oneComment = useSelector(
       (state) => state.comments.allComments[commentId]
    );
-   const [refresh, setRefresh] = useState(false);
+
    const [comment, setComment] = useState(oneComment.comment);
 
    useEffect(() => {
       dispatch(getEveryCommentThunk());
-   }, [refresh, dispatch]);
+   }, [dispatch]);
 
-   const disableSubmit = () => {
-      if (comment.length < 10) return true;
-   };
+   useEffect(() => {
+      const errorsObject = {};
 
-   //we need to figure out why the comment isnt updating consistently when we are hitting update.
+      if (comment.length < 10) {
+         errorsObject.comment = "Comment must be more than 10 characters."
+      }
+
+
+
+
+      setValidationObject(errorsObject)
+   }, [comment])
+
+   useEffect(() => {
+      setdisableSubmitButton(!(comment.length >= 10));
+   }, [comment]);
+
+
    const handleSubmit = (e) => {
       e.preventDefault();
 
@@ -35,25 +50,36 @@ export default function UpdateCommentModal({ commentId }) {
       dispatch(updateCommentThunk(updatedComment, commentId));
 
       setComment("");
-      setRefresh(true);
+      setRefreshUpdate(updatedComment.comment);
       return closeModal();
    };
 
    return (
-      <form onSubmit={handleSubmit} className="comment-form-container">
-         <label>
-            <textarea
-               type="text"
-               id="comment-text-area"
-               value={comment}
-               placeholder="Add a comment about this photo..."
-               onChange={(e) => setComment(e.target.value)}
-            />
-         </label>
+      <>
+         <h1 className="update-comment1">Update Comment</h1>
+         <div className="error-box">
+            {validationObject.comment && <p
+               className="errors-one"> {validationObject.comment}</p>}
+         </div>
+         <form onSubmit={handleSubmit} className="comment-form-container">
+            <label>
+               <textarea
+                  type="text"
+                  id="comment-text-area"
+                  value={comment}
+                  placeholder="Add a comment about this photo..."
+                  onChange={(e) => setComment(e.target.value)}
+               />
+            </label>
 
-         <button type="submit" id="comment-submit" disabled={disableSubmit()}>
-            Update Comment
-         </button>
-      </form>
+            <button
+               type="submit"
+               className="comment-submit"
+               disabled={Object.keys(validationObject).length > 0}
+            >
+               Update Comment
+            </button>
+         </form>
+      </>
    );
 }

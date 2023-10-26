@@ -1,9 +1,9 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { login } from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
-import "./LoginForm.css";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import "../CSS/john.css"
 
 function LoginFormModal() {
   const { push } = useHistory();
@@ -19,41 +19,55 @@ function LoginFormModal() {
     if (data) {
       setErrors(data);
     } else {
-        closeModal()
-        push("/posts/current")
+      closeModal()
+      push("/posts/current")
+    }
+  };
+
+  const handleDemo = async (e) => {
+    e.preventDefault();
+    const data = await dispatch(login("Demouser@gmail.com", "password"));
+    if (data) {
+      setErrors(data);
+    } else {
+      closeModal()
+      push("/posts/current")
     }
   };
 
   return (
-    <>
-      <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
-        <ul>
+    <div className="login-modal-container">
+      <h1 className="Login-h1">Log In</h1>
+      <form onSubmit={handleSubmit} className="login-form-modal">
+        <ul className="list-errors">
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
         </ul>
         <label>
-          Email
           <input
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            placeholder="Email"
             required
+            className="login-modal-input1"
           />
         </label>
         <label>
-          Password
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            placeholder="Password"
             required
+            className="login-modal-input2"
           />
         </label>
-        <button type="submit">Log In</button>
+        <button type="submit" className="login-button">Log In</button>
+        <button onClick={handleDemo} className="demo-button">Demo User</button>
       </form>
-    </>
+    </div>
   );
 }
 
