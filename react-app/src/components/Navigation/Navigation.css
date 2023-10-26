@@ -5,6 +5,7 @@
 .nav-container {
   padding: 20px;
   background-color: black;
+  font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
 }
 
 input {
@@ -79,6 +80,16 @@ nav {
   border-bottom: 2px solid lightgray;
 }
 
+.nav-links  {
+  display: flex;
+  flex-direction: row;
+
+}
+
+.nav-links > div, .youbutton-button {
+  cursor: pointer;
+}
+
 /* YouButton */
 .youbutton-dropdown {
   border: 1px solid black;
@@ -107,4 +118,9 @@ nav {
 .youbutton-container div {
   padding-bottom: 8px;
   padding-top:10px;
+}
+
+.youbutton-container div:hover {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 }

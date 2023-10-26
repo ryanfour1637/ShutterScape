@@ -22,10 +22,10 @@ function Navigation({isLoaded}) {
             <img src={logo} alt="logo" id="logo" />
           </NavLink>
           {isLoaded && sessionUser && (
-            <>
+            <div className="nav-links">
               <YouButton user={sessionUser} className="youbutton-button" />
               <div onClick={goToCurrent}>Explore</div>
-            </>
+            </div>
           )}
         </div>
 
