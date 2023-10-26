@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { login } from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
-import "./LoginForm.css";
+import "../CSS/john.css"
 
 function LoginFormModal() {
   const { push } = useHistory();
@@ -19,8 +19,8 @@ function LoginFormModal() {
     if (data) {
       setErrors(data);
     } else {
-        closeModal()
-        push("/posts/current")
+      closeModal()
+      push("/posts/current")
     }
   };
 
@@ -30,16 +30,16 @@ function LoginFormModal() {
     if (data) {
       setErrors(data);
     } else {
-        closeModal()
-        push("/posts/current")
+      closeModal()
+      push("/posts/current")
     }
   };
 
   return (
     <div className="login-modal-container">
-      <h1>Log In</h1>
+      <h1 className="Login-h1">Log In</h1>
       <form onSubmit={handleSubmit} className="login-form-modal">
-        <ul>
+        <ul className="list-errors">
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
@@ -51,7 +51,7 @@ function LoginFormModal() {
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Email"
             required
-            className="login-modal-input"
+            className="login-modal-input1"
           />
         </label>
         <label>
@@ -61,7 +61,7 @@ function LoginFormModal() {
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Password"
             required
-            className="login-modal-input"
+            className="login-modal-input2"
           />
         </label>
         <button type="submit" className="login-button">Log In</button>

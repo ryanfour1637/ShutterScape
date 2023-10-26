@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 import { signUp } from "../../store/session";
-import "./SignupForm.css";
+import "../CSS/john.css"
 
 function SignupFormModal() {
 	const dispatch = useDispatch();
@@ -27,7 +27,7 @@ function SignupFormModal() {
 		if (!firstName) newErrors.firstName = "First name is required";
 		if (!lastName) newErrors.lastName = "Last name is required";
 		if (!email.includes("@")) newErrors.email = "Must be a valid email";
-		if (username.length <= 4) newErrors.username = "username must be greater than four characters";
+		if (username.length <= 4) newErrors.username = "Username must be greater than four characters";
 		if (password.length < 6) newErrors.password = "Password must be at least six characters";
 		if (password !== confirmPassword) newErrors.confirmPassword = "Confirm Password field must be the same as the Password field";
 		if (isNaN(age) || age <= 0) newErrors.age = "Age must be a positive number";
@@ -46,7 +46,7 @@ function SignupFormModal() {
 	};
 
 	return (
-		<>
+		<div className="sign-up-container">
 			<h1 className="Sign-up-h1">Sign Up for ShutterScape</h1>
 			<form onSubmit={handleSubmit}>
 				<label>
@@ -122,7 +122,7 @@ function SignupFormModal() {
 				<button type="submit">Sign Up</button>
 			</form>
 
-		</>
+		</div>
 	);
 }
 
