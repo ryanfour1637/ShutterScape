@@ -393,3 +393,121 @@ font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
   text-shadow: 1px 1px #5380FA;
   margin-left: 62px;
 }
+
+/* Albums */
+
+.create-album-h1{
+  display: flex;
+  flex-direction: row;
+  font-weight: normal;
+  text-shadow: 1px 1px #5380FA;
+  margin-left: 69px;
+  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+}
+
+.album-form-container{
+  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+}
+
+.album-form-container label{
+  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+}
+
+.album-submit{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  height: 30px;
+  border-radius: 5px;
+  border: none;
+  background-color: #5380FA;
+  margin-left: -2px;
+
+  box-shadow: 1px 5px 1px black;
+  color: white;
+  font-size: 15px;
+  /* font-weight: bold; */
+  cursor: pointer;
+  margin-bottom: 10px;
+  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+}
+
+.album-page-h1 {
+  display: flex;
+  justify-content: center;
+  font-family: Proxima Nova, Helvetica Neue, Helvetica, Arial, sans-serif;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  font-weight: normal;
+}
+
+
+.specific-album-container button{
+ margin:10px;
+ height: 33px;
+ font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+ border-radius: 12px;
+ margin-bottom: 0px;
+}
+
+/* Create Post */
+
+.create-post-h1{
+  display: flex;
+  flex-direction: row;
+  font-weight: normal;
+  text-shadow: 1px 1px #5380FA;
+  margin-left: 69px;
+  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+}
+
+.create-post-form{
+  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+}
+
+.create-post-submit{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  height: 30px;
+  border-radius: 5px;
+  border: none;
+  background-color: #5380FA;
+  margin-left: -2px;
+
+  box-shadow: 1px 5px 1px black;
+  color: white;
+  font-size: 15px;
+  /* font-weight: bold; */
+  cursor: pointer;
+  margin-bottom: 10px;
+  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+}
+
+
+.delete-writing1{
+  display: flex;
+  flex-direction: row;
+  font-weight: normal;
+  margin-left: 3px;
+  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+  margin-bottom: 6px;
+}
+
+.da-album-page button{
+margin:10px;
+ height: 33px;
+ font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+ border-radius: 12px;
+ margin-bottom: 15px;
+}
+
+.album-title{
+  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+  color:black;
+  font-style: none;
+  margin-bottom: 15px;
+  text-decoration: none;
+}

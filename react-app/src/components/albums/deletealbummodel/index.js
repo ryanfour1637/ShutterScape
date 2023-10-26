@@ -11,7 +11,7 @@ export default function DeleteAlbumModel({ id }) {
    const dispatch = useDispatch();
 
    async function deleteAlbum() {
-    
+
       dispatch(thunkDeleteAlbum(id))
       push("/albums");
       return closeModal();
@@ -19,16 +19,16 @@ export default function DeleteAlbumModel({ id }) {
 
    return (
       <div id="delete-album-modal-container">
-         <h1>Confirm Delete</h1>
-         <div>Are you sure you want to remove this post?</div>
+         <h1 className="confirm-delete">Delete Album</h1>
+         <div className="delete-writing1">Are you sure you want to remove this album?</div>
          <button
             id="delete-album-modal-button"
-            className="action-button"
+            className="delete-da-bttn"
             onClick={() => deleteAlbum()}
          >
             Yes (Delete Album)
          </button>
-         <button id="keep-album" onClick={closeModal}>
+         <button className="cancel-delete" id="keep-album" onClick={closeModal}>
             No (Keep Album)
          </button>
       </div>

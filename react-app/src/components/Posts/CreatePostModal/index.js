@@ -41,33 +41,37 @@ export default function CreatePostModal({ setRefreshCreate, id }) {
    };
 
    return (
-      <form onSubmit={handleSubmit} encType="multipart/form-data">
-         <input
-            type="file"
-            accept="image/*"
-            onChange={(e) => setImage(e.target.files[0])}
-         />
+      <div>
+         <h1 className="create-post-h1">Create a Post</h1>
+         <form className="create-post-form" onSubmit={handleSubmit} encType="multipart/form-data">
+            <input
+               type="file"
+               accept="image/*"
+               className="file-upload"
+               onChange={(e) => setImage(e.target.files[0])}
+            />
 
-         <label>Title</label>
-         <input
-            type="text"
-            name="title"
-            placeholder="Title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-         />
+            <label>Title</label>
+            <input
+               type="text"
+               name="title"
+               placeholder="Title"
+               value={title}
+               onChange={(e) => setTitle(e.target.value)}
+            />
 
-         <label>Description</label>
-         <textarea
-            type="text"
-            name="description"
-            placeholder="Please write at least 10 characters"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-         />
+            <label>Description</label>
+            <textarea
+               type="text"
+               name="description"
+               placeholder="Please write at least 10 characters"
+               value={description}
+               onChange={(e) => setDescription(e.target.value)}
+            />
 
-         <button type="submit">Submit</button>
-         {imageLoading && <p>Loading...</p>}
-      </form>
+            <button className="create-post-submit" type="submit">Submit</button>
+            {imageLoading && <p>Loading...</p>}
+         </form>
+      </div>
    );
 }
