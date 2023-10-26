@@ -35,18 +35,11 @@ export default function PostDetailsPage() {
    const ownerFavorites = Object.values(getAllFavorites).filter(
       (favorite) => favorite.userId == user.id
    );
-   console.log(
-      "🚀 ~ file: index.js:35 ~ PostDetailsPage ~ ownerFavorites:",
-      ownerFavorites
-   );
+
    const thisPostFavorites = ownerFavorites.filter(
       (favorite) => favorite.postId == id
    );
 
-   console.log(
-      "🚀 ~ file: index.js:37 ~ PostDetailsPage ~ thisPostFavorites:",
-      thisPostFavorites
-   );
    let favId;
    if (thisPostFavorites.length) {
       favId = thisPostFavorites[0]?.id;
@@ -79,23 +72,13 @@ export default function PostDetailsPage() {
    );
 
    const deleteFavorite = () => {
-      console.log(
-         "🚀 ~ DELETE TOP file: index.js:31 ~ PostDetailsPage ~ favorite:",
-         favorite
-      );
-
-      dispatch(thunkDeleteFavorite(favId));
-      return setFavorite(false);
+      setFavorite(false);
+      return dispatch(thunkDeleteFavorite(favId));
    };
 
    const createFavorite = () => {
-      console.log(
-         "🚀 ~ CREATE TOP file: index.js:31 ~ PostDetailsPage ~ favorite:",
-         favorite
-      );
-
-      dispatch(thunkCreateFavorite(id));
-      return setFavorite(true);
+      setFavorite(true);
+      return dispatch(thunkCreateFavorite(id));
    };
 
    return (

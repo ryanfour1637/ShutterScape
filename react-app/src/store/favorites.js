@@ -50,7 +50,6 @@ export const thunkGetAllFavorites = () => async (dispatch) => {
 
    if (res.ok) {
       const data = await res.json();
-      console.log("🚀 ~ file: favorites.js:53 ~ thunkGetAllFavorites ~ data:", data)
       dispatch(actionGetAllFavorites(data));
       return data;
    } else {
@@ -95,7 +94,10 @@ export default function favesReducer(state = initialState, action) {
          return newState;
 
       case DELETE_FAVORITE:
-         console.log("🚀 ~ file: favorites.js:100 ~ favesReducer ~ action:", action)
+         console.log(
+            "🚀 ~ file: favorites.js:100 ~ favesReducer ~ action:",
+            action
+         );
          newState = { ...state, allFavorites: { ...state.allFavorites } };
          delete newState.allFavorites[action];
          return newState;
