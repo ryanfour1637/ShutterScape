@@ -24,26 +24,27 @@ def create_favorite(id):
 
 
 
-@favorites_routes.route('/<int:id>', methods=['DELETE'])
+@favorites_routes.route('/delete/<int:id>', methods=['DELETE'])
 @login_required
 def delete_favorite(id):
+    print("FAV TO DELETE!!!")
     fave_to_delete = Favorite.query.get(id)
-
     db.session.delete(fave_to_delete)
-    return db.session.commit()
+    db.session.commit()
+    return {"message": "Favorite Deleted!"}
+
 
 # TODO - all favorites needs debugging!
 @favorites_routes.route('/')
-@login_required
 def get_all_favorites():
     favorites = Favorite.query.all()
 
     print("hitting route")
     return [favorite.to_dict() for favorite in favorites]
 
-@favorites_routes.route('/<int:id>')
-@login_required
-def get_one_favorite():
-    fave_to_get = Favorite.query.get(id)
+# @favorites_routes.route('/<int:id>')
+# @login_required
+# def get_one_favorite():
+#     fave_to_get = Favorite.query.get(id)
 
-    return fave_to_get.to_dict()
+#     return {"message": "Favorite Deleted!"}
