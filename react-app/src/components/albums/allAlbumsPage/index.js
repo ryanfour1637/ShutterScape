@@ -22,7 +22,7 @@ export default function AllAlbumPage() {
    const albums = allAlbums.filter((album) => album.userId == userId);
 
    useEffect(() => {
-      dispatch(getEveryPostThunk());
+      // dispatch(getEveryPostThunk());
       dispatch(thunkGetAllAlbums());
    }, [dispatch]);
 
