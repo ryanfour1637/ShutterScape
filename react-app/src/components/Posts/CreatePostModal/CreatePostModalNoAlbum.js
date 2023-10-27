@@ -4,6 +4,7 @@ import {useHistory} from "react-router-dom";
 import {createPostThunkNoAlbums} from "../../../store/posts";
 import {useModal} from "../../../context/Modal";
 import "../../CSS/john.css";
+import "./create-post.css"
 
 export default function CreatePostModalNoAlbums() {
   const {push} = useHistory();
@@ -15,6 +16,7 @@ export default function CreatePostModalNoAlbums() {
   const [errors, setErrors] = useState([]);
   const {closeModal} = useModal();
   const [validationObject, setValidationObject] = useState({});
+  const [key, setKey] = useState(Date.now())
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,21 +24,22 @@ export default function CreatePostModalNoAlbums() {
     formData.append("image", image);
     formData.append("title", title);
     formData.append("description", description);
-
+    
     setImageLoading(true);
     const postData = await dispatch(createPostThunkNoAlbums(formData));
-
-    setImage("");
+    
+    setImage(null);
     setTitle("");
     setDescription("");
-
+    
     if (postData.errors === undefined || !postData.errors) {
-      // return push(`/posts/${postData.id}`);
-
-      push("/userposts");
-      return closeModal();
+        
+        push("/userposts");
+        return closeModal();
     } else {
-      setErrors(postData.errors);
+        setImageLoading(false)
+        setErrors(postData.errors);
+        setKey(Date.now())
     }
 
   };
@@ -66,13 +69,21 @@ export default function CreatePostModalNoAlbums() {
               {error}
             </div>
           ))}
-
+        
+            <div className="div-file-section">
+        <label
+        className="style-file-upload">
         <input
           type="file"
           accept="image/*"
-          className="file-upload"
+          className="hide-file-upload"
           onChange={(e) => setImage(e.target.files[0])}
-        />
+          key={key}
+        />Upload Image
+        </label>
+        <div>{image !== null ? image["name"] : "Choose Image"}</div>
+            </div>
+
 
         <label>Title</label>
         <input
@@ -104,7 +115,9 @@ export default function CreatePostModalNoAlbums() {
         >
           Submit
         </button>
-        {imageLoading && <p>Loading...</p>}
+        {imageLoading && (<div aria-busy="true" aria-describedby="progress-bar">
+        <progress id="progress-bar" aria-label="Content loading…"></progress>
+</div>)}
       </form>
     </div>
   );

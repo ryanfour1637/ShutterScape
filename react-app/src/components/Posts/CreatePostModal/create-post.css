@@ -1,0 +1,24 @@
+.hide-file-upload {
+    display: none;
+}
+
+.style-file-upload {
+    background-color: blueviolet;
+    color: white;
+    border: 1px black solid;
+    border-radius: 5px;
+    padding: 5px;
+    box-shadow: 2px 2px black;
+}
+
+.style-file-upload:hover {
+    cursor: pointer;
+}
+
+.div-file-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}

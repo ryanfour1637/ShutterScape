@@ -37,7 +37,7 @@ def update_new_comment(id):
         comment_to_update.comment = new_comment[0]
 
         db.session.commit()
-        return "updated"
+        return comment_to_update.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 
