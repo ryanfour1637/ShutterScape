@@ -52,7 +52,7 @@ export const createCommentThunk = (postId, comment) => async (dispatch) => {
    if (response.ok) {
       const data = await response.json();
 
-      dispatch(actionAddOneComment(data.comment));
+      dispatch(actionAddOneComment(data));
       return data;
    } else {
       const errors = await response.json();
@@ -69,6 +69,8 @@ export const updateCommentThunk = (comment, commentId) => async (dispatch) => {
    });
 
    if (response.ok) {
+      const data = await response.json()
+      dispatch(actionAddOneComment(data));
    } else {
       const errors = response.json();
       return errors;

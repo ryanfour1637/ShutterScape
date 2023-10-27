@@ -7,14 +7,14 @@ import {
    updateCommentThunk,
 } from "../../../store/comments";
 
-export default function UpdateCommentModal({ commentId, setRefreshUpdate }) {
+export default function UpdateCommentModal({ commentId }) {
    const dispatch = useDispatch();
    const [validationObject, setValidationObject] = useState({})
    const [disableSubmitButton, setdisableSubmitButton] = useState(true);
    const { closeModal, setOnModalClose } = useModal();
-   const oneComment = useSelector(
-      (state) => state.comments.allComments[commentId]
-   );
+   const getComments = useSelector(
+      (state) => state.comments.allComments);
+   const oneComment = getComments[commentId]
 
    const [comment, setComment] = useState(oneComment.comment);
 
@@ -24,20 +24,12 @@ export default function UpdateCommentModal({ commentId, setRefreshUpdate }) {
 
    useEffect(() => {
       const errorsObject = {};
-
       if (comment.length < 10) {
          errorsObject.comment = "Comment must be more than 10 characters."
       }
-
-
-
-
       setValidationObject(errorsObject)
-   }, [comment])
-
-   useEffect(() => {
       setdisableSubmitButton(!(comment.length >= 10));
-   }, [comment]);
+   }, [comment])
 
 
    const handleSubmit = (e) => {
@@ -50,7 +42,7 @@ export default function UpdateCommentModal({ commentId, setRefreshUpdate }) {
       dispatch(updateCommentThunk(updatedComment, commentId));
 
       setComment("");
-      setRefreshUpdate(updatedComment.comment);
+
       return closeModal();
    };
 

@@ -8,7 +8,7 @@ import {
 import { useModal } from "../../../context/Modal";
 import "../../CSS/john.css";
 
-export default function CreateCommentForm({ postId, setRefreshCreate }) {
+export default function CreateCommentForm({ postId }) {
    //    const { push } = useHistory();
    const dispatch = useDispatch();
    const [comment, setComment] = useState("");
@@ -25,7 +25,6 @@ export default function CreateCommentForm({ postId, setRefreshCreate }) {
 
       dispatch(createCommentThunk(postId, newComment));
       setComment("");
-      setRefreshCreate(newComment.comment);
       return dispatch(getEveryCommentThunk()).then(closeModal());
    };
 
@@ -36,16 +35,9 @@ export default function CreateCommentForm({ postId, setRefreshCreate }) {
       if (comment.length < 10) {
          errorsObject.comment = "Comment must be more than 10 characters."
       }
-
-
-
-
+      setdisableSubmitButton(!(comment.length >= 10));
       setValidationObject(errorsObject)
    }, [comment])
-
-   useEffect(() => {
-      setdisableSubmitButton(!(comment.length >= 10));
-   }, [comment]);
 
 
    return (
