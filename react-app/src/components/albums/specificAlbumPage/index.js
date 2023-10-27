@@ -21,7 +21,6 @@ export default function SpecificAlbumPage() {
    const getPosts = useSelector((state) => state.posts.allPosts);
 
    const thisAlbumPosts = Object.values(getPosts).filter((post) => post.albumId == id)
-   console.log("🚀 ~ file: index.js:23 ~ SpecificAlbumPage ~ thisAlbumPosts:", thisAlbumPosts)
 
    const postsToMap = [...thisAlbumPosts]
 

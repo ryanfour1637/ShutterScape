@@ -1,19 +1,19 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { getTenRandomNonOwnerPosts } from "../../../store/posts";
+import { getNineRandomNonOwnerPosts } from "../../../store/posts";
 import "../../CSS/john.css"
 
 export default function GetPosts() {
    const { push } = useHistory();
    const user = useSelector((state) => state.session.user);
    const dispatch = useDispatch();
-   const posts = useSelector((state) => state.posts.allPosts);
-   const arrPosts = Object.values(posts);
+   const getPosts = useSelector((state) => state.posts.ninePosts);
+   const arrPosts = Object.values(getPosts);
+   const posts = [...arrPosts]
 
-   console.log("posts", posts);
    useEffect(() => {
-      dispatch(getTenRandomNonOwnerPosts());
+      dispatch(getNineRandomNonOwnerPosts());
    }, [dispatch]);
 
    const goToPost = (post) => {

@@ -54,11 +54,11 @@ function SignupFormModal() {
     <div className="sign-up-container">
       <h1 className="Sign-up-h1">Sign Up for ShutterScape</h1>
       <form onSubmit={handleSubmit}>
-        <ul>
+        <div>
           {errors && errors.length >= 1 && errors.map((error, idx) => (
             <div className="error" key={idx}>{error}</div>
           ))}
-        </ul>
+        </div>
         <label>
           {errors.firstName && <p className="error">{errors.firstName}</p>}
           <input

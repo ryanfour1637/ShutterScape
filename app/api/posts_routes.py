@@ -14,8 +14,7 @@ posts_routes = Blueprint('posts', __name__)
 def index():
     """Getting 10 random images from our db for the rotating background on our logged OUT homepage"""
     all_posts = Post.query.all()
-    post_list = sample(all_posts, 10)
-    print(post_list)
+    post_list = sample(all_posts, 9)
 
     # list of 10 random post dictionaries are going to be sent to redux.
     return [post.to_dict() for post in post_list]
@@ -36,11 +35,11 @@ def current():
     all_user_posts = Post.query.all()
 
     def filter_user_id(post):
-        print(post)
+
         return post.owner_id != current_user.id
     all_non_user_posts = filter(filter_user_id, all_user_posts)
 
-    ten_posts = sample(list(all_non_user_posts), 10)
+    ten_posts = sample(list(all_non_user_posts), 9)
 
     return [post.to_dict() for post in ten_posts]
 
@@ -117,7 +116,6 @@ def new_post_no_album():
 def update_post(id):
     post_to_update = Post.query.get(id)
     form = UpdatePostForm()
-    print(post_to_update)
 
     form['csrf_token'].data = request.cookies['csrf_token']
 
@@ -146,10 +144,9 @@ def delete_posts(id):
         db.session.commit()
         return 'Success, your post was deleted.'
     elif id > 100:
-        print('this is post to delete', post_to_delete)
+
         file_delete = remove_file_from_s3(post_to_delete.photo_url)
-        print('this is file delete', file_delete)
-        print('inside file delete is true')
+
         db.session.delete(post_to_delete)
         db.session.commit()
         return 'Success, your post was deleted.'
