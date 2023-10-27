@@ -3,6 +3,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    text-shadow: 2px 2px black;
     color: white;
     padding: 20px;
     padding-bottom: 56px;
