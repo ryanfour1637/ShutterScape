@@ -93,7 +93,7 @@ export default function UpdatePostModal({ postId }) {
           onChange={(e) => setDescription(e.target.value)}
         />
 
-        <button className="submit-update-post" type="submit" disabled={Object.keys(validationObject).length > 0}>Submit</button>
+        <button className="submit-update-post" type="submit" disabled={Object.keys(validationObject).length > 0}>Update Post</button>
       </form>
     </div>
   );

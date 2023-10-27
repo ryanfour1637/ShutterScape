@@ -33,17 +33,19 @@ export default function CreateAlbumModel() {
    };
 
    return (
-      <div>
+      <div className="create-album-container">
          <h1 className="create-album-h1">Create Album</h1>
          <form onSubmit={handleSubmit} className="album-form-container">
-            <label>Album Title</label>
-            <input
-               type="text"
-               name="title"
-               placeholder="Title"
-               value={title}
-               onChange={(e) => setTitle(e.target.value)}
-            />
+            <div className="album-content">
+               <label>Album Title</label>
+               <input
+                  type="text"
+                  name="title"
+                  placeholder="Title"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+               />
+            </div>
             <button type="submit" className="album-submit">Submit</button>
          </form>
       </div>

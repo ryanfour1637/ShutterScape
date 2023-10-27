@@ -42,16 +42,19 @@ function YouButton({ user }) {
    };
 
    const goToUserPosts = () => {
+      closeMenu();
       push("/userposts");
       return;
    };
 
    const goToUserAlbums = () => {
+      closeMenu();
       push("/albums");
       return;
    };
 
    const goToFavorites = () => {
+      closeMenu();
       push("/favorites");
       return;
    };
