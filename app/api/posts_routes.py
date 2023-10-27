@@ -50,12 +50,6 @@ def current():
 # May we look into Eager Loading Users table?
 
 
-@posts_routes.route('/<int:id>/')
-def post_by_id():
-    """Get post by post ID to show on Post Details Page (when user clicks on a photo post)"""
-    post_to_get = Post.query.get(id)
-
-    return post_to_get.to_dict()
 
 
 @posts_routes.route('/new', methods=['GET', 'POST'])
@@ -88,6 +82,35 @@ def new_post():
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
+@posts_routes.route('/no_album', methods=['GET', 'POST'])
+@login_required
+def new_post_no_album():
+    form = PostForm()
+
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        image = form.data["image"]
+        image.filename = get_unique_filename(image.filename)
+        upload = upload_file_to_s3(image)
+        url = upload['url']
+
+        post = Post(
+            owner_id = current_user.id,
+            title = form.data['title'],
+            album_id = None,
+            photo_url = url,
+            description = form.data['description'],
+            created_at = date.today()
+        )
+
+        db.session.add(post)
+        db.session.commit()
+        # this is a post dictionary.
+        # this needs to be validated on the front end once its built out.
+        return {"resPost": post.to_dict()}
+
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 @posts_routes.route("/update/<int:id>", methods=["PUT"])
 @login_required
@@ -192,32 +215,9 @@ def update_comment():
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 
-# @posts_routes.route('/new/noAlbum', methods=['GET', 'POST'])
-# @login_required
-# def new_post():
-#     form = PostForm()
+@posts_routes.route('/<int:id>/')
+def post_by_id():
+    """Get post by post ID to show on Post Details Page (when user clicks on a photo post)"""
+    post_to_get = Post.query.get(id)
 
-#     form['csrf_token'].data = request.cookies['csrf_token']
-
-#     if form.validate_on_submit():
-#         image = form.data["image"]
-#         image.filename = get_unique_filename(image.filename)
-#         upload = upload_file_to_s3(image)
-#         url = upload['url']
-
-#         post = Post(
-#             owner_id = current_user.id,
-#             title = form.data['title'],
-#             album_id = form.data['album_id'],
-#             photo_url = url,
-#             description = form.data['description'],
-#             created_at = date.today()
-#         )
-
-#         db.session.add(post)
-#         db.session.commit()
-#         # this is a post dictionary.
-#         # this needs to be validated on the front end once its built out.
-#         return {"resPost": post.to_dict()}
-
-#     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+    return post_to_get.to_dict()

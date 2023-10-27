@@ -25,7 +25,7 @@ export default function DeletePostModal({ postId, albumId }) {
             } else {
             }
          })
-         .then(push(`/albums/${albumId}`));
+         .then(push(`/userposts`));
    };
 
    return (

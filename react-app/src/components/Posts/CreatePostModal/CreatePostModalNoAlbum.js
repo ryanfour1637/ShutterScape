@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { createPostThunk } from "../../../store/posts";
+import { createPostThunkNoAlbums } from "../../../store/posts";
 import { useModal } from "../../../context/Modal";
 import "../../CSS/john.css";
 
-export default function CreatePostModal({ id }) {
-   console.log("🚀 ~ file: index.js:8 ~ CreatePostModal ~ id :", id);
+export default function CreatePostModalNoAlbums() {
+
    const { push } = useHistory();
    const dispatch = useDispatch();
    const [title, setTitle] = useState("");
@@ -23,18 +23,17 @@ export default function CreatePostModal({ id }) {
       formData.append("image", image);
       formData.append("title", title);
       formData.append("description", description);
-      formData.append("album_id", id);
 
       setImageLoading(true);
-      const postData = await dispatch(createPostThunk(formData));
+      const postData = await dispatch(createPostThunkNoAlbums(formData));
 
       setImage("");
       setTitle("");
       setDescription("");
 
       if (postData.errors === undefined || !postData.errors) {
-        
          // return push(`/posts/${postData.id}`);
+         
          return closeModal();
       } else {
          setErrors(postData.errors);
