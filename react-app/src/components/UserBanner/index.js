@@ -1,11 +1,11 @@
-import React, {useEffect} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {useParams, useHistory} from "react-router-dom";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams, useHistory } from "react-router-dom";
 import BannerNav from "./BannerNav";
 import "../CSS/lan.css";
 
 export default function UserBanner() {
-  const {id} = useParams();
+  const { id } = useParams();
   const user = useSelector((state) => state.session.user);
   const post = useSelector((state) => state.posts.allPosts[id]);
   const all_posts = useSelector((state) => state.posts.allPosts);
@@ -16,7 +16,7 @@ export default function UserBanner() {
   return (
     <>
       <div className="banner-parent-container">
-        <div>
+        <div className="banner-content">
           <div className="banner-user-details">
             <div className="profile-photo">
               <i className="fa-solid fa-camera"></i>
@@ -29,9 +29,9 @@ export default function UserBanner() {
             </div>
           </div>
 
-          <div className="banner-totalcount">
-            <p>{allUserPostsTotal} Photos</p>
-          </div>
+
+          <p>{allUserPostsTotal} Photos</p>
+
         </div>
       </div>
 

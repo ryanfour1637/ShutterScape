@@ -30,11 +30,6 @@ input {
   color: white;
 }
 
-.logo-container div {
-  padding-left: 8px;
-  padding-right: 16px;
-
-}
 
 /* Profile Button */
 
@@ -92,9 +87,10 @@ nav {
 
 /* YouButton */
 .youbutton-dropdown {
-  border: 1px solid black;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 15px;
-  min-height: 90px;
+  width: 90px;
+  height: 120px;
   position: absolute;
   left: 216px;
   z-index: 3;
@@ -105,6 +101,8 @@ nav {
 .youbutton-button {
   position: relative;
   padding: 0px 0px;
+  margin-right: 57px;
+  margin-left: 41px;
 }
 
 .youbutton-container {
@@ -118,9 +116,19 @@ nav {
 .youbutton-container div {
   padding-bottom: 8px;
   padding-top:10px;
+  margin-left: 20px;
+  transition: background-color 0.3s;
+}
+
+.youbutton-container div:nth-child(3) {
+  padding-bottom: 8px;
+  padding-top:10px;
+  margin-left: 14px;
 }
 
 .youbutton-container div:hover {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #ccc;
   cursor: pointer;
+  border-radius: 4px;
 }

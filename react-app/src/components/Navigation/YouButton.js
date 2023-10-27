@@ -66,11 +66,11 @@ function YouButton({ user }) {
          <div className={ulClassName} ref={ulRef}>
             {user ? (
                <div className="youbutton-container">
-                  <div id="manage-link" onClick={() => goToUserPosts()}>
+                  <div className="manage-link" onClick={() => goToUserPosts()}>
                      About
                   </div>
-                  <div onClick={() => goToUserAlbums()}>Albums</div>
-                  <div onClick={() => goToFavorites()}>Favorites</div>
+                  <div className="manage-link" onClick={() => goToUserAlbums()}>Albums</div>
+                  <div className="favorite-link" onClick={() => goToFavorites()}>Favorites</div>
                </div>
             ) : (
                <div className="youbutton-container">
