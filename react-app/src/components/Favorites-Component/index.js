@@ -25,7 +25,7 @@ export default function FavoritesPage() {
       <div>
          <UserBanner />
          <div className="allposts-parent-container">
-            <h1>Posts You Have Favorited</h1>
+            <h1 className="album-page-h1">Posts You Have Favorited</h1>
             <div className="allposts-photos">
                {favsToPost &&
                   favsToPost.map((singleFav) =>

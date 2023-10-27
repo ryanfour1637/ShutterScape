@@ -16,7 +16,7 @@ export default function AllUserPostsPage() {
   const postsArr1 = Object.values(all_posts)
 
   const postsArr = [...postsArr1]
-  
+
   useEffect(() => {
     dispatch(getEveryPostThunk());
   }, [dispatch]);

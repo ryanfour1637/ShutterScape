@@ -436,6 +436,15 @@
    font-weight: normal;
 }
 
+#see-more-bttn {
+   margin: 10px;
+   height: 33px;
+   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+   border-radius: 12px;
+   margin-bottom: 15px;
+   cursor: pointer;
+}
+
 .specific-album-container button {
    margin: 10px;
    height: 33px;
@@ -494,6 +503,7 @@
    font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
    border-radius: 12px;
    margin-bottom: 15px;
+   cursor: pointer;
 }
 
 .album-title {

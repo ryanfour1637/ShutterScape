@@ -17,16 +17,35 @@
     justify-content: left;
     align-items: center;
     padding: 8px 0px 0px 20px;
-    font-size: 14px;
-    color: black;
+    font-size: 16px;
+    color: #34343b;
     background-color: white;
+    padding: 20px;
+    border-bottom: 1px solid grey;
 }
 
 .banner-nav-container div {
     padding-right: 32px;
     cursor: pointer;
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
     font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
 }
+
+.banner-nav-container div:hover {
+
+    text-decoration: underline;
+    color: black;
+}
+
+.allposts-parent-container button {
+    margin: 10px;
+    height: 33px;
+    font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
 .banner-user-details {
 
     display: flex;
