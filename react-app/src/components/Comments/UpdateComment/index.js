@@ -55,13 +55,14 @@ export default function UpdateCommentModal({ commentId, setRefreshUpdate }) {
    };
 
    return (
-      <>
+      <div className="update-comment-container">
          <h1 className="update-comment1">Update Comment</h1>
          <div className="error-box">
             {validationObject.comment && <p
                className="errors-one"> {validationObject.comment}</p>}
          </div>
          <form onSubmit={handleSubmit} className="comment-form-container">
+            <h3 className="comment-h3">Comment</h3>
             <label>
                <textarea
                   type="text"
@@ -80,6 +81,6 @@ export default function UpdateCommentModal({ commentId, setRefreshUpdate }) {
                Update Comment
             </button>
          </form>
-      </>
+      </div>
    );
 }
