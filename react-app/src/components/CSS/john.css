@@ -25,10 +25,6 @@
    opacity: 1;
 }
 
-.home-container {
-   border-radius: 9px;
-}
-
 .home-container button:hover {
    background-color: #007bff;
    color: #fff;
@@ -325,12 +321,12 @@ width: 285px;
    display: flex;
    justify-content: center;
    align-items: center;
-   width: 90%;
+   width: 222px;
    height: 30px;
    border-radius: 5px;
    border: none;
    background-color: #5380fa;
-   margin-left: 15px;
+   margin-left: 36px;
 
    box-shadow: 1px 5px 1px black;
    color: white;
@@ -415,12 +411,20 @@ width: 285px;
     margin-top:10px;
 }
 
+#comment-text-area1{
+   width: 229px;
+    height: 93px;
+    margin-left: 28px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
 .post-commenth1 {
    display: flex;
    flex-direction: row;
    font-weight: normal;
    text-shadow: 1px 1px #5380fa;
-   margin-left: 62px;
+   margin-left: 37px;
 }
 
 /* Albums */
@@ -509,26 +513,32 @@ width: 285px;
 
 .create-post-form {
    font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+   display: flex;
+    flex-direction: column;
+}
+
+.create-post-form label {
+   display: flex;
+   justify-content: center;
 }
 
 .create-post-submit {
    display: flex;
-   justify-content: center;
-   align-items: center;
-   width: 90%;
-   height: 30px;
-   border-radius: 5px;
-   border: none;
-   background-color: #5380fa;
-   margin-left: -2px;
-
-   box-shadow: 1px 5px 1px black;
-   color: white;
-   font-size: 15px;
-   /* font-weight: bold; */
-   cursor: pointer;
-   margin-bottom: 10px;
-   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+    justify-content: center;
+    align-items: center;
+    width: 198px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    background-color: #5380fa;
+    margin-left: 56px;
+    box-shadow: 1px 5px 1px black;
+    color: white;
+    font-size: 15px;
+    /* font-weight: bold; */
+    cursor: pointer;
+    margin-bottom: 10px;
+    font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
 }
 
 .delete-writing1 {
@@ -565,8 +575,10 @@ width: 285px;
 }
 
 .create-post-form textarea {
-   height: 124px;
-   width: 287px;
+   margin-left: 54px;
+   margin-bottom: 10px;
+   height: 115px;
+    width: 199px;
 }
 
 .create-post-form label {
@@ -727,4 +739,18 @@ input[type="password"] {
     flex-direction: column;
     height: 187px;
     width: 244px;
+}
+
+.post-comment-container{
+   width: 300px;
+}
+
+.create-post-no-album-container{
+   width: 319px;
+}
+
+.create-post-no-album-container input {
+   margin-left: 51px;
+   margin-right: 10px;
+   width: 201px;
 }

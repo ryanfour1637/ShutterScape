@@ -1,20 +1,20 @@
-import {useState, useEffect} from "react";
-import {useDispatch} from "react-redux";
-import {useHistory} from "react-router-dom";
-import {createPostThunk} from "../../../store/posts";
-import {useModal} from "../../../context/Modal";
+import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { createPostThunk } from "../../../store/posts";
+import { useModal } from "../../../context/Modal";
 import "../../CSS/john.css";
 
-export default function CreatePostModal({id}) {
+export default function CreatePostModal({ id }) {
 
-  const {push} = useHistory();
+  const { push } = useHistory();
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
   const [imageLoading, setImageLoading] = useState(false);
   const [errors, setErrors] = useState([]);
-  const {closeModal} = useModal();
+  const { closeModal } = useModal();
   const [validationObject, setValidationObject] = useState({});
   const [key, setKey] = useState(Date.now())
 
@@ -39,9 +39,9 @@ export default function CreatePostModal({id}) {
       push("/userposts");
       return closeModal();
     } else {
-       setImageLoading(false)
-       setErrors(postData.errors);
-       setKey(Date.now())
+      setImageLoading(false)
+      setErrors(postData.errors);
+      setKey(Date.now())
     }
 
   };
@@ -57,7 +57,7 @@ export default function CreatePostModal({id}) {
   }, [description]);
 
   return (
-    <div>
+    <div className="create-post-no-album-container" >
       <h1 className="create-post-h1">Create a Post</h1>
       <form
         className="create-post-form"
@@ -119,6 +119,6 @@ export default function CreatePostModal({id}) {
         <progress id="progress-bar" aria-label="Content loading…"></progress>
          </div>)}
       </form>
-    </div>
+    </div >
   );
 }
