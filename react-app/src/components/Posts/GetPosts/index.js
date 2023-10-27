@@ -9,12 +9,12 @@ export default function GetPosts() {
    const dispatch = useDispatch();
    const getPosts = useSelector((state) => state.posts.ninePosts);
    const arrPosts = Object.values(getPosts);
-   // const [postsToDisplay, setPostsToDisplay] = useState([]);
-   const postsToDisplay = [...arrPosts];
+   const [postsToDisplay, setPostsToDisplay] = useState([]);
+   const posts = [...arrPosts];
 
    useEffect(() => {
       dispatch(getNineRandomNonOwnerPosts());
-      // setPostsToDisplay(posts);
+      setPostsToDisplay(posts);
    }, [dispatch]);
 
    const goToPost = (post) => {
@@ -24,15 +24,15 @@ export default function GetPosts() {
 
    const getRandomPhotos = () => {
       dispatch(getNineRandomNonOwnerPosts());
-      // setPostsToDisplay(posts);
+      setPostsToDisplay(posts);
    };
-
-   if (postsToDisplay.length === 0) return null;
 
    return (
       <>
          <h1 className="album-page-h1">Trending</h1>
-         <button onClick={getRandomPhotos} id="see-more-bttn">See more photos</button>
+         <button onClick={getRandomPhotos} id="see-more-bttn">
+            See more photos
+         </button>
          <div className="allposts-photos">
             {postsToDisplay.map((post) => (
                <div onClick={() => goToPost(post)} key={post.id}>

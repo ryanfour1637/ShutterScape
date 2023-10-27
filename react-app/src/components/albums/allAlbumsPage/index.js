@@ -31,7 +31,6 @@ export default function AllAlbumPage() {
       return (
          <div>
             <UserBanner />
-            <h1>Album Details Page</h1>
 
             <div className="da-album-page">
                <h1 className="album-page-h1">Add Albums</h1>
@@ -47,25 +46,11 @@ export default function AllAlbumPage() {
       );
    }
 
-   // while (albumArray.length) {
-   //    const filteredPosts = arrAllPosts.filter(
-   //       (post) => albumArray[0].id == post.albumId
-   //    );
-   //    if (filteredPosts.length > 0) {
-   //       albumArray[0]["imageUrl"] = filteredPosts[0].imageUrl;
-   //       newAlbumArray.shift(albumArray);
-   //    } else {
-   //       albumArray[0]["imageUrl"] =
-   //          "https://www.seekpng.com/png/full/346-3460840_add-camera-icon-icon-add.png";
-   //       newAlbumArray.shift(albumArray);
-   //    }
-   // }
-
    if (!albums) return null;
    return (
       <div className="da-album-page">
          <UserBanner />
-         <h1 className="album-page-h1">Album Details Page</h1>
+         <h1 className="album-page-h1">Add Album</h1>
 
          <div>
             <OpenModalButton
