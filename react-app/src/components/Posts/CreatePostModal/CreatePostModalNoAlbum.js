@@ -1,20 +1,20 @@
-import {useState, useEffect} from "react";
-import {useDispatch} from "react-redux";
-import {useHistory} from "react-router-dom";
-import {createPostThunkNoAlbums} from "../../../store/posts";
-import {useModal} from "../../../context/Modal";
+import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { createPostThunkNoAlbums } from "../../../store/posts";
+import { useModal } from "../../../context/Modal";
 import "../../CSS/john.css";
 import "./create-post.css"
 
 export default function CreatePostModalNoAlbums() {
-  const {push} = useHistory();
+  const { push } = useHistory();
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
   const [imageLoading, setImageLoading] = useState(false);
   const [errors, setErrors] = useState([]);
-  const {closeModal} = useModal();
+  const { closeModal } = useModal();
   const [validationObject, setValidationObject] = useState({});
   const [key, setKey] = useState(Date.now())
 
@@ -24,22 +24,22 @@ export default function CreatePostModalNoAlbums() {
     formData.append("image", image);
     formData.append("title", title);
     formData.append("description", description);
-    
+
     setImageLoading(true);
     const postData = await dispatch(createPostThunkNoAlbums(formData));
-    
+
     setImage(null);
     setTitle("");
     setDescription("");
-    
+
     if (postData.errors === undefined || !postData.errors) {
-        
-        push("/userposts");
-        return closeModal();
+
+      push("/userposts");
+      return closeModal();
     } else {
-        setImageLoading(false)
-        setErrors(postData.errors);
-        setKey(Date.now())
+      setImageLoading(false)
+      setErrors(postData.errors);
+      setKey(Date.now())
     }
 
   };
@@ -55,7 +55,7 @@ export default function CreatePostModalNoAlbums() {
   }, [description]);
 
   return (
-    <div>
+    <div className="create-post-no-album-container">
       <h1 className="create-post-h1">Create a Post</h1>
       <form
         className="create-post-form"
@@ -69,20 +69,20 @@ export default function CreatePostModalNoAlbums() {
               {error}
             </div>
           ))}
-        
-            <div className="div-file-section">
-        <label
-        className="style-file-upload">
-        <input
-          type="file"
-          accept="image/*"
-          className="hide-file-upload"
-          onChange={(e) => setImage(e.target.files[0])}
-          key={key}
-        />Upload Image
-        </label>
-        <div>{image !== null ? image["name"] : "Choose Image"}</div>
-            </div>
+
+        <div className="div-file-section">
+          <label
+            className="style-file-upload">
+            <input
+              type="file"
+              accept="image/*"
+              className="hide-file-upload"
+              onChange={(e) => setImage(e.target.files[0])}
+              key={key}
+            />Upload Image
+          </label>
+          <div>{image !== null ? image["name"] : "Choose Image"}</div>
+        </div>
 
 
         <label>Title</label>
@@ -116,8 +116,8 @@ export default function CreatePostModalNoAlbums() {
           Submit
         </button>
         {imageLoading && (<div aria-busy="true" aria-describedby="progress-bar">
-        <progress id="progress-bar" aria-label="Content loading…"></progress>
-</div>)}
+          <progress id="progress-bar" aria-label="Content loading…"></progress>
+        </div>)}
       </form>
     </div>
   );

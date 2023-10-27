@@ -41,7 +41,7 @@ export default function CreateCommentForm({ postId }) {
 
 
    return (
-      <div>
+      <div className="post-comment-container">
          <h1 className="post-commenth1">Post Comment</h1>
          <div className="error-box">
             {validationObject.comment && <p
@@ -51,7 +51,7 @@ export default function CreateCommentForm({ postId }) {
             <label>
                <textarea
                   type="text"
-                  id="comment-text-area"
+                  id="comment-text-area1"
                   value={comment}
                   placeholder="Add a comment about this photo..."
                   onChange={(e) => setComment(e.target.value)}
