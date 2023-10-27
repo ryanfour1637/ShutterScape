@@ -84,6 +84,28 @@ export const createPostThunk = (form) => async (dispatch) => {
    }
 };
 
+//createPostNoAlbums Thunk
+export const createPostThunkNoAlbums = (form) => async (dispatch) => {
+   try {
+      const res = await fetch("/api/posts/no_album", {
+         method: "POST",
+         body: form,
+      });
+
+      if (res.ok) {
+         const { resPost } = await res.json();
+         dispatch(actionGetPostDetails(resPost));
+         return resPost;
+      } else {
+         console.log("There was an error making your post!");
+      }
+   } catch (error) {
+      const data = await error.json();
+      return data;
+   }
+};
+
+
 //updatePost Thunk
 export const updatePostThunk = (form, postId) => async (dispatch) => {
 
@@ -139,12 +161,13 @@ export default function postReducer(state = initialState, action) {
          return newState;
 
       case GET_POST_DETAILS:
-         newState = { ...state, singlePost: action.post };
+         newState = { ...state, allPosts: {...state.allPosts}};
+         newState.allPosts[action.post.id] = action.post
          return newState;
 
       case DELETE_POST:
          newState = { ...state, allPosts: { ...state.allPosts } };
-         delete newState.allPosts[action];
+         delete newState.allPosts[action.id];
          return newState;
 
       default:

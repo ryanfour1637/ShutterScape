@@ -1,9 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory, Link } from "react-router-dom";
 import { getEveryPostThunk } from "../../../store/posts";
 import UserBanner from "../../UserBanner";
 import "../../CSS/john.css"
+import CreatePostModalNoAlbums from "../CreatePostModal/CreatePostModalNoAlbum";
+import OpenModalButton from "../../OpenModalButton";
 
 export default function AllUserPostsPage() {
   const { id } = useParams();
@@ -11,9 +13,10 @@ export default function AllUserPostsPage() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
   const all_posts = useSelector((state) => state.posts.allPosts);
-  const postsArr = Object.values(all_posts)
+  const postsArr1 = Object.values(all_posts)
 
-
+  const postsArr = [...postsArr1]
+  
   useEffect(() => {
     dispatch(getEveryPostThunk());
   }, [dispatch]);
@@ -24,6 +27,13 @@ export default function AllUserPostsPage() {
       <UserBanner />
       <div className="allposts-parent-container">
         <h1 className="album-page-h1">Your Photos</h1>
+        <OpenModalButton
+               buttonText="Create a new post"
+               modalComponent={
+                  <CreatePostModalNoAlbums
+                  />
+               }
+            />
         <div className="allposts-photos">
           {postsArr &&
             postsArr.map((singlepost) =>
