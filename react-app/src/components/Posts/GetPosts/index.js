@@ -27,12 +27,12 @@ export default function GetPosts() {
       setPostsToDisplay(posts);
    };
 
-   if (Object.values(posts).length === 0) return null;
-
    return (
       <>
          <h1 className="album-page-h1">Trending</h1>
-         <button onClick={getRandomPhotos}>See more photos</button>
+         <button onClick={getRandomPhotos} id="see-more-bttn">
+            See more photos
+         </button>
          <div className="allposts-photos">
             {postsToDisplay.map((post) => (
                <div onClick={() => goToPost(post)} key={post.id}>

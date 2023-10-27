@@ -19,17 +19,13 @@ export default function PostDetailsPage() {
    const user = useSelector((state) => state.session.user);
    const allPosts = useSelector((state) => state.posts.allPosts);
    const comments = useSelector((state) => state.comments.allComments);
-   const [refreshCreate, setRefreshCreate] = useState("");
-   const [refreshUpdate, setRefreshUpdate] = useState("");
 
    const post = allPosts[id];
 
    useEffect(() => {
       dispatch(getEveryPostThunk());
       dispatch(getEveryCommentThunk());
-      setRefreshCreate("");
-      setRefreshUpdate("");
-   }, [dispatch, refreshCreate, refreshUpdate]);
+   }, [dispatch]);
 
    const fixDate = (dateString) => {
       const date = new Date(dateString);
@@ -112,7 +108,6 @@ export default function PostDetailsPage() {
                                     <UpdateCommentModal
                                        commentId={comment.id}
                                        postId={id}
-                                       setRefreshUpdate={setRefreshUpdate}
                                     />
                                  }
                               />
@@ -144,7 +139,6 @@ export default function PostDetailsPage() {
                   modalComponent={
                      <CreateCommentForm
                         postId={id}
-                        setRefreshCreate={setRefreshCreate}
                      />
                   }
                />

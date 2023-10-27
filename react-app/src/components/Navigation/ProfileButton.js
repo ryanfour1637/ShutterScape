@@ -11,7 +11,7 @@ function ProfileButton({ user }) {
    const { push } = useHistory();
    const dispatch = useDispatch();
    const [showMenu, setShowMenu] = useState(false);
-   const [refresh, setRefresh] = useState("");
+   
    const ulRef = useRef();
 
    const openMenu = () => {

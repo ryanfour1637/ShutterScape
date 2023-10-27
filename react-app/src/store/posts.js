@@ -159,10 +159,6 @@ export default function postReducer(state = initialState, action) {
       case GET_NINE_POSTS:
          newState = { ...state, ninePosts: {} };
          action.posts.forEach((post) => (newState.ninePosts[post.id] = post));
-         console.log(
-            "🚀 ~ file: posts.js:163 ~ postReducer ~ newState:",
-            newState
-         );
          return newState;
 
       default:

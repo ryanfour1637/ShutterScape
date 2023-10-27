@@ -16,6 +16,7 @@ export default function CreatePostModal({id}) {
   const [errors, setErrors] = useState([]);
   const {closeModal} = useModal();
   const [validationObject, setValidationObject] = useState({});
+  const [key, setKey] = useState(Date.now())
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,12 +35,13 @@ export default function CreatePostModal({id}) {
 
 
     if (postData.errors === undefined || !postData.errors) {
-      // return push(`/posts/${postData.id}`);
 
       push("/userposts");
       return closeModal();
     } else {
-      setErrors(postData.errors);
+       setImageLoading(false)
+       setErrors(postData.errors);
+       setKey(Date.now())
     }
 
   };
@@ -69,13 +71,19 @@ export default function CreatePostModal({id}) {
               {error}
             </div>
           ))}
-
+         <div className="div-file-section">
+         <label
+        className="style-file-upload">
         <input
           type="file"
           accept="image/*"
-          className="file-upload"
+          className="hide-file-upload"
           onChange={(e) => setImage(e.target.files[0])}
-        />
+          key={key}
+        />Upload Image
+        </label>
+        <div>{image !== null ? image["name"] : "Choose Image"}</div>
+         </div>
 
         <label>Title</label>
         <input
@@ -107,7 +115,9 @@ export default function CreatePostModal({id}) {
         >
           Submit
         </button>
-        {imageLoading && <p>Loading...</p>}
+        {imageLoading && (<div aria-busy="true" aria-describedby="progress-bar">
+        <progress id="progress-bar" aria-label="Content loading…"></progress>
+         </div>)}
       </form>
     </div>
   );
