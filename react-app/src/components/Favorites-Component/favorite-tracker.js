@@ -35,6 +35,7 @@ export default function FavoriteTracker({ postId, userId }) {
 
    const createFavorite = async () => {
       const res = await dispatch(thunkCreateFavorite(postId));
+      dispatch(thunkGetAllFavorites());
 
       if (res.errors) return setFavorite(true);
    };

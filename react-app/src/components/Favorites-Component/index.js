@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory, Link } from "react-router-dom";
 import { getEveryPostThunk } from "../../store/posts";
@@ -15,9 +15,9 @@ export default function FavoritesPage() {
    const ownerFavorites = Object.values(getAllFavorites).filter(
       (favorite) => favorite.userId == user.id
    );
+   const favsToPost = [...ownerFavorites];
 
    useEffect(() => {
-      dispatch(getEveryPostThunk());
       dispatch(thunkGetAllFavorites());
    }, [dispatch]);
 
@@ -27,8 +27,8 @@ export default function FavoritesPage() {
          <div className="allposts-parent-container">
             <h1>Posts You Have Favorited</h1>
             <div className="allposts-photos">
-               {ownerFavorites &&
-                  ownerFavorites.map((singleFav) =>
+               {favsToPost &&
+                  favsToPost.map((singleFav) =>
                      singleFav.userId == user.id ? (
                         <div key={singleFav.post.id}>
                            <Link to={`/posts/${singleFav.post.id}`}>

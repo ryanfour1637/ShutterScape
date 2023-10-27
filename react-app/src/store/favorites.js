@@ -82,7 +82,7 @@ export default function favesReducer(state = initialState, action) {
 
    switch (action.type) {
       case GET_ONE_FAVORITE:
-         newState = { ...state, allFavorites: {} };
+         newState = { ...state, allFavorites: { ...state.allFavorites } };
          newState.allFavorites[action.favorite.id] = action.favorite;
          return newState;
 
