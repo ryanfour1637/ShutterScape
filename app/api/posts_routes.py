@@ -14,8 +14,7 @@ posts_routes = Blueprint('posts', __name__)
 def index():
     """Getting 10 random images from our db for the rotating background on our logged OUT homepage"""
     all_posts = Post.query.all()
-    post_list = sample(all_posts, 10)
-    print(post_list)
+    post_list = sample(all_posts, 9)
 
     # list of 10 random post dictionaries are going to be sent to redux.
     return [post.to_dict() for post in post_list]
@@ -36,11 +35,11 @@ def current():
     all_user_posts = Post.query.all()
 
     def filter_user_id(post):
-        print(post)
+
         return post.owner_id != current_user.id
     all_non_user_posts = filter(filter_user_id, all_user_posts)
 
-    ten_posts = sample(list(all_non_user_posts), 10)
+    ten_posts = sample(list(all_non_user_posts), 9)
 
     return [post.to_dict() for post in ten_posts]
 
@@ -50,12 +49,6 @@ def current():
 # May we look into Eager Loading Users table?
 
 
-@posts_routes.route('/<int:id>/')
-def post_by_id():
-    """Get post by post ID to show on Post Details Page (when user clicks on a photo post)"""
-    post_to_get = Post.query.get(id)
-
-    return post_to_get.to_dict()
 
 
 @posts_routes.route('/new', methods=['GET', 'POST'])
@@ -88,13 +81,41 @@ def new_post():
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
+@posts_routes.route('/no_album', methods=['GET', 'POST'])
+@login_required
+def new_post_no_album():
+    form = PostForm()
+
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        image = form.data["image"]
+        image.filename = get_unique_filename(image.filename)
+        upload = upload_file_to_s3(image)
+        url = upload['url']
+
+        post = Post(
+            owner_id = current_user.id,
+            title = form.data['title'],
+            album_id = None,
+            photo_url = url,
+            description = form.data['description'],
+            created_at = date.today()
+        )
+
+        db.session.add(post)
+        db.session.commit()
+        # this is a post dictionary.
+        # this needs to be validated on the front end once its built out.
+        return {"resPost": post.to_dict()}
+
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 @posts_routes.route("/update/<int:id>", methods=["PUT"])
 @login_required
 def update_post(id):
     post_to_update = Post.query.get(id)
     form = UpdatePostForm()
-    print(post_to_update)
 
     form['csrf_token'].data = request.cookies['csrf_token']
 
@@ -123,10 +144,9 @@ def delete_posts(id):
         db.session.commit()
         return 'Success, your post was deleted.'
     elif id > 100:
-        print('this is post to delete', post_to_delete)
+
         file_delete = remove_file_from_s3(post_to_delete.photo_url)
-        print('this is file delete', file_delete)
-        print('inside file delete is true')
+
         db.session.delete(post_to_delete)
         db.session.commit()
         return 'Success, your post was deleted.'
@@ -190,3 +210,11 @@ def update_comment():
         return create_comment.to_dict()
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+
+
+@posts_routes.route('/<int:id>/')
+def post_by_id():
+    """Get post by post ID to show on Post Details Page (when user clicks on a photo post)"""
+    post_to_get = Post.query.get(id)
+
+    return post_to_get.to_dict()

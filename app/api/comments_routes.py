@@ -29,12 +29,11 @@ def post_new_comment(id):
 @login_required
 def update_new_comment(id):
     comment_to_update = Comment.query.get(id)
-    print("this is the print", comment_to_update.comment)
+
     form = CommentForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         new_comment=form.data['comment'],
-        print("this is new comment", new_comment)
         comment_to_update.comment = new_comment[0]
 
         db.session.commit()

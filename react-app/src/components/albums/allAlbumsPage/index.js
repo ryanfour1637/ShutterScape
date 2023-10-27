@@ -26,7 +26,6 @@ export default function AllAlbumPage() {
       dispatch(thunkGetAllAlbums());
    }, [dispatch]);
 
-   console.log(albums);
    if (albums?.length > 0) {
    } else {
       return (

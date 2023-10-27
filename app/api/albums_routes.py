@@ -29,14 +29,14 @@ def create_new_album():
 @login_required
 def delete_one_album(id):
     album_to_delete = Album.query.get(id)
-    print(album_to_delete, "***************")
+
     if album_to_delete:
         db.session.delete(album_to_delete)
         db.session.commit()
         return {"message": "Delete successful"}
     else:
         return {"errors": "Album Not Found"}, 400
-    
+
 @albums_routes.route("/all")
 def get_all_albums():
     all_albums = Album.query.all()

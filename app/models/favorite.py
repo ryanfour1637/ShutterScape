@@ -14,7 +14,6 @@ class Favorite(db.Model):
     my_fav_user_id = db.relationship("User", back_populates = "my_fav_id")
     my_fav_post_id = db.relationship("Post", back_populates = "my_post_fav_id")
 
-    __table_args__ = (db.UniqueConstraint(user_id, post_id), )
 
     def to_dict(self):
         return {
