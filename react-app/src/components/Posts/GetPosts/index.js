@@ -8,6 +8,7 @@ export default function GetPosts() {
    const { push } = useHistory();
    const dispatch = useDispatch();
    const getPosts = useSelector((state) => state.posts.ninePosts);
+   const user = useSelector((state) => state.session.user);
    const arrPosts = Object.values(getPosts);
    const [postsToDisplay, setPostsToDisplay] = useState([]);
    const posts = [...arrPosts];
@@ -32,7 +33,9 @@ export default function GetPosts() {
    return (
       <>
          <h1 className="album-page-h1">Trending</h1>
-         <button onClick={getRandomPhotos}>See more photos</button>
+         {user !== null && (
+            <button onClick={getRandomPhotos}>See more photos</button>
+         )}
          <div className="allposts-photos">
             {postsToDisplay.map((post) => (
                <div onClick={() => goToPost(post)} key={post.id}>
