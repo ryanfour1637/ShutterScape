@@ -1,148 +1,177 @@
-# Flask React Project
+# Shutterscape
 
-This is the starter for the Flask React project.
+Shutterscape is a clone of the photo-sharing website Flickr, which allows users to create photo posts, create photo albums of grouped photo posts, leave comments on photo posts, and mark desired posts as a "Favorite" to be stored in a collection on their user profile.
 
-## Getting started
-1. Clone this repository (only this branch)
+Try it [here:](https://shutterscape.onrender.com/)
+1. Click on the Menu icon in the upper-right and select `Log In`
+2. Click on the `Demo User` button
 
-2. Install dependencies
+### Technology Used
+* Python
+* Flask
+* React.js
+* Redux
+* Docker
+* Amazon Web Services (AWS)
+* Render
 
-      ```bash
-      pipenv install -r requirements.txt
-      ```
+## Screenshots
+### Your Photos Page
+![YourPhotos](https://github.com/ryanfour1637/ShutterScape/assets/115580381/802f91fa-a8d5-42c9-934d-394d1cb33ea3)
 
-3. Create a **.env** file based on the example with proper settings for your
-   development environment
+### Album Photos
+![PhotosInAlbum](https://github.com/ryanfour1637/ShutterScape/assets/115580381/48966622-11bc-48e2-8695-75d7b7b071df)
 
-4. Make sure the SQLite3 database connection URL is in the **.env** file
+### Post Details
+<img width="888" alt="PostDetails" src="https://github.com/ryanfour1637/ShutterScape/assets/115580381/2618cfd2-f4ec-47e7-a918-372abbf014ba">
 
-5. This starter organizes all tables inside the `flask_schema` schema, defined
-   by the `SCHEMA` environment variable.  Replace the value for
-   `SCHEMA` with a unique name, **making sure you use the snake_case
-   convention**.
+## Technical Details
 
-6. Get into your pipenv, migrate your database, seed your database, and run your Flask app
+Shutterscape allows users to create photo posts, create photo albums of grouped photo posts, leave comments on photo posts, and mark desired posts as a "Favorite" to be stored in a collection on their user profile.
 
-   ```bash
-   pipenv shell
-   ```
+Each user is connected to these features by a User class that contains `my_post_id`, `my_album_id`, `my_comment_id`, and `my_fave_id`, which establishes database relationships to those corresponding tables.
 
-   ```bash
-   flask db upgrade
-   ```
+![image](https://github.com/ryanfour1637/ShutterScape/assets/115580381/e68ca717-592f-47be-aee3-e6bae014153f)
 
-   ```bash
-   flask seed all
-   ```
+Posts are filtered and randomized on the back-end using Python's `random.sample()` function, ensuring a unique "Explore" experience for each user. All database query results are flattened in the Redux Reducer, making the access of photo posts, albums, comments, and favorites an O(1) time operation.
 
-   ```bash
-   flask run
-   ```
-
-7. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
+![image](https://github.com/ryanfour1637/ShutterScape/assets/115580381/adfa3c4d-65c0-4d33-b838-116413329a9d)
 
 
-## Deployment through Render.com
+### Features
+* Create / read / update / delete Photo Posts
+* Create / read / update / delete Photo Albums
+* Create / read / update / delete Comments on Photo Posts
+* "Favorite" (and un-"Favorite") any Photo Post to be stored in your profile
+* See Photo Posts and Comments from other users
 
-First, refer to your Render.com deployment articles for more detailed
-instructions about getting started with [Render.com], creating a production
-database, and deployment debugging tips.
+### Future Features
+* Search Bar
+* User Profile customization
+  * Update profile photo
+  * Update banner photo
 
-From the [Dashboard], click on the "New +" button in the navigation bar, and
-click on "Web Service" to create the application that will be deployed.
+### Components
+* Albums
+ * AllAlbums
+ * CreateAlbum
+ * DeleteAlbum
+ * AlbumPage
+* Comments
+  * CreateComment
+  * DeleteComment
+  * UpdateComment
+* Favorites
+* Footer
+* Home
+* LoginFormModal
+* SignupFormModal
+* Navigation
+* OpenModalButton
+* Posts
+  * CreatePost
+  * DeletePost
+  * GetPost
+  * PostDetails
+  * UpdatePost
+* UserBanner
 
-Look for the name of the application you want to deploy, and click the "Connect"
-button to the right of the name.
-
-Now, fill out the form to configure the build and start commands, as well as add
-the environment variables to properly deploy the application.
-
-### Part A: Configure the Start and Build Commands
-
-Start by giving your application a name.
-
-Leave the root directory field blank. By default, Render will run commands from
-the root directory.
-
-Make sure the Environment field is set set to "Python 3", the Region is set to
-the location closest to you, and the Branch is set to "main".
-
-Next, add your Build command. This is a script that should include everything
-that needs to happen _before_ starting the server.
-
-For your Flask project, enter the following command into the Build field, all in
-one line:
-
-```shell
-# build command - enter all in one line
-npm install --prefix react-app &&
-npm run build --prefix react-app &&
-pip install -r requirements.txt &&
-pip install psycopg2 &&
-flask db upgrade &&
+### Installation
+1. Download the [repo](https://github.com/ryanfour1637/ShutterScape)
+2. Install the dependencies
+```
+pipenv install -r requirements.txt
+```
+3. Create a .env with proper settings for your development environment. Make sure to include settings for your AWS Bucket, Key, and Secret Key!
+4. Open a terminal, migrate/seed your database, and run your Flask app
+```
+pipenv shell
+flask db upgrade
 flask seed all
+flask run
 ```
+5. See the README file in the `react-app` directory to run the React App in development
 
-This script will install dependencies for the frontend, and run the build
-command in the __package.json__ file for the frontend, which builds the React
-application. Then, it will install the dependencies needed for the Python
-backend, and run the migration and seed files.
+# API Endpoints
+## HTML API
 
-Now, add your start command in the Start field:
+### Root
+ * `GET /`
 
-```shell
-# start script
-gunicorn app:app
-```
+### Session
+ * `POST /login`
+ * `POST /signup`
 
-_If you are using websockets, use the following start command instead for increased performance:_
+### Posts
+ * `GET /posts/new`
+ * `GET /posts/current`
+ * `GET /posts/:id`
+ * `GET /favorites`
 
-`gunicorn --worker-class eventlet -w 1 app:app`
+## Flask Blueprint
 
-### Part B: Add the Environment Variables
+### Users
+ * `GET /api/users/`
+ * `GET /api/users/<int:id>`
 
-Click on the "Advanced" button at the bottom of the form to configure the
-environment variables your application needs to access to run properly. In the
-development environment, you have been securing these variables in the __.env__
-file, which has been removed from source control. In this step, you will need to
-input the keys and values for the environment variables you need for production
-into the Render GUI.
+### Posts
+ * `GET /api/posts/all`
+ * `GET /api/posts/current`
+ * `GET /api/posts/<int:id>`
+ * `GET /api/posts/new`
+ * `POST /api/posts/new`
+ * `PUT /api/posts/update/<int:id>`
+ * `DELETE /api/posts/delete/<int:id>`
+ * `POST /api/posts/<int:id>/comments`
+ * `PUT /api/posts/<int:id>/comments`
+ * `GET /api/posts/no_album`
+ * `POST /api/posts/no_album`
 
-Click on "Add Environment Variable" to start adding all of the variables you
-need for the production environment.
+### Comments
+ * `GET /api/comments/all`
+ * `GET /api/comments`
+ * `POST /api/comments/new/posts/<int:id>`
+ * `PUT /api/comments/<int:id>/update/posts`
+ * `DELETE /api/comments/<int:id>`
 
-Add the following keys and values in the Render GUI form:
+### Albums
+ * `POST /api/albums/new`
+ * `GET /api/albums/all`
+ * `DELETE /api/albums/<int:id>`
 
-- SECRET_KEY (click "Generate" to generate a secure secret for production)
-- FLASK_ENV production
-- FLASK_APP app
-- SCHEMA (your unique schema name, in snake_case)
-- REACT_APP_BASE_URL (use render.com url, located at top of page, similar to
-  https://this-application-name.onrender.com)
+### Favorites
+* `GET /api/favorites/`
+* `POST /api/favorites/<int:id>`
+* `DELETE /api/favorites/<int:id>`
 
-In a new tab, navigate to your dashboard and click on your Postgres database
-instance.
+# Redux Stores
 
-Add the following keys and values:
+### Session
+ * Actions:
+   * `SET_USER`
+   * `REMOVE_USER`
+  
+ ### Posts
+  * Actions:
+    * `GET_ALL_POSTS`
+    * `GET_POST_DETAILS`
+    * `GET_NINE_POSTS`
+    * `DELETE_POST`
 
-- DATABASE_URL (copy value from Internal Database URL field)
+  ### Comments
+   * Actions:
+     * `READ_COMMENTS`
+     * `ADD_COMMENT`
+     * `DELETE_COMMENT`
 
-_Note: Add any other keys and values that may be present in your local __.env__
-file. As you work to further develop your project, you may need to add more
-environment variables to your local __.env__ file. Make sure you add these
-environment variables to the Render GUI as well for the next deployment._
+  ### Albums
+   * Actions:
+     * `GET_ALBUMS`
+     * `ADD_ONE_ALBUM`
+     * `DELETE_ALBUM`
 
-Next, choose "Yes" for the Auto-Deploy field. This will re-deploy your
-application every time you push to main.
-
-Now, you are finally ready to deploy! Click "Create Web Service" to deploy your
-project. The deployment process will likely take about 10-15 minutes if
-everything works as expected. You can monitor the logs to see your build and
-start commands being executed, and see any errors in the build process.
-
-When deployment is complete, open your deployed site and check to see if you
-successfully deployed your Flask application to Render! You can find the URL for
-your site just below the name of the Web Service at the top of the page.
-
-[Render.com]: https://render.com/
-[Dashboard]: https://dashboard.render.com/
+  ### Favorites
+   * Actions:
+     * `GET_ONE_FAVORITE`
+     * `GET_ALL_FAVORIES`
+     * `DELETE_FAVORITE`
