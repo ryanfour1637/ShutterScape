@@ -1,6 +1,10 @@
 .body {
    background-color: #f3f5f6;
 }
+
+.standard-padding {
+   padding: 20px;
+}
 /* home */
 
 .slideshow-container {
@@ -514,7 +518,9 @@ width: 285px;
 .create-post-form {
    font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
    display: flex;
-    flex-direction: column;
+   flex-direction: column;
+
+   align-items: center;
 }
 
 .create-post-form label {
@@ -531,7 +537,7 @@ width: 285px;
     border-radius: 5px;
     border: none;
     background-color: #5380fa;
-    margin-left: 56px;
+    /* margin-left: 56px; */
     box-shadow: 1px 5px 1px black;
     color: white;
     font-size: 15px;
@@ -575,10 +581,10 @@ width: 285px;
 }
 
 .create-post-form textarea {
-   margin-left: 54px;
+   /* margin-left: 54px; */
    margin-bottom: 10px;
    height: 115px;
-    width: 199px;
+   width: 199px;
 }
 
 .create-post-form label {
@@ -589,7 +595,7 @@ width: 285px;
    font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
    color: red;
    font-size: 11px;
-   margin-left: 36px;
+   /* margin-left: 36px; */
 }
 
 /* Sign-Up */
@@ -610,7 +616,7 @@ width: 285px;
    width: 300px;
    margin: 0 auto;
    padding: 20px;
-   border: 1px solid #ccc;
+   /* border: 1px solid #ccc; */
    border-radius: 10px;
    background-color: #fff;
    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -631,8 +637,8 @@ width: 285px;
 }
 
 .sign-up-container input[type="text"],
-input[type="password"] {
-   width: 100%;
+.sign-up-container input[type="password"] {
+   /* width: 100%; */
    padding: 10px;
    border: 1px solid #ccc;
    border-radius: 5px;
@@ -669,7 +675,7 @@ input[type="password"] {
    display: flex;
    flex-direction: column;
    align-items: center;
-   height: 255px;
+   /* height: 255px; */
    width: 263px;
 }
 
@@ -689,7 +695,9 @@ input[type="password"] {
    justify-content: center;
    align-items: center;
    width: 212px;
-   height: 30px;
+   /* height: 30px; */
+   /* added by Lan */
+   padding: 8px;
    border-radius: 5px;
    border: none;
    background-color: #5380fa;
@@ -705,9 +713,23 @@ input[type="password"] {
 }
 
 .login-form-modal input {
-   height: 20px;
-   width: 176px;
+   /* height: 20px;
+   width: 176px; */
    margin: 4px;
+
+   /* added by Lan */
+   padding: 10px;
+   border: 1px solid #ccc;
+   border-radius: 5px;
+   font-size: 16px;
+}
+
+.login-button {
+   margin-top: 12px;
+}
+
+#demo-button {
+   margin-bottom: 16px;
 }
 
 .login-form-modal {
@@ -750,7 +772,7 @@ input[type="password"] {
 }
 
 .create-post-no-album-container input {
-   margin-left: 51px;
-   margin-right: 10px;
+   /* margin-left: 51px;
+   margin-right: 10px; */
    width: 201px;
 }

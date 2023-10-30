@@ -1,3 +1,7 @@
+.standard-padding {
+    padding: 20px;
+}
+
 .banner-parent-container > div {
     display: flex;
     flex-direction: row;
@@ -81,4 +85,12 @@
 /* can we get the camera to grow? */
 .fa-camera {
     width: 100%;
+}
+
+.login-modal-input input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+
 }

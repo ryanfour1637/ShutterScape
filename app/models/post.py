@@ -18,7 +18,7 @@ class Post(db.Model):
     created_at = db.Column(db.Date, nullable=False)
     my_post_user_id = db.relationship("User", back_populates="my_post_id")
     my_post_fav_id = db.relationship(
-        "Favorite", back_populates="my_fav_post_id", cascade="all, delete-orphan", uselist=False)
+        "Favorite", back_populates="my_fav_post_id", cascade="all, delete-orphan")
     my_post_comment_id = db.relationship(
         "Comment", back_populates="my_comment_post_id", cascade="all, delete-orphan")
     my_post_album_id = db.relationship(
