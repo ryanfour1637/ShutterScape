@@ -1,6 +1,10 @@
 .body {
    background-color: #f3f5f6;
 }
+
+.standard-padding {
+   padding: 20px;
+}
 /* home */
 
 .slideshow-container {
@@ -514,7 +518,9 @@ width: 285px;
 .create-post-form {
    font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
    display: flex;
-    flex-direction: column;
+   flex-direction: column;
+
+   align-items: center;
 }
 
 .create-post-form label {
@@ -531,7 +537,7 @@ width: 285px;
     border-radius: 5px;
     border: none;
     background-color: #5380fa;
-    margin-left: 56px;
+    /* margin-left: 56px; */
     box-shadow: 1px 5px 1px black;
     color: white;
     font-size: 15px;
@@ -575,10 +581,10 @@ width: 285px;
 }
 
 .create-post-form textarea {
-   margin-left: 54px;
+   /* margin-left: 54px; */
    margin-bottom: 10px;
    height: 115px;
-    width: 199px;
+   width: 199px;
 }
 
 .create-post-form label {
@@ -589,7 +595,7 @@ width: 285px;
    font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
    color: red;
    font-size: 11px;
-   margin-left: 36px;
+   /* margin-left: 36px; */
 }
 
 /* Sign-Up */
@@ -766,7 +772,7 @@ width: 285px;
 }
 
 .create-post-no-album-container input {
-   margin-left: 51px;
-   margin-right: 10px;
+   /* margin-left: 51px;
+   margin-right: 10px; */
    width: 201px;
 }
