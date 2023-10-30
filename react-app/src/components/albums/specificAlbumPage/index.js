@@ -76,7 +76,7 @@ export default function SpecificAlbumPage() {
          <div className="allposts-photos">
             {postsToMap.map((post) => (
                <NavLink to={`/posts/${post.id}`}>
-                  <div title={`${post.title}`}>
+                  <div title={`${post.title}`} key={post.id}>
                      <img
                         src={post.photoUrl}
                         className="userpost-images"

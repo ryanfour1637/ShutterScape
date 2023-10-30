@@ -51,7 +51,7 @@ function LoginFormModal() {
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Email"
             required
-            className="login-modal-input1"
+            className="login-modal-input"
           />
         </label>
         <label>
@@ -61,11 +61,11 @@ function LoginFormModal() {
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Password"
             required
-            className="login-modal-input2"
+            className="login-modal-input"
           />
         </label>
         <button type="submit" className="login-button">Log In</button>
-        <button onClick={handleDemo} className="demo-button">Demo User</button>
+        <button onClick={handleDemo} id="demo-button">Demo User</button>
       </form>
     </div>
   );

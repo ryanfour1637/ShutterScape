@@ -58,7 +58,7 @@ export default function AllAlbumPage() {
                modalComponent={<CreateAlbumModel />}
             />
          </div>
-         <div className="albumMapping">
+         <div className="albumMapping standard-padding">
             {albums.length > 0 &&
                albums.map((album) => (
                   <div key={album.id}>
