@@ -610,7 +610,7 @@ width: 285px;
    width: 300px;
    margin: 0 auto;
    padding: 20px;
-   border: 1px solid #ccc;
+   /* border: 1px solid #ccc; */
    border-radius: 10px;
    background-color: #fff;
    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -631,8 +631,8 @@ width: 285px;
 }
 
 .sign-up-container input[type="text"],
-input[type="password"] {
-   width: 100%;
+.sign-up-container input[type="password"] {
+   /* width: 100%; */
    padding: 10px;
    border: 1px solid #ccc;
    border-radius: 5px;
@@ -669,7 +669,7 @@ input[type="password"] {
    display: flex;
    flex-direction: column;
    align-items: center;
-   height: 255px;
+   /* height: 255px; */
    width: 263px;
 }
 
@@ -689,7 +689,9 @@ input[type="password"] {
    justify-content: center;
    align-items: center;
    width: 212px;
-   height: 30px;
+   /* height: 30px; */
+   /* added by Lan */
+   padding: 8px;
    border-radius: 5px;
    border: none;
    background-color: #5380fa;
@@ -705,9 +707,23 @@ input[type="password"] {
 }
 
 .login-form-modal input {
-   height: 20px;
-   width: 176px;
+   /* height: 20px;
+   width: 176px; */
    margin: 4px;
+
+   /* added by Lan */
+   padding: 10px;
+   border: 1px solid #ccc;
+   border-radius: 5px;
+   font-size: 16px;
+}
+
+.login-button {
+   margin-top: 12px;
+}
+
+#demo-button {
+   margin-bottom: 16px;
 }
 
 .login-form-modal {
