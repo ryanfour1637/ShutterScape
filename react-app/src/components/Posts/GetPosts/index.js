@@ -10,12 +10,16 @@ export default function GetPosts() {
    const getPosts = useSelector((state) => state.posts.ninePosts);
    const arrPosts = Object.values(getPosts);
    const [postsToDisplay, setPostsToDisplay] = useState([]);
-   const posts = [...arrPosts];
+
 
    useEffect(() => {
       dispatch(getNineRandomNonOwnerPosts());
-      setPostsToDisplay(posts);
+
    }, [dispatch]);
+
+   useEffect(() => {
+      setPostsToDisplay(arrPosts);
+   }, [arrPosts]);
 
    const goToPost = (post) => {
       push(`/posts/${post.id}`);
@@ -24,7 +28,7 @@ export default function GetPosts() {
 
    const getRandomPhotos = () => {
       dispatch(getNineRandomNonOwnerPosts());
-      setPostsToDisplay(posts);
+      setPostsToDisplay(arrPosts);
    };
 
    return (

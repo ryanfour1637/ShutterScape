@@ -33,6 +33,7 @@ class Post(db.Model):
             "title": self.title,
             "photoUrl": self.photo_url,
             "description": self.description,
+            "tag": self.tag,
             "createdAt": self.created_at,
             'users': self.my_post_user_id.to_dict(),
         }

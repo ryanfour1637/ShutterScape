@@ -15,6 +15,7 @@ import SpecificAlbumPage from "./components/albums/specificAlbumPage";
 import AllAlbumPage from "./components/albums/allAlbumsPage";
 import Footer from "./components/Footer";
 import FavoritesPage from "./components/Favorites-Component";
+import TagFilter from "./components/TagFilter";
 
 function App() {
    const dispatch = useDispatch();
@@ -47,6 +48,9 @@ function App() {
                   </Route>
                   <Route exact path="/posts/current">
                      <GetPosts />
+                  </Route>
+                  <Route exact path="/posts/tags/:id">
+                     <TagFilter />
                   </Route>
                   <Route exact path="/posts/:id">
                      <PostDetailsPage />

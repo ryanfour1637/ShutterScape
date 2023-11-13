@@ -1,19 +1,16 @@
 """empty message
 
-Revision ID: 86d840aae033
-Revises:
-Create Date: 2023-10-30 07:25:54.829265
+Revision ID: 19c3d4e7d96f
+Revises: 
+Create Date: 2023-11-13 14:11:59.689581
 
 """
 from alembic import op
 import sqlalchemy as sa
-import os
-environment = os.getenv("FLASK_ENV")
-SCHEMA = os.environ.get("SCHEMA")
 
 
 # revision identifiers, used by Alembic.
-revision = '86d840aae033'
+revision = '19c3d4e7d96f'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -33,10 +30,6 @@ def upgrade():
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
     )
-
-    if environment == "production":
-        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
-
     op.create_table('albums',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=True),
@@ -45,10 +38,6 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-
-    if environment == "production":
-        op.execute(f"ALTER TABLE albums SET SCHEMA {SCHEMA};")
-
     op.create_table('posts',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('owner_id', sa.Integer(), nullable=True),
@@ -56,15 +45,12 @@ def upgrade():
     sa.Column('title', sa.String(length=50), nullable=False),
     sa.Column('photo_url', sa.String(), nullable=False),
     sa.Column('description', sa.String(length=1000), nullable=False),
+    sa.Column('tag', sa.String(length=50), nullable=False),
     sa.Column('created_at', sa.Date(), nullable=False),
     sa.ForeignKeyConstraint(['album_id'], ['albums.id'], ),
     sa.ForeignKeyConstraint(['owner_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-
-    if environment == "production":
-        op.execute(f"ALTER TABLE posts SET SCHEMA {SCHEMA};")
-
     op.create_table('comments',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
@@ -75,10 +61,6 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-
-    if environment == "production":
-        op.execute(f"ALTER TABLE comments SET SCHEMA {SCHEMA};")
-
     op.create_table('favorites',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
@@ -86,11 +68,8 @@ def upgrade():
     sa.Column('created_at', sa.Date(), nullable=False),
     sa.ForeignKeyConstraint(['post_id'], ['posts.id'], ),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
-    sa.PrimaryKeyConstraint('id'),
+    sa.PrimaryKeyConstraint('id')
     )
-
-    if environment == "production":
-        op.execute(f"ALTER TABLE favorites SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###
 
 
@@ -101,6 +80,4 @@ def downgrade():
     op.drop_table('posts')
     op.drop_table('albums')
     op.drop_table('users')
-
-
     # ### end Alembic commands ###
