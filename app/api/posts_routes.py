@@ -70,6 +70,7 @@ def new_post():
             album_id = form.data['album_id'],
             photo_url = url,
             description = form.data['description'],
+            tag = form.data['tag'],
             created_at = date.today()
         )
 
@@ -122,9 +123,11 @@ def update_post(id):
     if form.validate_on_submit():
 
         post_title=form.data['title']
+        post_tag=form.data['tag']
         post_description=form.data['description']
 
         post_to_update.title=post_title
+        post_to_update.tag=post_tag
         post_to_update.description=post_description
 
         db.session.commit()

@@ -15,6 +15,7 @@ class Post(db.Model):
     title = db.Column(db.String(50), nullable=False)
     photo_url = db.Column(db.String, nullable=False)
     description = db.Column(db.String(1000), nullable=False)
+    tag = db.Column(db.String(50), nullable=False)
     created_at = db.Column(db.Date, nullable=False)
     my_post_user_id = db.relationship("User", back_populates="my_post_id")
     my_post_fav_id = db.relationship(
