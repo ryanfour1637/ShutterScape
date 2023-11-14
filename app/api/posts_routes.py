@@ -100,6 +100,7 @@ def new_post_no_album():
             title = form.data['title'],
             album_id = None,
             photo_url = url,
+            tag = form.data['tag'],
             description = form.data['description'],
             created_at = date.today()
         )
