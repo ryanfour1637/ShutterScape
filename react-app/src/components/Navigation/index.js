@@ -1,14 +1,43 @@
-import React from "react";
-import {NavLink, useHistory} from "react-router-dom";
-import {useSelector} from "react-redux";
+import React, { useState, useRef, useEffect } from "react";
+import { NavLink, useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import YouButton from "./YouButton";
 import "./Navigation.css";
 import logo from "../../images/logo.png";
+import SearchBar from "../Search/SearchBar";
+import ResultsList from "../Search/ResultsList";
 
-function Navigation({isLoaded}) {
-  const {push} = useHistory();
+
+function Navigation({ isLoaded }) {
+  const { push } = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
+  const [results, setResults] = useState([]);
+  const [isResultsOpen, setIsResultsOpen] = useState(false);
+  const resultsContainerRef = useRef(null);
+  const [showMenu, setShowMenu] = useState(false);
+
+  const clearSearch = () => {
+    setResults([]);
+    setIsResultsOpen(false);
+  };
+
+
+  const handleOutsideClick = (event) => {
+    if (resultsContainerRef.current && !resultsContainerRef.current.contains(event.target)) {
+      clearSearch();
+    }
+  };
+
+  useEffect(() => {
+
+    document.addEventListener('click', handleOutsideClick);
+
+
+    return () => {
+      document.removeEventListener('click', handleOutsideClick);
+    };
+  }, []);
 
   const goToCurrent = () => {
     return push("/posts/current");
@@ -26,6 +55,9 @@ function Navigation({isLoaded}) {
               <div className="nav-links">
                 <YouButton user={sessionUser} className="youbutton-button" />
                 <div onClick={goToCurrent}>Explore</div>
+                {sessionUser && (
+                  <SearchBar setResults={setResults} setIsResultsOpen={setIsResultsOpen} />
+                )}
               </div>
             )}
           </div>
@@ -43,7 +75,9 @@ function Navigation({isLoaded}) {
           </div>
         </nav>
       </div>
-
+      <div className='results-container' ref={resultsContainerRef}>
+        {isResultsOpen && <ResultsList results={results} clearSearch={clearSearch} />}
+      </div>
       <div>
         {isLoaded && sessionUser && (
           <div id="tag-icons-container">

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { getTenRandomPostsThunk } from "../../store/posts";
 import OpenModalButton from "../OpenModalButton";
 import SignupFormModal from "../SignupFormModal";
@@ -9,7 +10,9 @@ export default function Home() {
    const dispatch = useDispatch();
    const allPost = useSelector((state) => state.posts.allPosts);
    const [currentImageIndex, setCurrentImageIndex] = useState(0);
-   const [nextImageIndex, setNextImageIndex] = useState(1); // Track the next image to preload
+   const [nextImageIndex, setNextImageIndex] = useState(1);
+   const user = useSelector((state) => state.session.user);
+   const { push } = useHistory();
 
    useEffect(() => {
       dispatch(getTenRandomPostsThunk());
@@ -25,7 +28,7 @@ export default function Home() {
 
    useEffect(() => {
       const interval = setInterval(() => {
-         
+
          setCurrentImageIndex((prevIndex) =>
             prevIndex === imageUrls.length - 1 ? 0 : prevIndex + 1
          );
@@ -60,11 +63,15 @@ export default function Home() {
          <div className="text-container">
             <h1 className="inspiration">Find your inspiration.</h1>
             <h2 classname="join">Join the ShutterScape community, home to tens of hundreds of photos.</h2>
-            <OpenModalButton
-               className="start-for-button"
-               buttonText="Start for free"
-               modalComponent={<SignupFormModal />}
-            />
+            {user ? (
+               <button onClick={() => push("/posts/current")}>Explore</button>
+            ) : (
+               <OpenModalButton
+                  className="start-for-button"
+                  buttonText="Start for Free"
+                  modalComponent={<SignupFormModal />}
+               />
+            )}
          </div>
       </div>
    );

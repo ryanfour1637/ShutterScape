@@ -91,12 +91,14 @@ export default function PostDetailsPage() {
                   commentsArr.map((comment, index) => (
                      <div className="bottom-comments" key={index}>
                         <div className="bot-comment-bunch">
-                           <h3 className="post-details-name">
-                              {comment.users.firstName} {comment.users.lastName}
-                           </h3>
-                           <p className="postdetails-datedate">
-                              {fixDate(comment.createdAt)}
-                           </p>
+                           <div className="date-name">
+                              <h3 className="post-details-name">
+                                 {comment.users.firstName} {comment.users.lastName}
+                              </h3>
+                              <p className="postdetails-datedate">
+                                 {fixDate(comment.createdAt)}
+                              </p>
+                           </div>
                            <p className="postdetail-comment">
                               "{comment.comment}"
                            </p>
