@@ -1,17 +1,20 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
-import { login } from "../../store/session";
-import { useDispatch } from "react-redux";
-import { useModal } from "../../context/Modal";
-import "../CSS/john.css"
+import React, {useState} from "react";
+import {useHistory} from "react-router-dom";
+import {login} from "../../store/session";
+import {useDispatch} from "react-redux";
+import {useModal} from "../../context/Modal";
+import "../CSS/john.css";
+
 
 function LoginFormModal() {
-  const { push } = useHistory();
+  const {push} = useHistory();
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
-  const { closeModal } = useModal();
+  const {closeModal} = useModal();
+  // const baseUrl = process.env.BASE_URL;
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,8 +22,8 @@ function LoginFormModal() {
     if (data) {
       setErrors(data);
     } else {
-      closeModal()
-      push("/posts/current")
+      closeModal();
+      push("/posts/current");
     }
   };
 
@@ -30,20 +33,28 @@ function LoginFormModal() {
     if (data) {
       setErrors(data);
     } else {
-      closeModal()
-      push("/posts/current")
+      closeModal();
+      push("/posts/current");
     }
   };
 
   return (
     <div className="login-modal-container">
       <h1 className="Login-h1">Log In</h1>
+
+        {/* Google Auth */}
+        <a href={"https:shutterscape.onrender.com/api/auth/oauth_login"}>
+          <button>OAUTH</button>
+        </a>
+
       <form onSubmit={handleSubmit} className="login-form-modal">
         <ul className="list-errors">
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
         </ul>
+
+
         <label>
           <input
             type="text"
@@ -64,8 +75,12 @@ function LoginFormModal() {
             className="login-modal-input"
           />
         </label>
-        <button type="submit" className="login-button">Log In</button>
-        <button onClick={handleDemo} id="demo-button">Demo User</button>
+        <button type="submit" className="login-button">
+          Log In
+        </button>
+        <button onClick={handleDemo} id="demo-button">
+          Demo User
+        </button>
       </form>
     </div>
   );
