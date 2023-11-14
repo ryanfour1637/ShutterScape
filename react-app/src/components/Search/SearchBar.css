@@ -46,6 +46,7 @@ input:focus {
 .search-result{
     padding: 10px 20px;
     font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+    cursor:pointer;
 }
 
 .search-result:hover{
