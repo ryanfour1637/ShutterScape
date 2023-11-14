@@ -27,6 +27,9 @@ class User(db.Model, UserMixin):
 
     @password.setter
     def password(self, password):
+        if password == "OAUTH":
+            self.hashed_password = "OAUTH"
+
         self.hashed_password = generate_password_hash(password)
 
     def check_password(self, password):
@@ -42,4 +45,3 @@ class User(db.Model, UserMixin):
             "email": self.email,
         }
         return return_dict
-

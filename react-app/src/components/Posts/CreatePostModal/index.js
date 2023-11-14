@@ -18,6 +18,12 @@ export default function CreatePostModal({ id }) {
   const [validationObject, setValidationObject] = useState({});
   const [key, setKey] = useState(Date.now())
 
+  const [selectedTag, setSelectedTag] = useState('');
+
+  const handleTagChange = (event) => {
+    setSelectedTag(event.target.value);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -25,6 +31,7 @@ export default function CreatePostModal({ id }) {
     formData.append("title", title);
     formData.append("description", description);
     formData.append("album_id", id);
+    formData.append("tag", selectedTag)
 
     setImageLoading(true);
     const postData = await dispatch(createPostThunk(formData));
@@ -93,6 +100,73 @@ export default function CreatePostModal({ id }) {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
+
+<fieldset>
+  <legend>Select a photo Tag:</legend>
+
+<label>
+        <input
+          type="radio"
+          value="nature"
+          checked={selectedTag === 'nature'}
+          onChange={handleTagChange}
+        />
+        Nature
+      </label>
+
+      <label>
+        <input
+          type="radio"
+          value="city"
+          checked={selectedTag === 'city'}
+          onChange={handleTagChange}
+        />
+        City
+      </label>
+
+      <label>
+        <input
+          type="radio"
+          value="art"
+          checked={selectedTag === 'art'}
+          onChange={handleTagChange}
+        />
+        Art
+      </label>
+
+      <label>
+        <input
+          type="radio"
+          value="people"
+          checked={selectedTag === 'people'}
+          onChange={handleTagChange}
+        />
+        People
+      </label>
+
+      <label>
+        <input
+          type="radio"
+          value="animals"
+          checked={selectedTag === 'animals'}
+          onChange={handleTagChange}
+        />
+        Animals
+      </label>
+
+      <label>
+        <input
+          type="radio"
+          value="events"
+          checked={selectedTag === 'events'}
+          onChange={handleTagChange}
+        />
+        Events
+      </label>
+
+      <p>Selected Tag: {selectedTag}</p>
+    
+    </fieldset>
 
         <label>Description</label>
         <div className="error-box-post">

@@ -176,10 +176,14 @@
    margin-left: 10px;
    margin-top: 7px;
    text-shadow: 1px 1px white;
+   color: #306DAC;
 }
 
 .bot-comment-bunch {
    border-radius: 10px;
+   box-shadow: 0px 0px 8px #ddd;
+   padding:5px;
+   margin: 10px;
 }
 
 .bottom-comments {
@@ -187,7 +191,7 @@
 }
 
 .bottom-comments :hover {
-   background-color: rgb(212, 212, 212);
+   background-color:#ddd;
 }
 
 .postdetails-datedate {
@@ -215,6 +219,11 @@
    font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
    margin-bottom: 21px;
    margin-top: 10px;
+}
+
+.date-name{
+   display: flex;
+    justify-content: space-between;
 }
 
 /* Delete */
