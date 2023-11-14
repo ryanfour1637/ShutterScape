@@ -15,11 +15,11 @@ export default function TagFilter() {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className="allposts-photos">
       {filteredPosts.map((post) => (
         <div key={post.id}>
           <NavLink to={`/posts/${post.id}`}>
-            <img src={post.photoUrl} alt={post.title} />
+            <img src={post.photoUrl} alt={post.title} className="userpost-images"/>
           </NavLink>
         </div>
       ))}

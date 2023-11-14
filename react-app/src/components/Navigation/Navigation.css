@@ -153,3 +153,32 @@ nav {
   cursor: pointer;
   border-radius: 4px;
 }
+
+/* Tag Filter Icons */
+#tag-icons-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 10px;
+  margin-bottom: 24px;
+  background-color: black;
+}
+
+.tag-icons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  background-color: black;
+}
+
+.nav-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+}

@@ -574,7 +574,7 @@ def seed_posts():
         title="On the Ledge",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-63.jpg",
         description="Taking a seat on the edge of downtown.",
-        tag="people & portraits",
+        tag="people",
         created_at=date.today()
     )
     db.session.add(new_post_51)
@@ -585,7 +585,7 @@ def seed_posts():
         title="Eye For an Eye",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-64.jpg",
         description="Inception",
-        tag="people & portraits",
+        tag="people",
         created_at=date.today()
     )
     db.session.add(new_post_52)
@@ -596,7 +596,7 @@ def seed_posts():
         title="Family Portrait",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-65.jpg",
         description="Merry Christmas",
-        tag="people & portraits",
+        tag="people",
         created_at=date.today()
     )
     db.session.add(new_post_53)
@@ -607,7 +607,7 @@ def seed_posts():
         title="Drip",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-66.jpg",
         description="Checkout my kicks",
-        tag="people & portraits",
+        tag="people",
         created_at=date.today()
     )
     db.session.add(new_post_54)
@@ -618,7 +618,7 @@ def seed_posts():
         title="Having Fun",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-67.jpg",
         description="Kids will be kids.",
-        tag="people & portraits",
+        tag="people",
         created_at=date.today()
     )
     db.session.add(new_post_55)
@@ -629,7 +629,7 @@ def seed_posts():
         title="Strike a Pose",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-68.jpg",
         description="Dress to impress.",
-        tag="people & portraits",
+        tag="people",
         created_at=date.today()
     )
     db.session.add(new_post_56)
@@ -640,7 +640,7 @@ def seed_posts():
         title="March On",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-69.jpg",
         description="Fight for what you believe in.",
-        tag="people & portraits",
+        tag="people",
         created_at=date.today()
     )
     db.session.add(new_post_57)
@@ -651,7 +651,7 @@ def seed_posts():
         title="A Mother's Love",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-70.jpg",
         description="Smile for the camera.",
-        tag="people & portraits",
+        tag="people",
         created_at=date.today()
     )
     db.session.add(new_post_58)
@@ -662,7 +662,7 @@ def seed_posts():
         title="Friends",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-71.jpg",
         description="The band is back together.",
-        tag="people & portraits",
+        tag="people",
         created_at=date.today()
     )
     db.session.add(new_post_59)
@@ -673,7 +673,7 @@ def seed_posts():
         title="Let the Good Times Roll",
         photo_url="https://shutterscape.s3.us-west-1.amazonaws.com/shutterscape/seedpic-72.jpg",
         description="Zara her collection.",
-        tag="people & portraits",
+        tag="people",
         created_at=date.today()
     )
     db.session.add(new_post_60)
