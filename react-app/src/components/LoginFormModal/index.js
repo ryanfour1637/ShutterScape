@@ -43,7 +43,7 @@ function LoginFormModal() {
       <h1 className="Login-h1">Log In</h1>
 
         {/* Google Auth */}
-        <a href={"https:shutterscape.onrender.com/api/auth/oauth_login"}>
+        <a href={"/api/auth/oauth_login"}>
           <button>OAUTH</button>
         </a>
 
