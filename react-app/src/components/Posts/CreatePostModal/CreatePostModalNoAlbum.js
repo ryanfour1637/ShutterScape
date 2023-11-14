@@ -92,6 +92,9 @@ export default function CreatePostModalNoAlbums() {
           <div>{image !== null ? image["name"] : "Choose Image"}</div>
         </div>
 
+        <fieldset>
+  <legend>Select a photo tag:</legend>
+
         <label>
         <input
           type="radio"
@@ -153,6 +156,8 @@ export default function CreatePostModalNoAlbums() {
       </label>
 
       <p>Selected Tag: {selectedTag}</p>
+
+      </fieldset>
     
         </>
 
