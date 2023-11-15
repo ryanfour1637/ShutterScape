@@ -30,7 +30,7 @@ def all():
 @posts_routes.route('/current')
 @login_required
 def current():
-    """Getting 10 random images from our db to show on a logged IN users homepage. None of the photos can be from the logged In user."""
+    """Getting 20 random images from our db to show on a logged IN users homepage. None of the photos can be from the logged In user."""
     # all_none_user_posts = Post.query.filter(Post.owner_id.is_not(current_user.id))
     all_user_posts = Post.query.all()
 
@@ -39,11 +39,11 @@ def current():
         return post.owner_id != current_user.id
     all_non_user_posts = filter(filter_user_id, all_user_posts)
 
-    ten_posts = sample(list(all_non_user_posts), 9)
+    twenty_posts = sample(list(all_non_user_posts), 20)
 
-    return [post.to_dict() for post in ten_posts]
+    return [post.to_dict() for post in twenty_posts]
 
-    # list of 10 random post dictionaries are going to sent, that are not the current users.
+    # list of 20 random post dictionaries are going to sent, that are not the current users.
     # this is not tested bc it needs to be done on the front end to ensure there are no current user posts included.
 
 # May we look into Eager Loading Users table?
