@@ -82,8 +82,12 @@
 }
 
 .userpost-images {
-  width: 100%;
+  width: 323px;
+  height: 241px;
+  border-radius: 13px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   transition: transform 0.2s ease-in-out;
+  margin: 4px;
 }
 
 .userpost-images:hover {
@@ -786,10 +790,14 @@
   display: -webkit-box; /* Not needed if autoprefixing */
   display: -ms-flexbox; /* Not needed if autoprefixing */
   display: flex;
+ /* gutter size offset */
   width: auto;
 }
-
 .my-masonry-grid_column {
   margin: 8px 2px; /* gutter size */
   background-clip: padding-box;
+}
+
+.trending-images {
+   width: 100%
 }

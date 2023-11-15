@@ -45,7 +45,7 @@ export default function GetPosts() {
         >
           {postsToDisplay.map((post) => (
             <div onClick={() => goToPost(post)} key={post.id}>
-              <img src={post.photoUrl} alt="" className="userpost-images"></img>
+              <img src={post.photoUrl} alt="" className="trending-images"></img>
             </div>
           ))}
 
