@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {useHistory} from "react-router-dom";
 import {getNineRandomNonOwnerPosts} from "../../../store/posts";
+import Masonry from "react-masonry-css";
 import "../../CSS/john.css";
 
 export default function GetPosts() {
@@ -14,7 +15,6 @@ export default function GetPosts() {
   useEffect(() => {
     dispatch(getNineRandomNonOwnerPosts());
   }, [dispatch]);
-
 
   useEffect(() => {
     const posts = Object.values(getPosts);
@@ -38,11 +38,18 @@ export default function GetPosts() {
         See more photos
       </button>
       <div className="allposts-photos">
-        {postsToDisplay.map((post) => (
-          <div onClick={() => goToPost(post)} key={post.id}>
-            <img src={post.photoUrl} alt="" className="userpost-images"></img>
-          </div>
-        ))}
+        <Masonry
+          breakpointCols={3}
+          className="my-masonry-grid"
+          columnClassName="my-masonry-grid_column"
+        >
+          {postsToDisplay.map((post) => (
+            <div onClick={() => goToPost(post)} key={post.id}>
+              <img src={post.photoUrl} alt="" className="userpost-images"></img>
+            </div>
+          ))}
+
+        </Masonry>
       </div>
     </>
   );
