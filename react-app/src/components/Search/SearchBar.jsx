@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaSearch } from "react-icons/fa";
 import "../Search/SearchBar.css"
 
@@ -28,14 +28,12 @@ const SearchBar = ({ setResults, setIsResultsOpen }) => {
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      // Check if the click is outside the search input
+
       setSearch("")
     };
 
-    // Add event listener when the component mounts
     document.addEventListener('click', handleClickOutside);
 
-    // Clean up the event listener when the component unmounts
     return () => {
       document.removeEventListener('click', handleClickOutside);
     };
