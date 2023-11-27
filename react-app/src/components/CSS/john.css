@@ -608,12 +608,18 @@
 
 /* Sign-Up */
 
+.sign-up-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .Sign-up-h1 {
   display: flex;
   font-size: 20px;
   font-weight: normal;
   text-shadow: 1px 1px #5380fa;
-  margin-left: 63px;
+  margin-left: 11px;
   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
 }
 
@@ -633,6 +639,11 @@
 
 .error {
   margin-left: 55px;
+  font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+  color: red;
+  font-size: 11px;
+}
+.create-post-errors {
   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
   color: red;
   font-size: 11px;
@@ -698,7 +709,7 @@
   margin-top: 5px;
 }
 
-.login-modal-container button {
+.login-modal-container button, .sign-up-container button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -795,7 +806,7 @@
 .create-post-no-album-container input {
   /* margin-left: 51px;
    margin-right: 10px; */
-  width: 201px;
+  /* width: 201px; */
 }
 
 /* Masonry CSS */

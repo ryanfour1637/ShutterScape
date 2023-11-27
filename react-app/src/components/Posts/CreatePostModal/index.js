@@ -1,24 +1,23 @@
-import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { createPostThunk } from "../../../store/posts";
-import { useModal } from "../../../context/Modal";
+import {useState, useEffect} from "react";
+import {useDispatch} from "react-redux";
+import {useHistory} from "react-router-dom";
+import {createPostThunk} from "../../../store/posts";
+import {useModal} from "../../../context/Modal";
 import "../../CSS/john.css";
 
-export default function CreatePostModal({ id }) {
-
-  const { push } = useHistory();
+export default function CreatePostModal({id}) {
+  const {push} = useHistory();
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
   const [imageLoading, setImageLoading] = useState(false);
   const [errors, setErrors] = useState([]);
-  const { closeModal } = useModal();
+  const {closeModal} = useModal();
   const [validationObject, setValidationObject] = useState({});
-  const [key, setKey] = useState(Date.now())
+  const [key, setKey] = useState(Date.now());
 
-  const [selectedTag, setSelectedTag] = useState('');
+  const [selectedTag, setSelectedTag] = useState("");
 
   const handleTagChange = (event) => {
     setSelectedTag(event.target.value);
@@ -31,7 +30,7 @@ export default function CreatePostModal({ id }) {
     formData.append("title", title);
     formData.append("description", description);
     formData.append("album_id", id);
-    formData.append("tag", selectedTag)
+    formData.append("tag", selectedTag);
 
     setImageLoading(true);
     const postData = await dispatch(createPostThunk(formData));
@@ -40,17 +39,14 @@ export default function CreatePostModal({ id }) {
     setTitle("");
     setDescription("");
 
-
     if (postData.errors === undefined || !postData.errors) {
-
       push("/userposts");
       return closeModal();
     } else {
-      setImageLoading(false)
+      setImageLoading(false);
       setErrors(postData.errors);
-      setKey(Date.now())
+      setKey(Date.now());
     }
-
   };
 
   useEffect(() => {
@@ -64,7 +60,7 @@ export default function CreatePostModal({ id }) {
   }, [description]);
 
   return (
-    <div className="create-post-no-album-container" >
+    <div className="create-post-no-album-container">
       <h1 className="create-post-h1">Create a Post</h1>
       <form
         className="create-post-form"
@@ -74,23 +70,89 @@ export default function CreatePostModal({ id }) {
         {errors &&
           errors.length >= 1 &&
           errors.map((error, idx) => (
-            <div className="error" key={idx}>
+            <div className="create-post-errors" key={idx}>
               {error}
             </div>
           ))}
-         <div className="div-file-section">
-         <label
-        className="style-file-upload">
-        <input
-          type="file"
-          accept="image/*"
-          className="hide-file-upload"
-          onChange={(e) => setImage(e.target.files[0])}
-          key={key}
-        />Upload Image
-        </label>
-        <div>{image !== null ? image["name"] : "Choose Image"}</div>
-         </div>
+        <div className="div-file-section">
+          <label className="style-file-upload">
+            <input
+              type="file"
+              accept="image/*"
+              className="hide-file-upload"
+              onChange={(e) => setImage(e.target.files[0])}
+              key={key}
+            />
+            Upload Image
+          </label>
+          <div>{image !== null ? image["name"] : "Choose Image"}</div>
+        </div>
+
+        <fieldset className="radio-buttons">
+          <legend>Select a photo Tag:</legend>
+
+          <label>
+            <input
+              type="radio"
+              value="nature"
+              checked={selectedTag === "nature"}
+              onChange={handleTagChange}
+            />
+            Nature
+          </label>
+
+          <label>
+            <input
+              type="radio"
+              value="city"
+              checked={selectedTag === "city"}
+              onChange={handleTagChange}
+            />
+            City
+          </label>
+
+          <label>
+            <input
+              type="radio"
+              value="art"
+              checked={selectedTag === "art"}
+              onChange={handleTagChange}
+            />
+            Art
+          </label>
+
+          <label>
+            <input
+              type="radio"
+              value="people"
+              checked={selectedTag === "people"}
+              onChange={handleTagChange}
+            />
+            People
+          </label>
+
+          <label>
+            <input
+              type="radio"
+              value="animals"
+              checked={selectedTag === "animals"}
+              onChange={handleTagChange}
+            />
+            Animals
+          </label>
+
+          <label>
+            <input
+              type="radio"
+              value="events"
+              checked={selectedTag === "events"}
+              onChange={handleTagChange}
+            />
+            Events
+          </label>
+
+          <p>Selected Tag: {selectedTag}</p>
+        </fieldset>
 
         <label>Title</label>
         <input
@@ -99,74 +161,8 @@ export default function CreatePostModal({ id }) {
           placeholder="Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
+          required
         />
-
-<fieldset>
-  <legend>Select a photo Tag:</legend>
-
-<label>
-        <input
-          type="radio"
-          value="nature"
-          checked={selectedTag === 'nature'}
-          onChange={handleTagChange}
-        />
-        Nature
-      </label>
-
-      <label>
-        <input
-          type="radio"
-          value="city"
-          checked={selectedTag === 'city'}
-          onChange={handleTagChange}
-        />
-        City
-      </label>
-
-      <label>
-        <input
-          type="radio"
-          value="art"
-          checked={selectedTag === 'art'}
-          onChange={handleTagChange}
-        />
-        Art
-      </label>
-
-      <label>
-        <input
-          type="radio"
-          value="people"
-          checked={selectedTag === 'people'}
-          onChange={handleTagChange}
-        />
-        People
-      </label>
-
-      <label>
-        <input
-          type="radio"
-          value="animals"
-          checked={selectedTag === 'animals'}
-          onChange={handleTagChange}
-        />
-        Animals
-      </label>
-
-      <label>
-        <input
-          type="radio"
-          value="events"
-          checked={selectedTag === 'events'}
-          onChange={handleTagChange}
-        />
-        Events
-      </label>
-
-      <p>Selected Tag: {selectedTag}</p>
-    
-    </fieldset>
 
         <label>Description</label>
         <div className="error-box-post">
@@ -189,10 +185,15 @@ export default function CreatePostModal({ id }) {
         >
           Submit
         </button>
-        {imageLoading && (<div aria-busy="true" aria-describedby="progress-bar">
-        <progress id="progress-bar" aria-label="Content loading…"></progress>
-         </div>)}
+        {imageLoading && (
+          <div aria-busy="true" aria-describedby="progress-bar">
+            <progress
+              id="progress-bar"
+              aria-label="Content loading…"
+            ></progress>
+          </div>
+        )}
       </form>
-    </div >
+    </div>
   );
 }
