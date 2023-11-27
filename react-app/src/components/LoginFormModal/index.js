@@ -3,6 +3,7 @@ import {useHistory} from "react-router-dom";
 import {login} from "../../store/session";
 import {useDispatch} from "react-redux";
 import {useModal} from "../../context/Modal";
+import { FcGoogle } from 'react-icons/fc';
 import "../CSS/john.css";
 
 
@@ -43,8 +44,8 @@ function LoginFormModal() {
       <h1 className="Login-h1">Log In</h1>
 
         {/* Google Auth */}
-        <a href={"/api/auth/oauth_login"}>
-          <button>OAUTH</button>
+        <a href={"/api/auth/oauth_login"} className="google-button">
+          <button className="google-button"><FcGoogle className="google-icon" />Sign in with Google</button>
         </a>
 
       <form onSubmit={handleSubmit} className="login-form-modal">

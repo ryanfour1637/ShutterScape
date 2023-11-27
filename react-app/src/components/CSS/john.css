@@ -746,6 +746,19 @@
   align-items: center;
 }
 
+/* Login - Google OAuth */
+
+.google-icon {
+  margin-right: 8px;
+  height: 20px;
+  width: 20px;
+}
+
+.google-button {
+  text-decoration: none;
+  margin-top: 8px;
+}
+
 .list-errors {
   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
   color: red;
