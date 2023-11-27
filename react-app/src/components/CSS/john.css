@@ -357,6 +357,8 @@
 .update-post-container form {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .submit-update-post {
@@ -368,7 +370,6 @@
   border-radius: 5px;
   border: none;
   background-color: #5380fa;
-  margin-left: 14px;
 
   box-shadow: 1px 5px 1px black;
   color: white;
@@ -383,28 +384,27 @@
   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
   display: flex;
   flex-direction: column;
-  width: 299px;
+  width: 313px;
 }
 
 .update-post-container label {
   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
-  font-weight: bold;
+  /* font-weight: bold; */
   margin: 10px;
   display: flex;
   justify-content: center;
 }
 
-.update-post-container input {
+/* .update-post-container input {
   width: 258px;
   margin-left: 17px;
   margin-right: 10px;
-}
+} */
 
 .update-post-text-area {
   width: 262px;
   height: 97px;
   margin-bottom: 10px;
-  margin-left: 17px;
 }
 
 .comment-h3 {
@@ -608,12 +608,18 @@
 
 /* Sign-Up */
 
+.sign-up-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .Sign-up-h1 {
   display: flex;
   font-size: 20px;
   font-weight: normal;
   text-shadow: 1px 1px #5380fa;
-  margin-left: 63px;
+  margin-left: 11px;
   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
 }
 
@@ -633,6 +639,11 @@
 
 .error {
   margin-left: 55px;
+  font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+  color: red;
+  font-size: 11px;
+}
+.create-post-errors {
   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
   color: red;
   font-size: 11px;
@@ -698,7 +709,8 @@
   margin-top: 5px;
 }
 
-.login-modal-container button {
+.login-modal-container button,
+.sign-up-container button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -746,6 +758,19 @@
   align-items: center;
 }
 
+/* Login - Google OAuth */
+
+.google-icon {
+  margin-right: 8px;
+  height: 20px;
+  width: 20px;
+}
+
+.google-button {
+  text-decoration: none;
+  margin-top: 8px;
+}
+
 .list-errors {
   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
   color: red;
@@ -753,7 +778,11 @@
 }
 
 .filled-fav {
-  color: yellow;
+  background: linear-gradient(45deg, #5182FF, #ff66c4);
+  color: transparent;
+  background-clip: text;
+  border: none;
+  cursor: pointer;
 }
 
 .unfilled-fav {
@@ -779,18 +808,16 @@
   width: 319px;
 }
 
-.create-post-no-album-container input {
-  /* margin-left: 51px;
-   margin-right: 10px; */
-  width: 201px;
-}
+/* .create-post-no-album-container input {
+
+} */
 
 /* Masonry CSS */
 .my-masonry-grid {
   display: -webkit-box; /* Not needed if autoprefixing */
   display: -ms-flexbox; /* Not needed if autoprefixing */
   display: flex;
- /* gutter size offset */
+  /* gutter size offset */
   width: auto;
 }
 .my-masonry-grid_column {
@@ -799,10 +826,10 @@
 }
 
 .trending-images {
-   width: 100%;
-   transition: transform 0.2s ease-in-out;
+  width: 100%;
+  transition: transform 0.2s ease-in-out;
 }
 
 .trending-images:hover {
-   transform: scale(1.05);
+  transform: scale(1.05);
 }

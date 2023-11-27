@@ -22,3 +22,27 @@
     align-items: center;
     margin-bottom: 10px;
 }
+
+/* Radio buttons */
+
+.radio-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-bottom: 10px;
+    font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+    width: 50%;
+}
+
+.radio-buttons input {
+    display: flex;
+    flex-direction: row;
+    justify-self: flex-start;
+    align-items: center;
+    font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+}
+
+.radio-buttons label {
+    font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+}
