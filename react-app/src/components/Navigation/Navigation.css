@@ -63,7 +63,8 @@ input {
 }
 
 #profile-btn-pic {
-  width: 40px;
+  width: 36px;
+  padding-top: 4px;
 }
 
 .profile-container button {
