@@ -3,3 +3,7 @@
 .testIMG {
     width: 200px;
 }
+
+body {
+    margin: 0;
+}

@@ -78,7 +78,7 @@ function Navigation({ isLoaded }) {
       <div className='results-container' ref={resultsContainerRef}>
         {isResultsOpen && <ResultsList results={results} clearSearch={clearSearch} />}
       </div>
-      <div>
+      {/* <div>
         {isLoaded && sessionUser && (
           <div id="tag-icons-container">
             <div className="tag-icons">
@@ -131,7 +131,7 @@ function Navigation({ isLoaded }) {
             </div>
           </div>
         )}
-      </div>
+      </div> */}
     </>
   );
 }
