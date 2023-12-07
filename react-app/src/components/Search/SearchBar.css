@@ -39,7 +39,7 @@ input:focus {
     box-shadow: 0px 0px 8px #ddd;
     border-radius: 10px;
     max-height: 185px;
-    top: 60px;
+    top: 42px;
     overflow-y: scroll;
     font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
 }
@@ -57,4 +57,9 @@ input:focus {
 .results-container{
     margin-left: 423px;
 
+}
+
+.no-results {
+    padding: 10px 20px;
+    font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
 }
