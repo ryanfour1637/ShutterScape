@@ -581,6 +581,11 @@
   text-decoration: none;
 }
 
+.albumImageTitleContainer {
+  text-decoration: none;
+  color: black;
+}
+
 .errors-one {
   margin-left: 35px;
   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
