@@ -34,7 +34,7 @@ export default function GetPosts() {
   return (
     <>
       <h1 className="album-page-h1">Trending</h1>
-      <button onClick={getRandomPhotos} id="see-more-bttn">
+      <button onClick={getRandomPhotos} id="see-more-bttn" className="modalButton">
         See more photos
       </button>
       <div className="allposts-photos">
