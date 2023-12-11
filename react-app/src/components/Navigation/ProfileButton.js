@@ -57,7 +57,7 @@ function ProfileButton({ user }) {
                   <p>{user.email}</p>
 
                   <div>
-                     <button onClick={handleLogout} id="logout-button">
+                     <button onClick={handleLogout} className="modalButton">
                         Log Out
                      </button>
                   </div>
