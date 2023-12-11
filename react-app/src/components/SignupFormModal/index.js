@@ -62,7 +62,7 @@ function SignupFormModal() {
         </button>
       </a>
 
-      <form onSubmit={handleSubmit}>
+      <form className="form" onSubmit={handleSubmit}>
         <div>
           {errors &&
             errors.length >= 1 &&
