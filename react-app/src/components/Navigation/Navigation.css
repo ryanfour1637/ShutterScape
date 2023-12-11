@@ -3,7 +3,7 @@
 }
 
 .nav-container {
-  padding: 20px;
+  padding: 4px;
   background-color: black;
   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
 }
@@ -34,15 +34,9 @@ input {
 /* Profile Button */
 
 .profile-button {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-evenly;
-  border: 1px solid black;
-  border-radius: 20px;
-  height: 35px;
-  width: 70px;
-  cursor: pointer;
+ background-color: unset;
+ border: none;
+ cursor: pointer;
 }
 
 .profile-dropdown {
@@ -50,8 +44,8 @@ input {
   border-radius: 15px;
   min-height: 90px;
   position: absolute;
-  top: 35px;
-  right: 70px;
+  top: 25px;
+  right: 38px;
   z-index: 3;
   background-color: ghostwhite;
   padding-inline-start: 5px;
@@ -68,7 +62,10 @@ input {
   padding: 10px;
 }
 
-
+#profile-btn-pic {
+  width: 36px;
+  padding-top: 4px;
+}
 
 .profile-container button {
 
@@ -92,8 +89,9 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 20px;
-  border-bottom: 2px solid lightgray;
+  padding-left: 16px;
+  padding-right: 4px;
+  /* border-bottom: 2px solid lightgray; */
 }
 
 .nav-links  {
@@ -161,6 +159,7 @@ nav {
   align-items: center;
   justify-content: space-evenly;
   padding-bottom: 28px;
+  padding-top: 10px;
   background-color: black;
   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
 }

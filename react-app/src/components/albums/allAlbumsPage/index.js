@@ -62,7 +62,7 @@ export default function AllAlbumPage() {
             {albums.length > 0 &&
                albums.map((album) => (
                   <div key={album.id}>
-                     <NavLink to={`/albums/${album.id}`}>
+                     <NavLink className="albumImageTitleContainer" to={`/albums/${album.id}`}>
                         <div className="albumImageTitleContainer">
                            <div>
                               <img

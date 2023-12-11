@@ -6,12 +6,13 @@ import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import CreatePostModal from "../Posts/CreatePostModal";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import ProfileButtonPic from "../../images/profile-button.png"
 
 function ProfileButton({ user }) {
    const { push } = useHistory();
    const dispatch = useDispatch();
    const [showMenu, setShowMenu] = useState(false);
-   
+
    const ulRef = useRef();
 
    const openMenu = () => {
@@ -46,10 +47,7 @@ function ProfileButton({ user }) {
       <div className="profile-button-container">
          <button onClick={openMenu} className="profile-button">
             <div>
-               <i className="fa-solid fa-bars"></i>
-            </div>
-            <div>
-               <i className="fa-regular fa-user"></i>
+               <img src={ProfileButtonPic} id="profile-btn-pic"/>
             </div>
          </button>
          <ul className={ulClassName} ref={ulRef}>
