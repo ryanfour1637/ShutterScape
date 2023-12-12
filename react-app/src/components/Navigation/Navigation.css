@@ -89,7 +89,6 @@ nav {
   align-items: center;
   padding-left: 16px;
   padding-right: 4px;
-  /* border-bottom: 2px solid lightgray; */
 }
 
 .nav-links  {
@@ -126,28 +125,26 @@ nav {
   color: white;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   justify-content: space-evenly;
 }
 
 .youbutton-container div {
   padding-bottom: 8px;
   padding-top:10px;
-  margin-left: 20px;
+  width: 100%;
+  text-align: center;
   transition: background-color 0.3s;
-}
-
-.youbutton-container div:nth-child(3) {
-  padding-bottom: 8px;
-  padding-top:10px;
-  margin-left: 14px;
 }
 
 .youbutton-container div:hover {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: #ccc;
   cursor: pointer;
-  border-radius: 4px;
+}
+
+#about-link:hover {
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
 }
 
 /* Tag Filter Icons */
